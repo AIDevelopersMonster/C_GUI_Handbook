@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Глава 3: Условия и сравнения &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="4. Глава 4: Циклы и повторение кода" href="../chapter04_loops/index.html" />
+    <link rel="prev" title="2. Глава 2: Переменные и арифметика" href="../chapter02_variables/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть I: Основы языка Си</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter01_intro/index.html">1. Глава 1: Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02_variables/index.html">2. Глава 2: Переменные и арифметика</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Глава 3: Условия и сравнения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.1. Логические выражения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.2. Операторы сравнения</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#if-else">3.3. if / else</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch">3.4. switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.5. Логические операторы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.6. Домашнее задание ??????</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04_loops/index.html">4. Глава 4: Циклы и повторение кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05_pointers/index.html">5. Глава 5: Указатели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06_functions/index.html">6. Глава 6: Функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07_arrays_strings/index.html">7. Глава 7: Массивы и строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08_string_lib/index.html">8. Глава 8: Библиотека строк (&lt;string.h&gt;)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09_input/index.html">9. Глава 9: Ввод с клавиатуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10_files/index.html">10. Глава 10: Работа с файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11_types_structs/index.html">11. Глава 11: Типы и структуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12_headers/index.html">12. Глава 12: Заголовочные файлы и препроцессор</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть I: Основы языка Си</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Глава 3: Условия и сравнения</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/part1_basics/chapter03_conditions/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">3. </span>Глава 3: Условия и сравнения<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>В этой главе мы познакомимся с основами ветвления программ на языке C: операторы <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code>, <code class="docutils literal notranslate"><span class="pre">switch</span></code> и логические условия. Ветвление позволяет вашей программе принимать решения и выполнять разный код в зависимости от определённых условий. Это делает программы интерактивными и адаптивными к различным входным данным.</p>
+<nav class="contents local" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#id3" id="id7">Логические выражения</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id8">Операторы сравнения</a></p></li>
+<li><p><a class="reference internal" href="#if-else" id="id9">if / else</a></p></li>
+<li><p><a class="reference internal" href="#switch" id="id10">switch</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id11">Логические операторы</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id12">Домашнее задание ??????</a></p></li>
+</ul>
+</nav>
+<p>—</p>
+<section id="id3">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">3.1. </span>Логические выражения</a><a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>Условия, также известные как логические выражения, — это выражения, которые принимают значение <strong>истина (true)</strong> или <strong>ложь (false)</strong>. В отличие от некоторых других языков программирования, в C нет отдельного булевого типа данных (<code class="docutils literal notranslate"><span class="pre">bool</span></code> до C99 стандарта, который требует подключения <code class="docutils literal notranslate"><span class="pre">&lt;stdbool.h&gt;</span></code>). Вместо этого C использует целые числа для представления логических значений:</p>
+<ul class="simple">
+<li><p><strong>``0``</strong> означает <strong>ложь (false)</strong>.</p></li>
+<li><p><strong>Любое ненулевое значение</strong> (например, <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">-5</span></code>, <code class="docutils literal notranslate"><span class="pre">100</span></code>) означает <strong>истину (true)</strong>.</p></li>
+</ul>
+<p>Это очень важная особенность C, которую нужно помнить при работе с условиями.</p>
+<p>Примеры условий:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Условие &quot;x больше 0&quot; истинно, так как 10 &gt; 0.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;x положительное</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Этот код будет выполнен.</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Условие &quot;x равно 0&quot; ложно.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;x равно нулю</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Этот код не будет выполнен.</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Условие &quot;5&quot; истинно, так как 5 - ненулевое значение.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Это всегда будет выполнено!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">3.2. </span>Операторы сравнения</a><a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>Операторы сравнения используются для создания логических выражений путем сравнения двух значений. Результатом такого сравнения всегда является <code class="docutils literal notranslate"><span class="pre">0</span></code> (ложь) или <code class="docutils literal notranslate"><span class="pre">1</span></code> (истина).</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Оператор</p></th>
+<th class="head"><p>Назначение</p></th>
+<th class="head"><p>Пример и возвращаемое значение(для <code class="docutils literal notranslate"><span class="pre">x=5</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>Равно</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">5</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">1</span></code> (true)
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">10</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">0</span></code> (false)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>Не равно</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">0</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">1</span></code> (true)
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">5</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">0</span></code> (false)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>Больше</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">10</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">0</span></code> (false)
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">3</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">1</span></code> (true)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>Меньше</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">&lt;</span> <span class="pre">3</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">0</span></code> (false)
+<code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">&lt;</span> <span class="pre">10</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">1</span></code> (true)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>Больше или равно</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;=</span> <span class="pre">b</span></code>
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">5</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">1</span></code> (true)
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">10</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">0</span></code> (false)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>Меньше или равно</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;=</span> <span class="pre">b</span></code>
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">5</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">1</span></code> (true)
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">3</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">0</span></code> (false)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Важно: Не путайте оператор сравнения ``==`` с оператором присваивания ``=``!</strong>
+Ошибка <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">=</span> <span class="pre">0)</span></code> вместо <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">==</span> <span class="pre">0)</span></code> очень распространена и приводит к труднообнаружимым багам, так как <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> присвоит <code class="docutils literal notranslate"><span class="pre">x</span></code> значение <code class="docutils literal notranslate"><span class="pre">0</span></code>, и затем условие будет интерпретироваться как <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(0)</span></code>, что всегда ложно.</p>
+<p>—</p>
+</section>
+<section id="if-else">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">3.3. </span>if / else</a><a class="headerlink" href="#if-else" title="Permalink to this heading"></a></h2>
+<p>Конструкции <code class="docutils literal notranslate"><span class="pre">if</span></code> и <code class="docutils literal notranslate"><span class="pre">else</span></code> позволяют выполнять блок кода только тогда, когда определенное условие истинно, и другой блок кода, если условие ложно.</p>
+<ul class="simple">
+<li><p><strong>``if (условие) { … }``</strong>: Блок кода внутри фигурных скобок будет выполнен, только если <code class="docutils literal notranslate"><span class="pre">условие</span></code> истинно (ненулевое).</p></li>
+<li><p><strong>``else { … }``</strong>: Блок кода внутри <code class="docutils literal notranslate"><span class="pre">else</span></code> будет выполнен, если условие в соответствующем <code class="docutils literal notranslate"><span class="pre">if</span></code> ложно (<code class="docutils literal notranslate"><span class="pre">0</span></code>). <code class="docutils literal notranslate"><span class="pre">else</span></code> является необязательным.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // Не забываем подключать библиотеку для printf</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Если возраст больше или равен 18</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Доступ разрешён</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Этот код выполнится</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Иначе (если возраст меньше 18)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Доступ запрещён</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Выполнится этот код</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Пример с несколькими условиями (if-else if-else)</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">85</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Отлично!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">70</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Если первое условие ложно, проверяем это</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Хорошо</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Этот код выполнится, так как 85 &gt;= 70</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Если все предыдущие условия ложны</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Удовлетворительно</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="switch">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">3.4. </span>switch</a><a class="headerlink" href="#switch" title="Permalink to this heading"></a></h2>
+<p>Оператор <code class="docutils literal notranslate"><span class="pre">switch</span></code> подходит для выбора одного из нескольких действий в зависимости от значения целочисленной переменной или выражения. Он часто используется как более читабельная альтернатива длинной цепочке <code class="docutils literal notranslate"><span class="pre">if-else</span> <span class="pre">if</span></code>, когда вы сравниваете одну переменную с множеством фиксированных значений.</p>
+<ul class="simple">
+<li><p><strong>``switch (выражение)``</strong>: Выражение (обычно переменная) должно быть целочисленного типа (<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">char</span></code>, <code class="docutils literal notranslate"><span class="pre">short</span></code>, <code class="docutils literal notranslate"><span class="pre">long</span></code>).</p></li>
+<li><p><strong>``case значение:``</strong>: Метки <code class="docutils literal notranslate"><span class="pre">case</span></code> указывают конкретное значение, с которым сравнивается <code class="docutils literal notranslate"><span class="pre">выражение</span></code>. Если совпадает, выполнение начинается с этого <code class="docutils literal notranslate"><span class="pre">case</span></code>.</p></li>
+<li><p><strong>``break;``</strong>: Ключевое слово <code class="docutils literal notranslate"><span class="pre">break</span></code> <strong>очень важно</strong>. Оно прерывает выполнение оператора <code class="docutils literal notranslate"><span class="pre">switch</span></code> и передает управление коду, следующему за <code class="docutils literal notranslate"><span class="pre">switch</span></code>. <strong>Всегда добавляй ``break`` после каждого ``case``, чтобы избежать «проваливания» (fall-through) вниз</strong> к следующим <code class="docutils literal notranslate"><span class="pre">case</span></code>-ам, даже если они не соответствуют условию.</p></li>
+<li><p><strong>``default:``</strong>: Метка <code class="docutils literal notranslate"><span class="pre">default</span></code> (необязательная) выполняется, если значение выражения не совпадает ни с одной из <code class="docutils literal notranslate"><span class="pre">case</span></code>-меток. Похоже на секцию <code class="docutils literal notranslate"><span class="pre">else</span></code> в <code class="docutils literal notranslate"><span class="pre">if-else</span></code>.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // Не забываем подключать библиотеку для printf</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">command</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="c1">// Если command равно 1</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Команда 1</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// Выход из switch</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="c1">// Если command равно 2</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Команда 2</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Этот код выполнится</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// Выход из switch</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="c1">// Если command равно 3</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Команда 3</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// Выход из switch</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="c1">// Если command не равно ни 1, ни 2, ни 3</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Неизвестная команда</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// Выход из switch (хотя здесь break не строго обязателен, хорошая практика его ставить)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Пример &quot;проваливания&quot; (fall-through) без break</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;B&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">grade</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Отлично!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;B&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Очень хорошо!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Этот код выполнится, если grade = &#39;B&#39;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Хорошо.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w">      </span><span class="c1">// И этот код выполнится, если grade = &#39;B&#39; (из-за отсутствия break)</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Завершено.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Чтобы избежать такого поведения, необходимо использовать &#39;break;&#39; после каждого &#39;case&#39;.</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">3.5. </span>Логические операторы</a><a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>Условия можно объединять с логическими операторами для создания более сложных логических выражений.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Оператор</p></th>
+<th class="head"><p>Назначение</p></th>
+<th class="head"><p>Пример и пояснение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code></p></td>
+<td><p><strong>Логическое И</strong> (AND)
+Возвращает истину, если
+<strong>оба</strong> операнда истинны.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(age</span> <span class="pre">&gt;</span> <span class="pre">18)</span> <span class="pre">&amp;&amp;</span> <span class="pre">(hasLicense</span> <span class="pre">==</span> <span class="pre">1)</span></code>
+Истинно, если <strong>оба</strong> условия истинны.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">||</span></code></p></td>
+<td><p><strong>Логическое ИЛИ</strong> (OR)
+Возвращает истину, если
+<strong>хотя бы один</strong> операнд
+истинен.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(temp</span> <span class="pre">&lt;</span> <span class="pre">0)</span> <span class="pre">||</span> <span class="pre">(isSnowing</span> <span class="pre">==</span> <span class="pre">1)</span></code>
+Истинно, если <strong>хотя бы одно</strong> истинно.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">!</span></code></p></td>
+<td><p><strong>Логическое НЕ</strong> (NOT)
+Инвертирует логическое
+значение операнда.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">!(isRaining</span> <span class="pre">==</span> <span class="pre">1)</span></code>
+Истинно, если условие <strong>ложно</strong>.
+<code class="docutils literal notranslate"><span class="pre">!0</span></code> (NOT false) равно <code class="docutils literal notranslate"><span class="pre">1</span></code> (true)
+<code class="docutils literal notranslate"><span class="pre">!1</span></code> (NOT true) равно <code class="docutils literal notranslate"><span class="pre">0</span></code> (false)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Пример использования:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">isSunny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 1 означает true</span>
+
+<span class="w">    </span><span class="c1">// Условие: температура от 20 до 30 (включительно) И солнечно</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">temperature</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">temperature</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">isSunny</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Идеальная погода для прогулки!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">hour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Ночь</span>
+<span class="w">    </span><span class="c1">// Условие: время до 6 утра ИЛИ после 22 вечера</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">hour</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">22</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Время спать!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">hasPermission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 0 означает false</span>
+<span class="w">    </span><span class="c1">// Условие: нет разрешения</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">hasPermission</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Вход запрещён.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">3.6. </span>Домашнее задание ??????</a><a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Напиши программу, которая просит пользователя ввести целое число и определяет:
+* положительное оно, отрицательное или ноль. Используй конструкцию <code class="docutils literal notranslate"><span class="pre">if-else</span> <span class="pre">if-else</span></code>.</p></li>
+<li><p>Добавь <code class="docutils literal notranslate"><span class="pre">switch</span></code>, который печатает день недели по номеру (от 1 до 7). Например, 1 - «Понедельник», 7 - «Воскресенье». Не забудь про <code class="docutils literal notranslate"><span class="pre">default</span></code> для некорректного ввода.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p><strong>Условия делают программы умными!</strong> Их использование помогает программам реагировать на любые данные и сценарии, делая их гибкими и интерактивными. Это фундаментальный инструмент для создания сложной логики.</p>
+</div>
+<p>—</p>
+<p>Надеюсь, эта расширенная версия главы вам понравится! Я постарался добавить больше примеров, уточнений и комментариев, чтобы сделать материал максимально понятным и полным для справочника.</p>
+<p>Что вы думаете об этом? Есть ли что-то еще, что вы хотели бы добавить или изменить в этой главе?</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter02_variables/index.html" class="btn btn-neutral float-left" title="2. Глава 2: Переменные и арифметика" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter04_loops/index.html" class="btn btn-neutral float-right" title="4. Глава 4: Циклы и повторение кода" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
