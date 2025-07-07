@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. Глава 7: Массивы и Строки — Работа с Коллекциями Данных и Текстом &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="8. Глава 8: Библиотека строк (&lt;string.h&gt;)" href="../chapter08_string_lib/index.html" />
+    <link rel="prev" title="6. Глава 6: Функции — Строим Модульный Код" href="../chapter06_functions/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть I: Основы языка Си</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter01_intro/index.html">1. Глава 1: Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02_variables/index.html">2. Глава 2: Переменные и арифметика</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03_conditions/index.html">3. Глава 3: Условия и сравнения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04_loops/index.html">4. Глава 4: Циклы и повторение кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05_pointers/index.html">5. Глава 5: Указатели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06_functions/index.html">6. Глава 6: Функции — Строим Модульный Код</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7. Глава 7: Массивы и Строки — Работа с Коллекциями Данных и Текстом</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.1. Одномерные массивы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-char">7.2. Строки в стиле C (<cite>char[]</cite>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#string-h">7.3. Работа со строками (<cite>&lt;string.h&gt;</cite>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.4. Строковые литералы и указатели</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.5. Практический Пример: Подсчёт гласных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">7.6. Полезные советы и распространённые ошибки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">7.7. Компиляция и Запуск Примеров</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">7.8. Дополнительные Ресурсы</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08_string_lib/index.html">8. Глава 8: Библиотека строк (&lt;string.h&gt;)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09_input/index.html">9. Глава 9: Ввод с клавиатуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10_files/index.html">10. Глава 10: Работа с файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11_types_structs/index.html">11. Глава 11: Типы и структуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12_headers/index.html">12. Глава 12: Заголовочные файлы и препроцессор</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть I: Основы языка Си</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7. </span>Глава 7: Массивы и Строки — Работа с Коллекциями Данных и Текстом</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part1_basics/chapter07_arrays_strings/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">7. </span>Глава 7: Массивы и Строки — Работа с Коллекциями Данных и Текстом<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>Массивы и строки — это <strong>фундаментальные конструкции</strong> языка C, которые позволяют эффективно работать с упорядоченными наборами данных и текстом. Понимание того, как они функционируют на низком уровне, является ключом к эффективному программированию на C.</p>
+<p>В этой главе мы подробно рассмотрим:</p>
+<ul class="simple">
+<li><p><strong>Одномерные массивы</strong>: Как хранить коллекции однотипных данных.</p></li>
+<li><p><strong>Строки (`char[]`)</strong>: Особенность строк в C как массивов символов, завершающихся нулевым байтом.</p></li>
+<li><p><strong>Основные функции для работы со строками</strong> из библиотеки <cite>&lt;string.h&gt;</cite>.</p></li>
+<li><p><strong>Важные советы</strong> по безопасному и эффективному использованию массивов и строк.</p></li>
+</ul>
+<p>—</p>
+<section id="id2">
+<h2><span class="section-number">7.1. </span>Одномерные массивы<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p><strong>Массив</strong> — это коллекция элементов <strong>одного и того же типа</strong>, хранящихся в <strong>непрерывной области памяти</strong>. Каждый элемент массива доступен по своему <strong>индексу</strong>.</p>
+<p><strong>Объявление массива:</strong></p>
+<p>При объявлении массива необходимо указать тип его элементов и желаемый размер (количество элементов).</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">numbers</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span><span class="w">   </span><span class="c1">// Объявляет массив &#39;numbers&#39;, который может хранить 5 целых чисел.</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">letters</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"> </span><span class="c1">// Объявляет массив &#39;letters&#39;, который может хранить 10 символов.</span>
+</pre></div>
+</div>
+<p><strong>Важно</strong>: Элементы массива индексируются <strong>от `0` до `n - 1`</strong>, где <cite>n</cite> — это размер массива. То есть, первый элемент находится по индексу <cite>0</cite>, а последний — по индексу <cite>n-1</cite>.</p>
+<p><strong>Инициализация массива:</strong></p>
+<p>Массивы можно инициализировать при их объявлении, присваивая значения его элементам.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Инициализация массива &#39;a&#39; с явным указанием размера и всех элементов.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+<span class="c1">// Инициализация массива &#39;vowels&#39; символьными литералами.</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">vowels</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;i&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;u&#39;</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Если вы не указываете размер массива при инициализации, компилятор автоматически определяет его по количеству предоставленных элементов:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Размер массива &#39;nums&#39; будет автоматически установлен в 3, так как предоставлено 3 элемента.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">nums</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>### Пример 7.1: Вывод Элементов Массива</p>
+<p>Этот пример демонстрирует, как объявить, инициализировать и затем итерировать по элементам массива, выводя их значения.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// array_example.c</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // Подключаем стандартную библиотеку ввода-вывода для функции printf.</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Объявление и инициализация одномерного целочисленного массива &#39;data&#39;.</span>
+<span class="w">    </span><span class="c1">// Массив имеет размер 5 элементов.</span>
+<span class="w">    </span><span class="c1">// Элементы инициализируются значениями {10, 20, 30, 40, 50}.</span>
+<span class="w">    </span><span class="c1">// Память под эти 5 целых чисел выделяется непрерывно.</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// Объявляем переменную-счетчик &#39;i&#39; для использования в цикле.</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Элементы массива:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Выводим заголовок. \n переносит на новую строку.</span>
+
+<span class="w">    </span><span class="c1">// Цикл for для итерации по элементам массива.</span>
+<span class="w">    </span><span class="c1">// Массивы в C индексируются с 0.</span>
+<span class="w">    </span><span class="c1">// &#39;i&#39; начинается с 0, идет до 4 (пока i &lt; 5).</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Выводим индекс элемента (data[i]) и его значение (data[i]).</span>
+<span class="w">        </span><span class="c1">// %d - спецификатор формата для вывода целых чисел.</span>
+<span class="w">        </span><span class="c1">// data[i] - обращение к элементу массива по индексу &#39;i&#39;.</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;data[%d] = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Возвращаем 0, чтобы сигнализировать операционной системе,</span>
+<span class="w">    </span><span class="c1">// что программа завершилась успешно.</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Вывод при компиляции и запуске <code class="docutils literal notranslate"><span class="pre">array_example.c</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Элементы</span> <span class="n">массива</span><span class="p">:</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="c-char">
+<h2><span class="section-number">7.2. </span>Строки в стиле C (<cite>char[]</cite>)<a class="headerlink" href="#c-char" title="Permalink to this heading"></a></h2>
+<p>В языке C <strong>строка</strong> — это особый вид <strong>массива символов (`char[]`)</strong>, который <strong>обязательно завершается</strong> специальным нулевым символом (<cite>0</cite>). Этот нулевой символ служит маркером конца строки, позволяя функциям, работающим со строками, знать, где заканчивается текст.</p>
+<p><strong>Пример объявления и инициализации строки:</strong></p>
+<p>При использовании строкового литерала (текста в двойных кавычках) компилятор автоматически добавляет <cite>0</cite> в конец массива.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">greeting</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Привет&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Этот массив будет иметь размер 7 символов:</span>
+<span class="w">                            </span><span class="c1">// &#39;П&#39;, &#39;р&#39;, &#39;и&#39;, &#39;в&#39;, &#39;е&#39;, &#39;т&#39;, &#39;\0&#39;</span>
+</pre></div>
+</div>
+<p><strong>Важно: Ошибка инициализации без `0`:</strong></p>
+<p>Если вы инициализируете <cite>char</cite> массив вручную символами, вы должны явно добавить <cite>0</cite>, иначе это не будет считаться корректной строкой в C.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">word</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">};</span><span class="w"> </span><span class="c1">// НЕ является строкой в C, так как отсутствует &#39;\0&#39;.</span>
+<span class="w">                                        </span><span class="c1">// Попытка использовать ее со строковыми функциями</span>
+<span class="w">                                        </span><span class="c1">// приведет к неопределенному поведению.</span>
+</pre></div>
+</div>
+<p><strong>Правильный ввод строк с клавиатуры:</strong></p>
+<p>Функция <cite>scanf(«%s», …)</cite> опасна для чтения строк, так как она останавливается на первом пробеле и <strong>не проверяет размер буфера</strong>, что может привести к <strong>переполнению буфера</strong>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Введите ваше имя: &quot;</span><span class="p">);</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// ОПАСНО! Останавливается на пробеле и не проверяет границы массива.</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Привет, %s!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Для безопасного ввода строк с пробелами используйте `fgets()`:</strong></p>
+<p><cite>fgets()</cite> является более безопасной функцией, так как она позволяет указать максимальное количество символов для чтения, предотвращая переполнение буфера.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// fgets(буфер, размер_буфера, источник)</span>
+<span class="n">fgets</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
+<span class="c1">// Важно: fgets() читает символ новой строки &#39;\n&#39; (если он есть) и включает его в буфер.</span>
+<span class="c1">// Его часто нужно удалять вручную, как показано в Примере 7.2.</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="string-h">
+<h2><span class="section-number">7.3. </span>Работа со строками (<cite>&lt;string.h&gt;</cite>)<a class="headerlink" href="#string-h" title="Permalink to this heading"></a></h2>
+<p>Для эффективной работы со строками в C используется стандартная библиотека <cite>&lt;string.h&gt;</cite>. Чтобы использовать её функции, необходимо подключить заголовочный файл:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+</pre></div>
+</div>
+<p>Часто используемые функции из <cite>&lt;string.h&gt;</cite>:</p>
+<p>Sure thing! My apologies for the oversight. Here’s that updated table in <strong>reStructuredText (RST) format</strong>, with the improved descriptions for <cite>strncpy</cite> and <cite>strncat</cite> as discussed:</p>
+<p>—</p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Функции для работы со строками в C (<cite>&lt;string.h&gt;</cite>)</span><a class="headerlink" href="#id8" title="Постоянная ссылка на таблицу"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Функция</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">strlen(const</span> <span class="pre">char</span> <span class="pre">*s)</span></code></p></td>
+<td><p>Возвращает <strong>длину строки</strong> <code class="docutils literal notranslate"><span class="pre">s</span></code> (количество символов <strong>без</strong> завершающего нулевого символа <code class="docutils literal notranslate"><span class="pre">\0</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">strcpy(char</span> <span class="pre">*dest,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*src)</span></code></p></td>
+<td><p><strong>Копирует</strong> строку <code class="docutils literal notranslate"><span class="pre">src</span></code> (включая <code class="docutils literal notranslate"><span class="pre">\0</span></code>) в <code class="docutils literal notranslate"><span class="pre">dest</span></code>. <strong>Внимание</strong>: <code class="docutils literal notranslate"><span class="pre">dest</span></code> должен быть достаточно большим, чтобы вместить всю строку <code class="docutils literal notranslate"><span class="pre">src</span></code>, иначе возможно <strong>переполнение буфера</strong>. Используйте <code class="docutils literal notranslate"><span class="pre">strncpy</span></code> для безопасной копии.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">strncpy(char</span> <span class="pre">*dest,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*src,</span> <span class="pre">size_t</span> <span class="pre">n)</span></code></p></td>
+<td><p><strong>Безопасная копия</strong>: Копирует не более <code class="docutils literal notranslate"><span class="pre">n</span></code> символов из <code class="docutils literal notranslate"><span class="pre">src</span></code> в <code class="docutils literal notranslate"><span class="pre">dest</span></code>. Если <code class="docutils literal notranslate"><span class="pre">src</span></code> короче <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">dest</span></code> дополняется нулями. <strong>Важно</strong>: Если <code class="docutils literal notranslate"><span class="pre">src</span></code> длиннее или равен <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">strncpy</span></code> <strong>не гарантирует добавление завершающего ``0``</strong>. Часто нужно добавлять его вручную: <code class="docutils literal notranslate"><span class="pre">dest[n-1]</span> <span class="pre">=</span> <span class="pre">'\0';</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">strcmp(const</span> <span class="pre">char</span> <span class="pre">*s1,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*s2)</span></code></p></td>
+<td><p><strong>Сравнивает</strong> строки <code class="docutils literal notranslate"><span class="pre">s1</span></code> и <code class="docutils literal notranslate"><span class="pre">s2</span></code> лексикографически (по символам). Возвращает <code class="docutils literal notranslate"><span class="pre">0</span></code>, если строки идентичны. Возвращает отрицательное значение, если <code class="docutils literal notranslate"><span class="pre">s1</span></code> «меньше» <code class="docutils literal notranslate"><span class="pre">s2</span></code>; положительное, если <code class="docutils literal notranslate"><span class="pre">s1</span></code> «больше» <code class="docutils literal notranslate"><span class="pre">s2</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">strcat(char</span> <span class="pre">*dest,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*src)</span></code></p></td>
+<td><p><strong>Конкатенирует</strong> (добавляет) строку <code class="docutils literal notranslate"><span class="pre">src</span></code> (включая <code class="docutils literal notranslate"><span class="pre">\0</span></code>) в конец строки <code class="docutils literal notranslate"><span class="pre">dest</span></code>. <strong>Внимание</strong>: <code class="docutils literal notranslate"><span class="pre">dest</span></code> должен иметь достаточно места для размещения обеих строк, иначе возможно <strong>переполнение буфера</strong>. Используйте <code class="docutils literal notranslate"><span class="pre">strncat</span></code> для безопасной конкатенации.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">strncat(char</span> <span class="pre">*dest,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*src,</span> <span class="pre">size_t</span> <span class="pre">n)</span></code></p></td>
+<td><p><strong>Безопасная конкатенация</strong>: Добавляет не более <code class="docutils literal notranslate"><span class="pre">n</span></code> символов из <code class="docutils literal notranslate"><span class="pre">src</span></code> в конец <code class="docutils literal notranslate"><span class="pre">dest</span></code>. После добавления символов и <code class="docutils literal notranslate"><span class="pre">\0</span></code> (если <code class="docutils literal notranslate"><span class="pre">n</span></code> не превышает длину <code class="docutils literal notranslate"><span class="pre">src</span></code>), <code class="docutils literal notranslate"><span class="pre">dest</span></code> всегда будет корректно завершен <code class="docutils literal notranslate"><span class="pre">\0</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">strcspn(const</span> <span class="pre">char</span> <span class="pre">*s,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*reject)</span></code></p></td>
+<td><p>Возвращает длину начального сегмента строки <code class="docutils literal notranslate"><span class="pre">s</span></code>, который не содержит ни одного символа из строки <code class="docutils literal notranslate"><span class="pre">reject</span></code>. Очень часто используется для <strong>удаления символа новой строки (``n``)</strong> от <code class="docutils literal notranslate"><span class="pre">fgets()</span></code>: <code class="docutils literal notranslate"><span class="pre">string[strcspn(string,</span> <span class="pre">&quot;\\n&quot;)]</span> <span class="pre">=</span> <span class="pre">'\\0';</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>—</p>
+<p>Let me know if you need anything else!</p>
+<p>### Пример 7.2: Расширенная Работа со Строками</p>
+<p>Этот пример демонстрирует чтение строк с помощью <cite>fgets()</cite> с последующей очисткой от <cite>n</cite>, а также использование <cite>strlen()</cite>, <cite>strcpy()</cite>, <cite>strcmp()</cite> и <cite>strcat()</cite>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// string_manipulation.c</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1">  // Для функций ввода-вывода, таких как printf и fgets.</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="c1"> // Для строковых функций, таких как strlen и strcspn.</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Объявляем символьный массив &#39;name&#39; размером 50 символов.</span>
+<span class="w">    </span><span class="c1">// Этого достаточно для хранения строки до 49 символов плюс завершающий нулевой символ &#39;\0&#39;.</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Введите ваше имя: &quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Запрос ввода у пользователя.</span>
+
+<span class="w">    </span><span class="c1">// fgets() - безопасная функция для чтения строки.</span>
+<span class="w">    </span><span class="c1">// Она считывает строку из стандартного ввода (stdin)</span>
+<span class="w">    </span><span class="c1">// до символа новой строки &#39;\n&#39; или до (sizeof(name) - 1) символов,</span>
+<span class="w">    </span><span class="c1">// записывая их в массив &#39;name&#39;.</span>
+<span class="w">    </span><span class="c1">// Важно: fgets() включает символ &#39;\n&#39; (если он был введен) в строку.</span>
+<span class="w">    </span><span class="n">fgets</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Удаляем символ новой строки (&#39;\n&#39;), который мог быть прочитан fgets().</span>
+<span class="w">    </span><span class="c1">// strcspn(name, &quot;\n&quot;) находит индекс первого вхождения символа &#39;\n&#39; в строке &#39;name&#39;.</span>
+<span class="w">    </span><span class="c1">// Если &#39;\n&#39; найден, мы заменяем его на нулевой символ &#39;\0&#39;,</span>
+<span class="w">    </span><span class="c1">// что корректно завершает строку в этом месте.</span>
+<span class="w">    </span><span class="c1">// Это критически важно для корректной работы других строковых функций и вывода.</span>
+<span class="w">    </span><span class="n">name</span><span class="p">[</span><span class="n">strcspn</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Выводим приветствие с введенным именем.</span>
+<span class="w">    </span><span class="c1">// %s - спецификатор формата для вывода строки.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Привет, %s!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// strlen(name) - функция из &lt;string.h&gt;, которая возвращает длину строки,</span>
+<span class="w">    </span><span class="c1">// исключая завершающий нулевой символ &#39;\0&#39;.</span>
+<span class="w">    </span><span class="c1">// %lu - спецификатор формата для вывода значения типа size_t,</span>
+<span class="w">    </span><span class="c1">// который возвращает strlen.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Длина строки: %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">name</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// --- Демонстрация других строковых функций (дополнительно) ---</span>
+
+<span class="w">    </span><span class="c1">// strcpy - копирование строки.</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">copied_name</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="w">    </span><span class="c1">// strcpy(назначение, источник)</span>
+<span class="w">    </span><span class="c1">// Копирует содержимое &#39;name&#39; в &#39;copied_name&#39;, включая &#39;\0&#39;.</span>
+<span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">copied_name</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Скопированное имя: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">copied_name</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// strcmp - сравнение строк.</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">another_name</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">another_name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Задаем другую строку для сравнения</span>
+
+<span class="w">    </span><span class="c1">// strcmp возвращает 0, если строки идентичны.</span>
+<span class="w">    </span><span class="c1">// Отрицательное значение, если s1 &lt; s2.</span>
+<span class="w">    </span><span class="c1">// Положительное значение, если s1 &gt; s2.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">another_name</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Имена одинаковые.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Имена разные.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// strcat - конкатенация (объединение) строк.</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">full_message</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">full_message</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, &quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Инициализируем начальную часть</span>
+<span class="w">    </span><span class="c1">// strcat(назначение, источник)</span>
+<span class="w">    </span><span class="c1">// Добавляет содержимое &#39;name&#39; в конец &#39;full_message&#39;.</span>
+<span class="w">    </span><span class="n">strcat</span><span class="p">(</span><span class="n">full_message</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">strcat</span><span class="p">(</span><span class="n">full_message</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;!&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Добавляем восклицательный знак</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Полное сообщение: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">full_message</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Возвращаем 0 для успешного завершения.</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.4. </span>Строковые литералы и указатели<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>В C можно объявлять строковые литералы, используя указатели:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello, world!&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Важно</strong>: Строковый литерал (текст в двойных кавычках) часто хранится в памяти, предназначенной <strong>только для чтения</strong>. Присвоение его указателю (<cite>char *</cite>) означает, что <cite>msg</cite> указывает на эту область памяти.</p>
+<p><strong>Попытка изменить содержимое такой строки через указатель (`msg[0] = „X“;`) приведет к неопределенному поведению или, что чаще, к краху программы (segmentation fault)</strong>, так как вы пытаетесь записать в область памяти, защищенную от записи. Если вам нужна изменяемая строка, всегда используйте объявление массива <cite>char[]</cite>.</p>
+<p>—</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">7.5. </span>Практический Пример: Подсчёт гласных<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>Этот пример демонстрирует более сложную работу со строками: итерацию по символам и условную логику для анализа содержимого.</p>
+<p>### Пример 7.3: Подсчитать количество гласных в строке</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// vowel_counter.c</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1">  // Для функций ввода-вывода (printf, fgets).</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="c1"> // Для строковых функций (strcspn).</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ctype.h&gt;</span><span class="c1">  // Для функции tolower() - для упрощения проверки регистра.</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Объявляем символьный массив &#39;str&#39; для хранения введенной строки.</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="w">    </span><span class="c1">// Объявляем целочисленную переменную для подсчета гласных, инициализируем нулем.</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Введите строку: &quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Запрос ввода у пользователя.</span>
+
+<span class="w">    </span><span class="c1">// Безопасное чтение строки с использованием fgets().</span>
+<span class="w">    </span><span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">str</span><span class="p">),</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Удаляем символ новой строки &#39;\n&#39;, если он был прочитан fgets().</span>
+<span class="w">    </span><span class="n">str</span><span class="p">[</span><span class="n">strcspn</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Цикл for для итерации по каждому символу строки.</span>
+<span class="w">    </span><span class="c1">// Условие str[i] != &#39;\0&#39; гарантирует, что цикл продолжается до конца строки.</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Получаем текущий символ строки.</span>
+<span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+<span class="w">        </span><span class="c1">// Преобразование символа в нижний регистр для упрощения проверки.</span>
+<span class="w">        </span><span class="c1">// tolower() из &lt;ctype.h&gt; преобразует букву в нижний регистр;</span>
+<span class="w">        </span><span class="c1">// если это не буква, символ возвращается без изменений.</span>
+<span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tolower</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Проверяем, является ли текущий символ гласной (a, e, i, o, u).</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;i&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;u&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Если символ является гласной, увеличиваем счетчик.</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Выводим общее количество найденных гласных.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Количество гласных: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Возвращаем 0 для успешного завершения программы.</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">7.6. </span>Полезные советы и распространённые ошибки<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Индексирование с 0</strong>: Всегда помните, что массивы в C начинаются с индекса <cite>0</cite>.</p></li>
+<li><p><strong>Завершающий `0`</strong>: Убедитесь, что все ваши строки в C корректно завершаются нулевым символом (<cite>0</cite>). Без него строковые функции будут читать за пределами выделенной памяти, что приведёт к ошибкам.</p></li>
+<li><p><strong>Используйте `fgets()` вместо `scanf(«%s», …)`</strong>: <cite>fgets()</cite> гораздо безопаснее, так как позволяет указать размер буфера и предотвращает переполнение.</p></li>
+<li><p><strong>Избегайте выхода за границы массива</strong>: Попытка доступа к элементу массива по индексу, который находится за его объявленными границами (например, <cite>data[5]</cite> в массиве <cite>data[5]</cite>), приведёт к <strong>неопределенному поведению</strong> (Undefined Behavior), что может выражаться в крахе программы, некорректных данных или уязвимостях безопасности. Это одна из самых частых и сложных для отладки ошибок в C.</p></li>
+<li><p><strong>Помните о `const` для строковых литералов</strong>: Если вы инициализируете <cite>char *</cite> строковым литералом (<cite>«Hello»</cite>), помните, что это данные только для чтения.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="id6">
+<h2><span class="section-number">7.7. </span>Компиляция и Запуск Примеров<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>Для компиляции и запуска этих программ вам понадобится компилятор C (например, GCC).</p>
+<p>В терминале, находясь в директории с исходными файлами:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Компиляция Примера 7.1</span>
+gcc<span class="w"> </span>array_example.c<span class="w"> </span>-o<span class="w"> </span>array_example
+
+<span class="c1"># Компиляция Примера 7.2</span>
+gcc<span class="w"> </span>string_manipulation.c<span class="w"> </span>-o<span class="w"> </span>string_manipulation
+
+<span class="c1"># Компиляция Примера 7.3</span>
+gcc<span class="w"> </span>vowel_counter.c<span class="w"> </span>-o<span class="w"> </span>vowel_counter
+</pre></div>
+</div>
+<p>Запуск исполняемых файлов:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./array_example
+./string_manipulation<span class="w">  </span><span class="c1"># Потребуется ввод имени</span>
+./vowel_counter<span class="w">        </span><span class="c1"># Потребуется ввод строки</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id7">
+<h2><span class="section-number">7.8. </span>Дополнительные Ресурсы<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><cite>man strlen</cite>, <cite>man strcpy</cite>, <cite>man strcmp</cite>, <cite>man strcat</cite> — Используйте эти команды в терминале Linux/macOS для получения подробной справки по функциям из <cite>&lt;string.h&gt;</cite>.</p></li>
+<li><p><cite>man fgets</cite>, <cite>man scanf</cite> — Справка по функциям ввода.</p></li>
+<li><p><cite>man tolower</cite> — Справка по функции из <cite>&lt;ctype.h&gt;</cite>.</p></li>
+<li><p><a class="reference external" href="https://www.w3schools.com/c/c_arrays.php">C Arrays (W3Schools)</a></p></li>
+<li><p><a class="reference external" href="https://www.tutorialspoint.com/cprogramming/c_strings.htm">C Strings (TutorialsPoint)</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/c-string-functions/">C String Functions (GeeksforGeeks)</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter06_functions/index.html" class="btn btn-neutral float-left" title="6. Глава 6: Функции — Строим Модульный Код" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter08_string_lib/index.html" class="btn btn-neutral float-right" title="8. Глава 8: Библиотека строк (&lt;string.h&gt;)" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

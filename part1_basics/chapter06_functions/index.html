@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Глава 6: Функции — Строим Модульный Код &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="7. Глава 7: Массивы и строки" href="../chapter07_arrays_strings/index.html" />
+    <link rel="prev" title="5. Глава 5: Указатели" href="../chapter05_pointers/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть I: Основы языка Си</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter01_intro/index.html">1. Глава 1: Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02_variables/index.html">2. Глава 2: Переменные и арифметика</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03_conditions/index.html">3. Глава 3: Условия и сравнения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04_loops/index.html">4. Глава 4: Циклы и повторение кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05_pointers/index.html">5. Глава 5: Указатели</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Глава 6: Функции — Строим Модульный Код</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.1. Основные понятия: Объявление и Определение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.2. Аргументы и Возвращаемое Значение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">6.3. Практический пример: Использование функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07_arrays_strings/index.html">7. Глава 7: Массивы и строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08_string_lib/index.html">8. Глава 8: Библиотека строк (&lt;string.h&gt;)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09_input/index.html">9. Глава 9: Ввод с клавиатуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10_files/index.html">10. Глава 10: Работа с файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11_types_structs/index.html">11. Глава 11: Типы и структуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12_headers/index.html">12. Глава 12: Заголовочные файлы и препроцессор</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть I: Основы языка Си</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Глава 6: Функции — Строим Модульный Код</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part1_basics/chapter06_functions/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">6. </span>Глава 6: Функции — Строим Модульный Код<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>Функции в языке C — это фундаментальный механизм для <strong>организации, структурирования и повторного использования кода</strong>. Они позволяют разбивать большие и сложные программы на маленькие, управляемые и логически связанные блоки. Думайте о функциях как о «строительных блоках», каждый из которых выполняет свою специфическую задачу.</p>
+<p>Преимущества использования функций:</p>
+<ul class="simple">
+<li><p><strong>Модульность</strong>: Программа становится более модульной и легче для понимания.</p></li>
+<li><p><strong>Переиспользование кода</strong>: Один раз написанную функцию можно вызвать многократно в разных частях программы, избегая дублирования.</p></li>
+<li><p><strong>Удобство отладки</strong>: Локализация ошибок становится проще, так как можно тестировать каждую функцию по отдельности.</p></li>
+<li><p><strong>Сопровождаемость</strong>: Изменения в одной функции не влияют на другие, если их интерфейсы остаются неизменными.</p></li>
+</ul>
+<section id="id2">
+<h2><span class="section-number">6.1. </span>Основные понятия: Объявление и Определение<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>В языке C каждая функция должна быть <strong>объявлена</strong> (прототип функции) и <strong>определена</strong> (реализация функции).</p>
+<ul class="simple">
+<li><p><strong>Объявление функции (Function Declaration / Prototype)</strong>: Сообщает компилятору о <em>существовании</em> функции, её имени, типе возвращаемого значения и типах её параметров. Это позволяет компилятору проверить корректность вызовов функции до того, как он увидит её полную реализацию. Обычно объявления размещают в начале файла или в отдельных заголовочных файлах (<code class="docutils literal notranslate"><span class="pre">.h</span></code>).</p></li>
+<li><p><strong>Определение функции (Function Definition)</strong>: Содержит фактический <em>код</em> (инструкции), который выполняется, когда функция вызывается. Оно включает тело функции, заключенное в фигурные скобки <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p></li>
+</ul>
+<p>Пример объявления и определения функции:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Пример 6.1: Объявление и Определение Функции Sum</span>
+<span class="c1">// Объявление (прототип): Сообщает компилятору, что функция &#39;sum&#39; существует.</span>
+<span class="c1">// Принимает два целых числа (int) и возвращает целое число (int).</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+
+<span class="c1">// Определение: Реализация функции &#39;sum&#39;.</span>
+<span class="c1">// Здесь происходит фактическое сложение двух чисел.</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="c1">// Возвращаем результат сложения.</span>
+<span class="p">}</span>
+
+<span class="c1">// Главная функция программы</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Вызов функции &#39;sum&#39; с аргументами 3 и 4.</span>
+<span class="w">    </span><span class="c1">// Результат (7) будет присвоен переменной &#39;result&#39;.</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Сумма: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w"> </span><span class="c1">// Выводим полученную сумму.</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Завершаем программу успешно.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.2. </span>Аргументы и Возвращаемое Значение<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>Функции могут принимать <strong>аргументы</strong> (также называемые <em>параметрами</em> или <em>входными данными</em>) и возвращать результат через оператор <code class="docutils literal notranslate"><span class="pre">return</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Аргументы</strong>: Это значения, которые передаются в функцию для её обработки. Они указываются в круглых скобках после имени функции в объявлении и определении. Каждый аргумент имеет свой тип и имя.</p></li>
+<li><p><strong>Возвращаемое значение</strong>: Это результат, который функция передаёт обратно вызвавшему её коду. Тип возвращаемого значения указывается перед именем функции. Если функция не возвращает никакого значения, используется ключевое слово <code class="docutils literal notranslate"><span class="pre">void</span></code>.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Пример 6.2: Функции с void и возвращаемым значением</span>
+<span class="c1">// Функция без аргументов и без возвращаемого значения (void).</span>
+<span class="c1">// Просто выводит приветствие.</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print_hello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Привет из функции print_hello!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Функция, принимающая два целых числа и возвращающая их произведение.</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="c1">// Возвращаем результат умножения.</span>
+<span class="p">}</span>
+
+<span class="c1">// Главная функция программы</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">print_hello</span><span class="p">();</span><span class="w"> </span><span class="c1">// Вызываем функцию, которая просто печатает сообщение.</span>
+
+<span class="w">    </span><span class="c1">// Вызываем функцию &#39;multiply&#39; с аргументами 2 и 3.</span>
+<span class="w">    </span><span class="c1">// Результат (6) будет выведен напрямую.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Произведение: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Завершаем программу успешно.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Важные аспекты использования функций:</p>
+<ul class="simple">
+<li><p><strong>Согласованность типов</strong>: Количество, порядок и типы аргументов при вызове функции должны точно совпадать с её объявлением (прототипом) и определением.</p></li>
+<li><p><strong>Гибкость расположения</strong>: Вы можете объявить функцию до её использования (например, до <code class="docutils literal notranslate"><span class="pre">main()</span></code>), а определить её полную реализацию после <code class="docutils literal notranslate"><span class="pre">main()</span></code> или в другом файле. Это способствует более чистому и организованному коду.</p></li>
+<li><p><strong>Уникальность имен</strong>: Каждая функция в вашей программе должна иметь уникальное имя.</p></li>
+<li><p><strong>Область видимости</strong>: Переменные, объявленные внутри функции, являются <em>локальными</em> и доступны только внутри этой функции.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><span class="section-number">6.3. </span>Практический пример: Использование функций<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>Давайте создадим полноценный файл <code class="docutils literal notranslate"><span class="pre">functions_demo.c</span></code>, демонстрирующий несколько функций.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Пример 6.3: Практический пример использования функций</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // Включаем стандартную библиотеку ввода-вывода для printf</span>
+
+<span class="c1">// Объявления (прототипы) функций.</span>
+<span class="c1">// Эти строки сообщают компилятору о существовании функций до их определения.</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">greet</span><span class="p">();</span><span class="w">           </span><span class="c1">// Функция без аргументов и без возвращаемого значения</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w">      </span><span class="c1">// Функция принимает int, возвращает int</span>
+<span class="kt">double</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radius</span><span class="p">);</span><span class="w"> </span><span class="c1">// Функция принимает double, возвращает double</span>
+
+<span class="c1">// Главная функция - точка входа в программу.</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Вызов функции greet().</span>
+<span class="w">    </span><span class="n">greet</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Вызов функции square() с аргументом 5 и вывод результата.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Квадрат 5: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// Вызов функции calculate_area() с аргументом 3.0 и вывод результата.</span>
+<span class="w">    </span><span class="c1">// Обратите внимание на спецификатор формата %lf для double.</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Площадь круга радиусом 3.0: %.2lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">calculate_area</span><span class="p">(</span><span class="mf">3.0</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Успешное завершение программы.</span>
+<span class="p">}</span>
+
+<span class="c1">// Определение функции greet().</span>
+<span class="c1">// Эта функция просто печатает приветственное сообщение.</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">greet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Добро пожаловать в мир функций C!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Определение функции square().</span>
+<span class="c1">// Эта функция принимает целое число &#39;n&#39; и возвращает его квадрат.</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Определение функции calculate_area().</span>
+<span class="c1">// Эта функция принимает радиус &#39;radius&#39; (тип double)</span>
+<span class="c1">// и возвращает площадь круга (pi * r^2).</span>
+<span class="c1">// Для простоты используем 3.14159 в качестве PI.</span>
+<span class="kt">double</span><span class="w"> </span><span class="nf">calculate_area</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radius</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">;</span><span class="w"> </span><span class="c1">// Константа для PI</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Компиляция:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc<span class="w"> </span>functions_demo.c<span class="w"> </span>-o<span class="w"> </span>funcdemo
+./funcdemo
+</pre></div>
+</div>
+<p>Результат:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Добро пожаловать в функции!
+Квадрат 5: 25
+Площадь круга радиусом 3.0: 28.27
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p><strong>Хороший стиль программирования</strong>:
+* Рекомендуется размещать <strong>объявления функций</strong> в начале файла <code class="docutils literal notranslate"><span class="pre">.c</span></code> или, что ещё лучше, в <strong>заголовочных файлах</strong> (файлы с расширением <code class="docutils literal notranslate"><span class="pre">.h</span></code>). Это обеспечивает единообразие и упрощает управление крупными проектами.
+* <strong>Разделение на файлы</strong>: В больших проектах часто каждая функция (или группа связанных функций) определяется в отдельном <code class="docutils literal notranslate"><span class="pre">.c</span></code> файле, а их объявления помещаются в соответствующий <code class="docutils literal notranslate"><span class="pre">.h</span></code> файл.</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* `man gcc` - Руководство по использованию компилятора GCC.
+* `man printf` - Руководство по функции `printf` в стандартной библиотеке C.
+* `C Functions (W3Schools) &lt;https://www.w3schools.com/c/c_functions.php&gt;`_ - Дополнительный материал по функциям C (на английском).
+* `Function Prototypes in C (GeeksforGeeks) &lt;https://www.geeksforgeeks.org/function-prototypes-in-c/&gt;`_ - Подробнее о прототипах функций (на английском).
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter05_pointers/index.html" class="btn btn-neutral float-left" title="5. Глава 5: Указатели" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter07_arrays_strings/index.html" class="btn btn-neutral float-right" title="7. Глава 7: Массивы и строки" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
