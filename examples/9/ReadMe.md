@@ -236,9 +236,9 @@ gcc chapter9_example3.c -o example3
 
 ## Дополнительные ресурсы
 
-  * ������ [C Programming - Input and Output (cplusplus.com)](https://www.cplusplus.com/reference/cstdio/)
-  * ������ [Функция fgets (cplusplus.com)](https://www.cplusplus.com/reference/cstdio/fgets/)
-  * ������ [Почему scanf опасен — статья на Stack Overflow (на английском)](https://www.google.com/search?q=https://stackoverflow.com/questions/2202678/why-is-scanf-so-dangerous-and-what-are-the-alternatives)
-  * ������ [Статья о безопасном вводе в C (на английском)](https://www.google.com/search?q=https://www.geeksforgeeks.org/gets-vs-fgets/)
+  *  [C Programming - Input and Output (cplusplus.com)](https://www.cplusplus.com/reference/cstdio/)
+  *  [Функция fgets (cplusplus.com)](https://www.cplusplus.com/reference/cstdio/fgets/)
+  *  [Почему scanf опасен — статья на Stack Overflow (на английском)](https://www.google.com/search?q=https://stackoverflow.com/questions/2202678/why-is-scanf-so-dangerous-and-what-are-the-alternatives)
+  *  [Статья о безопасном вводе в C (на английском)](https://www.google.com/search?q=https://www.geeksforgeeks.org/gets-vs-fgets/)
 
 -----
