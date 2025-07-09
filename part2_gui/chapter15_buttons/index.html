@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3. Глава 15: Кнопки и события &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+  <title>3. Глава 15: Кнопки и обработка событий &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
       <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
   
@@ -19,7 +19,7 @@
     <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
     <link rel="search" title="Поиск" href="../../search.html" />
     <link rel="next" title="4. Глава 16: Метки и базовый макет" href="../chapter16_labels_layout/index.html" />
-    <link rel="prev" title="2. Глава 14: Первый GTK-проект" href="../chapter14_first_project/index.html" /> 
+    <link rel="prev" title="2. Глава 14: Первый GTK-проект — Окно с кнопкой" href="../chapter14_first_project/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,8 +46,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть II: Разработка GUI с помощью GTK</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../chapter13_gtk_intro/index.html">1. Глава 13: Введение в GTK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter14_first_project/index.html">2. Глава 14: Первый GTK-проект</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Глава 15: Кнопки и события</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14_first_project/index.html">2. Глава 14: Первый GTK-проект — Окно с кнопкой</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Глава 15: Кнопки и обработка событий</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.1. Что вы узнаете в этой главе:</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter16_labels_layout/index.html">4. Глава 16: Метки и базовый макет</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter17_grid_layout/index.html">5. Глава 17: Расширенный макет</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter18_inputs/index.html">6. Глава 18: Поля ввода</a></li>
@@ -78,7 +81,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Часть II: Разработка GUI с помощью GTK</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">3. </span>Глава 15: Кнопки и события</li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Глава 15: Кнопки и обработка событий</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../sources/part2_gui/chapter15_buttons/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
       </li>
@@ -89,15 +92,155 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1><span class="section-number">3. </span>Глава 15: Кнопки и события<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
-<p>Обработка кликов, gtk_button_new_with_label, сигналы.</p>
+<h1><span class="section-number">3. </span>Глава 15: Кнопки и обработка событий<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>В этой главе мы углубимся в работу с одним из самых фундаментальных элементов графического интерфейса — <strong>кнопками</strong>. Мы научимся создавать кнопки с текстом, размещать их в окне и, самое главное, обрабатывать <strong>пользовательские действия</strong>, такие как клики мышью. Это важный шаг в освоении <strong>событийно-ориентированного программирования</strong> с использованием библиотеки GTK, которое является краеугольным камнем любого интерактивного приложения.</p>
+<section id="id2">
+<h2><span class="section-number">3.1. </span>Что вы узнаете в этой главе:<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Как создать базовую кнопку</strong> с текстовой меткой.</p></li>
+<li><p><strong>Что такое «сигналы» в GTK</strong> и как они являются основой обработки событий.</p></li>
+<li><p><strong>Как «подключить» (connect) ваш код</strong> к сигналам, испускаемым виджетами.</p></li>
+<li><p><strong>Как написать функцию-обработчик</strong> (callback) для реакции на клик по кнопке.</p></li>
+<li><p><strong>Как использовать `g_print()`</strong> для вывода отладочной информации.</p></li>
+</ul>
+<p>—</p>
+<p>### Основы взаимодействия: Сигналы и Слоты</p>
+<p>Как мы уже кратко упоминали в предыдущих главах, GTK использует <strong>событийно-ориентированную модель</strong>. Это означает, что программа не выполняет команды строго по порядку, а реагирует на «события», происходящие в интерфейсе. Ядро этой модели в GTK — это система <strong>«сигналов и слотов» (signals and slots)</strong>, реализованная через <strong>GObject</strong>.</p>
+<ul class="simple">
+<li><p><strong>Сигнал (Signal):</strong> Это уведомление, которое «испускает» виджет (или любой другой GObject) в ответ на определённое событие. Например, когда пользователь нажимает на кнопку, кнопка испускает сигнал «clicked». Когда окно закрывается, оно испускает сигнал «destroy».</p></li>
+<li><p><strong>Слот (Slot) / Обработчик события (Callback Function):</strong> Это обычная функция на языке C, которую вы пишете. Вы «подключаете» эту функцию к определённому сигналу определённого виджета. Когда виджет испускает сигнал, GTK автоматически вызывает (или «активирует») все подключенные к этому сигналу функции-обработчики.</p></li>
+</ul>
+<p>Механизм <code class="docutils literal notranslate"><span class="pre">g_signal_connect()</span></code>, который мы использовали ранее для закрытия окна, является центральным для этой системы. Он позволяет установить связь между сигналом, исходящим от виджета, и вашей функцией, которая должна быть вызвана в ответ.</p>
+<p>—</p>
+<p>### Пример: Простое окно с кнопкой и выводом в консоль</p>
+<p>Название исходного файла: <cite>button_example.c</cite></p>
+<p>Этот пример покажет, как создать окно с одной кнопкой. При каждом нажатии на кнопку в терминале будет появляться сообщение.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span><span class="c1"> // Подключаем основную библиотеку GTK.</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Callback-функция, которая будет вызвана при нажатии кнопки.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Эта функция просто выводит сообщение в консоль, демонстрируя,</span>
+<span class="cm"> * что сигнал &quot;clicked&quot; был успешно обработан.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param widget Указатель на GtkWidget, который испустил сигнал (в данном случае, GtkButton).</span>
+<span class="cm"> * Хотя мы не используем его явно в этой функции, он всегда передаётся.</span>
+<span class="cm"> * @param data   Универсальный указатель на пользовательские данные.</span>
+<span class="cm"> * В этом примере мы передаём NULL, так как никаких дополнительных данных не требуется.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">on_button_clicked</span><span class="p">(</span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">widget</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// g_print() - это функция из библиотеки GLib (основа GTK),</span>
+<span class="w">    </span><span class="c1">// аналогичная printf(), но с лучшей поддержкой для вывода в консоль</span>
+<span class="w">    </span><span class="c1">// в GUI-приложениях GTK (особенно при запуске из IDE или без прямого терминала).</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Кнопка &#39;Нажми меня&#39; была нажата!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Главная функция программы, точка входа.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Инициализирует GTK, создаёт главное окно, кнопку,</span>
+<span class="cm"> * подключает обработчики событий и запускает основной цикл GTK.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param argc Количество аргументов командной строки.</span>
+<span class="cm"> * @param argv Массив строк аргументов командной строки.</span>
+<span class="cm"> * @return Код завершения программы (0 при успешном выполнении).</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. Инициализация GTK.</span>
+<span class="w">    </span><span class="c1">// Это обязательный первый вызов в любой GTK-программе. Он подготавливает</span>
+<span class="w">    </span><span class="c1">// библиотеку, обрабатывает специфические аргументы командной строки GTK.</span>
+<span class="w">    </span><span class="n">gtk_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Создание главного окна.</span>
+<span class="w">    </span><span class="c1">// Создаётся новое окно верхнего уровня.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_window_new</span><span class="p">(</span><span class="n">GTK_WINDOW_TOPLEVEL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. Настройка окна.</span>
+<span class="w">    </span><span class="c1">// Устанавливаем заголовок окна.</span>
+<span class="w">    </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Пример кнопки&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Устанавливаем размер окна по умолчанию.</span>
+<span class="w">    </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Центрируем окно на экране.</span>
+<span class="w">    </span><span class="n">gtk_window_set_position</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">GTK_WIN_POS_CENTER</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 4. Подключение сигнала закрытия окна.</span>
+<span class="w">    </span><span class="c1">// Когда пользователь закрывает окно (например, через кнопку &quot;X&quot;),</span>
+<span class="w">    </span><span class="c1">// испускается сигнал &quot;destroy&quot;. Мы подключаем его к gtk_main_quit(),</span>
+<span class="w">    </span><span class="c1">// чтобы корректно завершить главный цикл GTK и, как следствие, программу.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;destroy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">gtk_main_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 5. Создание кнопки.</span>
+<span class="w">    </span><span class="c1">// Создаём новую кнопку с текстовой меткой.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Нажми меня&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 6. Подключение обработчика к сигналу кнопки.</span>
+<span class="w">    </span><span class="c1">// Подключаем сигнал &quot;clicked&quot; от нашей кнопки к функции on_button_clicked.</span>
+<span class="w">    </span><span class="c1">// Когда кнопка будет нажата, вызовется наша функция.</span>
+<span class="w">    </span><span class="c1">// Здесь мы передаём NULL в качестве пользовательских данных,</span>
+<span class="w">    </span><span class="c1">// так как on_button_clicked не требует никаких дополнительных данных.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 7. Добавление кнопки в окно.</span>
+<span class="w">    </span><span class="c1">// Добавляем созданную кнопку в окно. В GTK3 окна могут содержать</span>
+<span class="w">    </span><span class="c1">// только один прямой дочерний виджет.</span>
+<span class="w">    </span><span class="n">gtk_container_add</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">button</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 8. Отображение всех виджетов.</span>
+<span class="w">    </span><span class="c1">// Все виджеты GTK по умолчанию невидимы. Эта функция делает окно</span>
+<span class="w">    </span><span class="c1">// и все его дочерние элементы (в данном случае, кнопку) видимыми.</span>
+<span class="w">    </span><span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 9. Запуск главного цикла событий GTK.</span>
+<span class="w">    </span><span class="c1">// Эта функция передаёт управление GTK. Программа будет ждать</span>
+<span class="w">    </span><span class="c1">// и обрабатывать события до тех пор, пока gtk_main_quit() не будет вызвана.</span>
+<span class="w">    </span><span class="n">gtk_main</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 10. Завершение программы.</span>
+<span class="w">    </span><span class="c1">// Код возврата 0 указывает на успешное выполнение.</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+<p>### Компиляция и Запуск</p>
+<p>Сохраните код выше в файл с именем <cite>button_example.c</cite>.</p>
+<p><strong>Компиляция:</strong></p>
+<p>Для сборки программы на Raspberry Pi (или любой другой системе с GTK3) используйте следующую команду в терминале, находясь в директории с исходным файлом:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc<span class="w"> </span>-o<span class="w"> </span>button_example<span class="w"> </span>button_example.c<span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>--libs<span class="w"> </span>gtk+-3.0<span class="sb">`</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-o</span> <span class="pre">button_example</span> <span class="pre">button_example.c</span></code>: Указывает компилятору GCC взять исходный файл <code class="docutils literal notranslate"><span class="pre">button_example.c</span></code> и создать исполняемый файл с именем <code class="docutils literal notranslate"><span class="pre">button_example</span></code>.</p></li>
+<li><p>`` <cite>pkg-config –cflags –libs gtk+-3.0</cite> <code class="docutils literal notranslate"><span class="pre">:</span> <span class="pre">Это</span> <span class="pre">очень</span> <span class="pre">важная</span> <span class="pre">часть.</span> <span class="pre">Утилита</span> <span class="pre">``pkg-config</span></code> автоматически предоставляет GCC все необходимые пути к заголовочным файлам (<code class="docutils literal notranslate"><span class="pre">--cflags</span></code>) и библиотекам (<code class="docutils literal notranslate"><span class="pre">--libs</span></code>), которые требуются для успешной компиляции GTK3-приложения.</p></li>
+</ul>
+<p><strong>Запуск:</strong></p>
+<p>После успешной компиляции вы можете запустить ваше приложение:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./button_example
+</pre></div>
+</div>
+<p>—</p>
+<p>### Ожидаемый результат</p>
+<ul>
+<li><p>На вашем рабочем столе появится новое окно с заголовком «Пример кнопки».</p></li>
+<li><p>В центре этого окна будет расположена кнопка с надписью <strong>«Нажми меня»</strong>.</p></li>
+<li><p>При каждом нажатии на эту кнопку в терминале, из которого вы запустили программу, будет появляться строка:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Кнопка &#39;Нажми меня&#39; была нажата!
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Вы можете закрыть окно, нажав на кнопку «X» в заголовке окна или используя комбинацию клавиш (например, Alt+F4), что приведёт к корректному завершению программы.</p></li>
+</ul>
+<p>—</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
-        <a href="../chapter14_first_project/index.html" class="btn btn-neutral float-left" title="2. Глава 14: Первый GTK-проект" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter14_first_project/index.html" class="btn btn-neutral float-left" title="2. Глава 14: Первый GTK-проект — Окно с кнопкой" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
         <a href="../chapter16_labels_layout/index.html" class="btn btn-neutral float-right" title="4. Глава 16: Метки и базовый макет" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
