@@ -140,7 +140,8 @@ int main(int argc, char *argv[]) {
 
 ## Компиляция и Запуск
 
-Сохраните код в файл с именем `minimal_window.c`.
+Сохраните код в файл с именем `minimal_window.c`. 
+Если используете русский шрифт, сохраните в кодировке UTF-8
 
 ### Компиляция:
 
@@ -172,13 +173,8 @@ gcc minimal_window.c -o minimal_window `pkg-config --cflags --libs gtk+-3.0`
 
 ## Дополнительные ресурсы
 
-  * [**Официальная документация по GTK 3**](https://docs.gtk.org/gtk3/)
-  * [**Общая страница для разработчиков GTK**](https://www.google.com/search?q=https://developer.gnome.org/gtk/stable/)
+
   * [**Репозиторий с примерами кода из этого руководства**](https://github.com/AIDevelopersMonster/C_GUI_Handbook)
 
 -----
 
-### Навигация
-
-  * [Глава 13: Введение в GTK](https://www.google.com/search?q=link_to_chapter13.md)
-  * [Глава 15: Добавление нескольких виджетов и компоновка](https://www.google.com/search?q=link_to_chapter15.md)
