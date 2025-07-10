@@ -11,7 +11,7 @@
 ### Часть I: Основы языка Си
 
 1. [Глава 1: Введение](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/1)  
-2. [Глава 2: Переменные и арифметика](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/1)
+2. [Глава 2: Переменные и арифметика](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/2)
 3. Глава 3: Условия и сравнения  
 4. Глава 4: Циклы и повторение кода  
 5. Глава 5: Указатели  
