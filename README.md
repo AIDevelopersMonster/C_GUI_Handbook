@@ -15,21 +15,21 @@
 3. Глава 3: Условия и сравнения  
 4. Глава 4: Циклы и повторение кода  
 5. Глава 5: Указатели  
-6. Глава 6: Функции  
-7. Глава 7: Массивы и строки  
-8. Глава 8: Библиотека строк (`<string.h>`)  
-9. Глава 9: Ввод с клавиатуры  
-10. Глава 10: Работа с файлами  
-11. Глава 11: Типы и структуры  
-12. Глава 12: Заголовочные файлы и препроцессор  
+6. [Глава 6: Функции](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/6)  
+7. [Глава 7: Массивы и строки](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/7)  
+8. [Глава 8: Библиотека строк (`<string.h>`)](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/8)  
+9. [Глава 9: Ввод с клавиатуры](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/9)  
+10. [Глава 10: Работа с файлами](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/10) 
+11. [Глава 11: Типы и структуры](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/11) 
+12. [Глава 12: Заголовочные файлы и препроцессор](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/12)  
 
 ### Часть II: Разработка GUI с помощью GTK
 
-13. Глава 13: Введение в GTK  
-14. Глава 14: Первый GTK-проект  
-15. Глава 15: Кнопки и события  
-16. Глава 16: Метки и базовый макет  
-17. Глава 17: Расширенный макет  
+13. [Глава 13: Введение в GTK](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/13)  
+14. [Глава 14: Первый GTK-проект](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/14)
+15. [Глава 15: Кнопки и события](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/15)  
+16. [Глава 16: Метки и базовый макет](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/16)  
+17. [Глава 17: Расширенный макет](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/17)  
 18. [Глава 18: Поля ввода](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/18)  
 19. Глава 19: Выпадающие списки и списки  
 20. Глава 20: Деревья (TreeView)  
