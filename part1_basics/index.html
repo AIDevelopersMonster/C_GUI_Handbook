@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Часть I: Основы языка Си &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../" id="documentation_options" src="../static/documentation_options.js"></script>
+        <script src="../static/jquery.js"></script>
+        <script src="../static/underscore.js"></script>
+        <script src="../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../static/doctools.js"></script>
+        <script src="../static/sphinx_highlight.js"></script>
+        <script src="../static/translations.js"></script>
+    <script src="../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="1. Глава 1: Введение" href="chapter01_intro/index.html" />
+    <link rel="prev" title="Welcome to C &amp; GUI на RPi Zero 2 W’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Часть I: Основы языка Си</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter01_intro/index.html">1. Глава 1: Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter02_variables/index.html">2. Глава 2: Переменные и арифметика</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter03_conditions/index.html">3. Глава 3: Условия и сравнения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_loops/index.html">4. Глава 4: Циклы и повторение кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter05_pointers/index.html">5. Глава 5: Указатели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter06_functions/index.html">6. Глава 6: Функции — Строим Модульный Код</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter07_arrays_strings/index.html">7. Глава 7: Массивы и Строки — Работа с Коллекциями Данных и Текстом</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter08_string_lib/index.html">8. Глава 8: Библиотека строк (&lt;string.h&gt;)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter09_input/index.html">9. Глава 9: Ввод с клавиатуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter10_files/index.html">10. Глава 10: Работа с файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter11_types_structs/index.html">11. Глава 11: Пользовательские Типы Данных и Структуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter12_headers/index.html">12. Глава 12: Заголовочные файлы и препроцессор</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Часть I: Основы языка Си</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../sources/part1_basics/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="i">
+<h1>Часть I: Основы языка Си<a class="headerlink" href="#i" title="Permalink to this heading"></a></h1>
+<p>Добро пожаловать в первую часть справочника, посвящённую основам языка C на Raspberry Pi Zero 2 W. Здесь вы изучите базовые конструкции, работу с переменными, указателями, функциями и файлами, а также подготовите свою систему к разработке.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Главы:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="chapter01_intro/index.html">1. Глава 1: Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter01_intro/index.html#raspberry-pi">1.1. Подготовка Raspberry Pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter01_intro/index.html#gcc">1.2. Установка компилятора <cite>gcc</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter01_intro/index.html#hello-c">1.3. Первая программа: hello.c</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter01_intro/index.html#id2">1.4. Что дальше?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter02_variables/index.html">2. Глава 2: Переменные и арифметика</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter02_variables/index.html#id2">2.1. Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter02_variables/index.html#id3">2.2. Арифметические операции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter02_variables/index.html#id4">2.3. Пример программы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter02_variables/index.html#id5">2.4. Компиляция и запуск</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter02_variables/index.html#id6">2.5. Заметки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter03_conditions/index.html">3. Глава 3: Условия и сравнения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter03_conditions/index.html#id3">3.1. Логические выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter03_conditions/index.html#id4">3.2. Операторы сравнения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter03_conditions/index.html#if-else">3.3. if / else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter03_conditions/index.html#switch">3.4. switch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter03_conditions/index.html#id5">3.5. Логические операторы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter03_conditions/index.html#id6">3.6. Домашнее задание ??????</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter04_loops/index.html">4. Глава 4: Циклы и повторение кода</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_loops/index.html#while">4.1. Цикл <code class="docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_loops/index.html#do-while">4.2. Цикл <code class="docutils literal notranslate"><span class="pre">do...while</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_loops/index.html#for">4.3. Цикл <code class="docutils literal notranslate"><span class="pre">for</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_loops/index.html#break-continue">4.4. Прерывание и продолжение циклов: <code class="docutils literal notranslate"><span class="pre">break</span></code> и <code class="docutils literal notranslate"><span class="pre">continue</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_loops/index.html#id3">4.5. Практика: Подсчёт суммы чисел</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter05_pointers/index.html">5. Глава 5: Указатели</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter05_pointers/index.html#id3">5.1. Что такое указатель?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter05_pointers/index.html#id4">5.2. Как объявить указатель?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter05_pointers/index.html#id5">5.3. Работа с указателями (изменение значения)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter05_pointers/index.html#call-by-reference">5.4. Передача по указателю (Call by Reference)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter05_pointers/index.html#id6">5.5. Указатель на указатель</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter06_functions/index.html">6. Глава 6: Функции — Строим Модульный Код</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter06_functions/index.html#id2">6.1. Основные понятия: Объявление и Определение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter06_functions/index.html#id3">6.2. Аргументы и Возвращаемое Значение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter06_functions/index.html#id4">6.3. Практический пример: Использование функций</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter07_arrays_strings/index.html">7. Глава 7: Массивы и Строки — Работа с Коллекциями Данных и Текстом</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter07_arrays_strings/index.html#id2">7.1. Одномерные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter07_arrays_strings/index.html#c-char">7.2. Строки в стиле C (<cite>char[]</cite>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter07_arrays_strings/index.html#string-h">7.3. Работа со строками (<cite>&lt;string.h&gt;</cite>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter07_arrays_strings/index.html#id3">7.4. Строковые литералы и указатели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter07_arrays_strings/index.html#id4">7.5. Практический Пример: Подсчёт гласных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter07_arrays_strings/index.html#id5">7.6. Полезные советы и распространённые ошибки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter07_arrays_strings/index.html#id6">7.7. Компиляция и Запуск Примеров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter07_arrays_strings/index.html#id7">7.8. Дополнительные Ресурсы</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter08_string_lib/index.html">8. Глава 8: Библиотека строк (&lt;string.h&gt;)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter09_input/index.html">9. Глава 9: Ввод с клавиатуры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter09_input/index.html#id2">9.1. Ключевые темы:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter09_input/index.html#id3">9.2. Пример 1: Ввод числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter09_input/index.html#id4">9.3. Пример 2: Небезопасный ввод строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter09_input/index.html#fgets">9.4. Пример 3: Безопасный ввод с помощью fgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter09_input/index.html#id5">9.5. Замечания:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter09_input/index.html#id6">9.6. Советы:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter10_files/index.html">10. Глава 10: Работа с файлами</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter10_files/index.html#id2">10.1. Пример 1: Запись строки в файл</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter10_files/index.html#id3">10.2. Пример 2: Чтение файла построчно</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter10_files/index.html#id4">10.3. Пример 3: Запись и чтение бинарного файла</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter10_files/index.html#id5">10.4. Дополнительные ресурсы</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter11_types_structs/index.html">11. Глава 11: Пользовательские Типы Данных и Структуры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter11_types_structs/index.html#typedef">11.1. 1. Тип <code class="docutils literal notranslate"><span class="pre">typedef</span></code>: Псевдонимы для Существующих Типов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter11_types_structs/index.html#enum">11.2. 2. Перечисления <code class="docutils literal notranslate"><span class="pre">enum</span></code>: Именованные Константы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter11_types_structs/index.html#struct">11.3. 3. Структуры <code class="docutils literal notranslate"><span class="pre">struct</span></code>: Объединение Разных Типов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter11_types_structs/index.html#union">11.4. 4. Объединения <code class="docutils literal notranslate"><span class="pre">union</span></code>: Совместное Использование Памяти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter11_types_structs/index.html#id16">11.5. 5. Примеры Взаимодействия и Ожидаемый Вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter11_types_structs/index.html#id17">11.6. 6. Компиляция и Запуск Примеров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter11_types_structs/index.html#id18">11.7. 7. Дополнительные Ресурсы</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter12_headers/index.html">12. Глава 12: Заголовочные файлы и препроцессор</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter12_headers/index.html#id3">12.1. 1. Что такое препроцессор и зачем он нужен?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter12_headers/index.html#include">12.2. 2. Директива <code class="docutils literal notranslate"><span class="pre">#include</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter12_headers/index.html#define">12.3. 3. Директива <code class="docutils literal notranslate"><span class="pre">#define</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter12_headers/index.html#ifdef-ifndef-endif-if-else-elif">12.4. 4. Условная компиляция (<code class="docutils literal notranslate"><span class="pre">#ifdef</span></code>, <code class="docutils literal notranslate"><span class="pre">#ifndef</span></code>, <code class="docutils literal notranslate"><span class="pre">#endif</span></code>, <code class="docutils literal notranslate"><span class="pre">#if</span></code>, <code class="docutils literal notranslate"><span class="pre">#else</span></code>, <code class="docutils literal notranslate"><span class="pre">#elif</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter12_headers/index.html#c-h">12.5. 5. Разделение кода на <code class="docutils literal notranslate"><span class="pre">.c</span></code> и <code class="docutils literal notranslate"><span class="pre">.h</span></code> файлы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter12_headers/index.html#id4">12.6. 6. Повторное использование и масштабирование проекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter12_headers/index.html#id5">12.7. 7. Компиляция проекта из нескольких файлов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter12_headers/index.html#id6">12.8. 8. Дополнительные ресурсы</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to C &amp; GUI на RPi Zero 2 W’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="chapter01_intro/index.html" class="btn btn-neutral float-right" title="1. Глава 1: Введение" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

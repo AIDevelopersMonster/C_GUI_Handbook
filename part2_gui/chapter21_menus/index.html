@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9. Глава 21: Меню Приложений (GtkMenuBar, GtkMenu, GtkMenuItem) &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="10. Глава 22: Диалоги и окна сообщений" href="../chapter22_dialogs/index.html" />
+    <link rel="prev" title="8. Глава 20: Деревья и Таблицы (GtkTreeView)" href="../chapter20_treeview/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть II: Разработка GUI с помощью GTK</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter13_gtk_intro/index.html">1. Глава 13: Введение в GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14_first_project/index.html">2. Глава 14: Первый GTK-проект — Окно с кнопкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter15_buttons/index.html">3. Глава 15: Кнопки и обработка событий</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter16_labels_layout/index.html">4. Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter17_grid_layout/index.html">5. Глава 17: Гибкая Компоновка с GtkGrid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter18_inputs/index.html">6. Глава 18: Элементы Пользовательского Ввода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter19_comboboxes/index.html">7. Глава 19: Выпадающие Списки (ComboBox) и Модели Данных (ListStore)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter20_treeview/index.html">8. Глава 20: Деревья и Таблицы (GtkTreeView)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9. Глава 21: Меню Приложений (GtkMenuBar, GtkMenu, GtkMenuItem)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">9.1. Компиляция и Запуск Примеров</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">9.2. Ожидаемый Результат</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">9.3. Дополнительные Ресурсы</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter22_dialogs/index.html">10. Глава 22: Диалоги и окна сообщений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter23_builtin_dialogs/index.html">11. Глава 23: Предустановленные диалоги</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter24_widget_customization/index.html">12. Глава 24: Настройка виджетов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter25_glade/index.html">13. Глава 25: Glade – визуальный редактор интерфейсов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">9. </span>Глава 21: Меню Приложений (GtkMenuBar, GtkMenu, GtkMenuItem)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part2_gui/chapter21_menus/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gtkmenubar-gtkmenu-gtkmenuitem">
+<h1><span class="section-number">9. </span>Глава 21: Меню Приложений (GtkMenuBar, GtkMenu, GtkMenuItem)<a class="headerlink" href="#gtkmenubar-gtkmenu-gtkmenuitem" title="Permalink to this heading"></a></h1>
+<p>В этой главе мы научимся добавлять к нашему GTK-приложению <strong>меню</strong>, которое является фундаментальной частью классического графического интерфейса. Меню предоставляет пользователю интуитивно понятный доступ к часто используемым действиям, таким как «Открыть», «Сохранить», «Выход», а также к различным настройкам и функциям приложения.</p>
+<p>Мы рассмотрим иерархию и взаимодействие следующих ключевых компонентов меню:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.MenuBar.html">GtkMenuBar</a>: Горизонтальная панель меню, которая обычно располагается в верхней части окна. Она содержит основные пункты меню (например, «Файл», «Правка», «Вид»).</p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.MenuItem.html">GtkMenuItem</a>: Отдельный элемент меню. Это может быть как корневой пункт в <cite>GtkMenuBar</cite> (например, «Файл»), так и пункт внутри выпадающего подменю (например, «Открыть», «Сохранить»). <cite>GtkMenuItem</cite> может также содержать подменю.</p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.Menu.html">GtkMenu</a>: Выпадающее подменю, которое появляется при активации <cite>GtkMenuItem</cite>. Оно содержит набор других <cite>GtkMenuItem</cite>, которые выполняют конкретные действия.</p></li>
+<li><p><strong>Обработка сигналов активации пунктов меню</strong>: Как подключить функции-обработчики к пунктам меню, чтобы они выполняли желаемые действия при клике пользователя.</p></li>
+</ul>
+<p>—</p>
+<p>### Пример 21.1: Простейшее Меню («Файл» -&gt; «Выход»)</p>
+<p><strong>Файл:</strong> <cite>menu_basic_example.c</cite></p>
+<p>Этот пример демонстрирует создание минимального меню: окно с панелью меню, на которой расположен пункт «Файл». При нажатии на «Файл» появляется подменю с единственным пунктом «Выход». Выбор «Выход» завершает работу приложения.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span><span class="c1"> // Подключаем основную библиотеку GTK.</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Callback-функция, вызываемая при активации пункта меню &quot;Выход&quot;.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param widget Указатель на виджет, который сгенерировал сигнал (в данном случае GtkMenuItem).</span>
+<span class="cm"> * @param data Дополнительные данные, переданные при подключении сигнала (NULL в этом примере).</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">on_menu_item_activate</span><span class="p">(</span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">widget</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Выход из приложения</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Печатаем сообщение в консоль.</span>
+<span class="w">    </span><span class="n">gtk_main_quit</span><span class="p">();</span><span class="w">                   </span><span class="c1">// Завершаем главный цикл GTK, что закрывает приложение.</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Главная функция программы.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Инициализирует GTK, создает окно и добавляет к нему простейшее меню.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param argc Количество аргументов командной строки.</span>
+<span class="cm"> * @param argv Массив строк аргументов командной строки.</span>
+<span class="cm"> * @return Код завершения программы.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="p">;</span><span class="w">    </span><span class="c1">// Основное окно приложения.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">vbox</span><span class="p">;</span><span class="w">      </span><span class="c1">// Контейнер GtkBox для вертикального размещения виджетов.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">menubar</span><span class="p">;</span><span class="w">   </span><span class="c1">// Горизонтальная панель меню (GtkMenuBar).</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">file_menu</span><span class="p">;</span><span class="w"> </span><span class="c1">// Подменю &quot;Файл&quot; (GtkMenu).</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">file_item</span><span class="p">;</span><span class="w"> </span><span class="c1">// Пункт меню &quot;Файл&quot; (GtkMenuItem), который открывает file_menu.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">exit_item</span><span class="p">;</span><span class="w"> </span><span class="c1">// Пункт меню &quot;Выход&quot; (GtkMenuItem).</span>
+
+<span class="w">    </span><span class="n">gtk_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span><span class="w"> </span><span class="c1">// Инициализация библиотеки GTK.</span>
+
+<span class="w">    </span><span class="c1">// 1. Создание главного окна.</span>
+<span class="w">    </span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_window_new</span><span class="p">(</span><span class="n">GTK_WINDOW_TOPLEVEL</span><span class="p">);</span><span class="w"> </span><span class="c1">// Создаем новое окно верхнего уровня.</span>
+<span class="w">    </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Пример Простейшего Меню&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Устанавливаем заголовок.</span>
+<span class="w">    </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span><span class="w"> </span><span class="c1">// Устанавливаем размер по умолчанию.</span>
+<span class="w">    </span><span class="n">gtk_window_set_position</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">GTK_WIN_POS_CENTER</span><span class="p">);</span><span class="w"> </span><span class="c1">// Центрируем окно.</span>
+
+<span class="w">    </span><span class="c1">// Подключаем сигнал &quot;destroy&quot; окна к функции gtk_main_quit(),</span>
+<span class="w">    </span><span class="c1">// чтобы приложение завершалось при закрытии окна.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;destroy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">gtk_main_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Создание главного контейнера для окна.</span>
+<span class="w">    </span><span class="c1">// GtkBox с вертикальной ориентацией и без промежутков между виджетами.</span>
+<span class="w">    </span><span class="n">vbox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_box_new</span><span class="p">(</span><span class="n">GTK_ORIENTATION_VERTICAL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_container_add</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">vbox</span><span class="p">);</span><span class="w"> </span><span class="c1">// Добавляем vbox в окно.</span>
+
+<span class="w">    </span><span class="c1">// 3. Создание компонентов меню.</span>
+<span class="w">    </span><span class="n">menubar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_menu_bar_new</span><span class="p">();</span><span class="w"> </span><span class="c1">// Создаем пустую панель меню.</span>
+<span class="w">    </span><span class="n">file_menu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_menu_new</span><span class="p">();</span><span class="w">   </span><span class="c1">// Создаем пустое подменю для пункта &quot;Файл&quot;.</span>
+
+<span class="w">    </span><span class="c1">// Создаем пункты меню с текстовыми метками.</span>
+<span class="w">    </span><span class="n">file_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_menu_item_new_with_label</span><span class="p">(</span><span class="s">&quot;Файл&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">exit_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_menu_item_new_with_label</span><span class="p">(</span><span class="s">&quot;Выход&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 4. Сборка меню.</span>
+<span class="w">    </span><span class="c1">// Добавляем &#39;exit_item&#39; в &#39;file_menu&#39;. GtkMenu является GtkMenuShell.</span>
+<span class="w">    </span><span class="n">gtk_menu_shell_append</span><span class="p">(</span><span class="n">GTK_MENU_SHELL</span><span class="p">(</span><span class="n">file_menu</span><span class="p">),</span><span class="w"> </span><span class="n">exit_item</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Связываем &#39;file_menu&#39; как подменю для &#39;file_item&#39;.</span>
+<span class="w">    </span><span class="n">gtk_menu_item_set_submenu</span><span class="p">(</span><span class="n">GTK_MENU_ITEM</span><span class="p">(</span><span class="n">file_item</span><span class="p">),</span><span class="w"> </span><span class="n">file_menu</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Добавляем &#39;file_item&#39; (который теперь содержит подменю) в &#39;menubar&#39;.</span>
+<span class="w">    </span><span class="c1">// GtkMenuBar также является GtkMenuShell.</span>
+<span class="w">    </span><span class="n">gtk_menu_shell_append</span><span class="p">(</span><span class="n">GTK_MENU_SHELL</span><span class="p">(</span><span class="n">menubar</span><span class="p">),</span><span class="w"> </span><span class="n">file_item</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 5. Размещение панели меню в окне.</span>
+<span class="w">    </span><span class="c1">// Размещаем &#39;menubar&#39; в верхней части &#39;vbox&#39;.</span>
+<span class="w">    </span><span class="c1">// FALSE, FALSE: не расширять и не заполнять доступное пространство.</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">menubar</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 6. Подключение сигнала к пункту меню &quot;Выход&quot;.</span>
+<span class="w">    </span><span class="c1">// При активации (клике) &#39;exit_item&#39; будет вызвана функция &#39;on_menu_item_activate&#39;.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">exit_item</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;activate&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_menu_item_activate</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 7. Отображение всех виджетов в окне.</span>
+<span class="w">    </span><span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 8. Запуск главного цикла событий GTK.</span>
+<span class="w">    </span><span class="n">gtk_main</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Возвращаем 0, если программа завершилась успешно.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+<p>### Пример 21.2: Меню с Несколькими Пунктами и Разделителем</p>
+<p><strong>Файл:</strong> <cite>menu_multiple_example.c</cite></p>
+<p>Этот пример расширяет предыдущий, добавляя несколько пунктов в подменю «Файл» («Открыть», «Сохранить», «Выход») и используя разделитель между ними для лучшей организации. Каждый пункт меню связан со своим обработчиком.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span><span class="c1"> // Подключаем основную библиотеку GTK.</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Callback-функция для пункта меню &quot;Открыть&quot;.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">on_open</span><span class="p">(</span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">widget</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Открытие файла...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Вывод сообщения в консоль.</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Callback-функция для пункта меню &quot;Сохранить&quot;.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">on_save</span><span class="p">(</span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">widget</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Сохранение файла...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Вывод сообщения в консоль.</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Callback-функция для пункта меню &quot;Выход&quot;.</span>
+<span class="cm"> * Завершает работу приложения.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">on_quit</span><span class="p">(</span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">widget</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">gtk_main_quit</span><span class="p">();</span><span class="w"> </span><span class="c1">// Завершаем главный цикл GTK.</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Главная функция программы.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Инициализирует GTK, создает окно и добавляет к нему меню с несколькими пунктами.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param argc Количество аргументов командной строки.</span>
+<span class="cm"> * @param argv Массив строк аргументов командной строки.</span>
+<span class="cm"> * @return Код завершения программы.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="p">;</span><span class="w">       </span><span class="c1">// Основное окно.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">vbox</span><span class="p">;</span><span class="w">         </span><span class="c1">// Вертикальный контейнер.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">menubar</span><span class="p">;</span><span class="w">      </span><span class="c1">// Панель меню.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">file_menu</span><span class="p">;</span><span class="w">    </span><span class="c1">// Подменю &quot;Файл&quot;.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">file_item</span><span class="p">;</span><span class="w">    </span><span class="c1">// Пункт меню &quot;Файл&quot;.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">open_item</span><span class="p">;</span><span class="w">    </span><span class="c1">// Пункт меню &quot;Открыть&quot;.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">save_item</span><span class="p">;</span><span class="w">    </span><span class="c1">// Пункт меню &quot;Сохранить&quot;.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">separator</span><span class="p">;</span><span class="w">    </span><span class="c1">// Разделитель в меню.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">exit_item</span><span class="p">;</span><span class="w">    </span><span class="c1">// Пункт меню &quot;Выход&quot;.</span>
+
+<span class="w">    </span><span class="n">gtk_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span><span class="w"> </span><span class="c1">// Инициализация GTK.</span>
+
+<span class="w">    </span><span class="c1">// 1. Создание и настройка главного окна.</span>
+<span class="w">    </span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_window_new</span><span class="p">(</span><span class="n">GTK_WINDOW_TOPLEVEL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Меню с Несколькими Пунктами&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_position</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">GTK_WIN_POS_CENTER</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;destroy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">gtk_main_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Создание вертикального контейнера и добавление его в окно.</span>
+<span class="w">    </span><span class="n">vbox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_box_new</span><span class="p">(</span><span class="n">GTK_ORIENTATION_VERTICAL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_container_add</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">vbox</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. Создание панели меню и подменю &quot;Файл&quot;.</span>
+<span class="w">    </span><span class="n">menubar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_menu_bar_new</span><span class="p">();</span>
+<span class="w">    </span><span class="n">file_menu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_menu_new</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 4. Создание пунктов меню.</span>
+<span class="w">    </span><span class="n">file_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_menu_item_new_with_label</span><span class="p">(</span><span class="s">&quot;Файл&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">open_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_menu_item_new_with_label</span><span class="p">(</span><span class="s">&quot;Открыть&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">save_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_menu_item_new_with_label</span><span class="p">(</span><span class="s">&quot;Сохранить&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">separator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_separator_menu_item_new</span><span class="p">();</span><span class="w"> </span><span class="c1">// Создаем горизонтальный разделитель.</span>
+<span class="w">    </span><span class="n">exit_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_menu_item_new_with_label</span><span class="p">(</span><span class="s">&quot;Выход&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 5. Добавление пунктов в подменю &quot;Файл&quot;.</span>
+<span class="w">    </span><span class="c1">// Порядок добавления определяет порядок их отображения.</span>
+<span class="w">    </span><span class="n">gtk_menu_shell_append</span><span class="p">(</span><span class="n">GTK_MENU_SHELL</span><span class="p">(</span><span class="n">file_menu</span><span class="p">),</span><span class="w"> </span><span class="n">open_item</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_menu_shell_append</span><span class="p">(</span><span class="n">GTK_MENU_SHELL</span><span class="p">(</span><span class="n">file_menu</span><span class="p">),</span><span class="w"> </span><span class="n">save_item</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_menu_shell_append</span><span class="p">(</span><span class="n">GTK_MENU_SHELL</span><span class="p">(</span><span class="n">file_menu</span><span class="p">),</span><span class="w"> </span><span class="n">separator</span><span class="p">);</span><span class="w"> </span><span class="c1">// Добавляем разделитель.</span>
+<span class="w">    </span><span class="n">gtk_menu_shell_append</span><span class="p">(</span><span class="n">GTK_MENU_SHELL</span><span class="p">(</span><span class="n">file_menu</span><span class="p">),</span><span class="w"> </span><span class="n">exit_item</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 6. Связывание подменю &quot;Файл&quot; с пунктом &quot;Файл&quot; и добавление его в панель меню.</span>
+<span class="w">    </span><span class="n">gtk_menu_item_set_submenu</span><span class="p">(</span><span class="n">GTK_MENU_ITEM</span><span class="p">(</span><span class="n">file_item</span><span class="p">),</span><span class="w"> </span><span class="n">file_menu</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_menu_shell_append</span><span class="p">(</span><span class="n">GTK_MENU_SHELL</span><span class="p">(</span><span class="n">menubar</span><span class="p">),</span><span class="w"> </span><span class="n">file_item</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 7. Размещение панели меню в вертикальном контейнере.</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">menubar</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 8. Подключение callback-функций к пунктам меню.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">open_item</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;activate&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_open</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">save_item</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;activate&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_save</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">exit_item</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;activate&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 9. Отображение всех виджетов и запуск главного цикла.</span>
+<span class="w">    </span><span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_main</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+<section id="id1">
+<h2><span class="section-number">9.1. </span>Компиляция и Запуск Примеров<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>Сохраните каждый пример кода в соответствующий файл: <cite>menu_basic_example.c</cite> и <cite>menu_multiple_example.c</cite>.</p>
+<p>### Компиляция:</p>
+<p>Для сборки программ используйте следующие команды в терминале, находясь в директории с исходными файлами. Убедитесь, что у вас установлен GTK 3.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Для Простейшего Меню:</span>
+gcc<span class="w"> </span>menu_basic_example.c<span class="w"> </span>-o<span class="w"> </span>menu_basic_example<span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>--libs<span class="w"> </span>gtk+-3.0<span class="sb">`</span>
+
+<span class="c1"># Для Меню с Несколькими Пунктами:</span>
+gcc<span class="w"> </span>menu_multiple_example.c<span class="w"> </span>-o<span class="w"> </span>menu_multiple_example<span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>--libs<span class="w"> </span>gtk+-3.0<span class="sb">`</span>
+</pre></div>
+</div>
+<p>### Запуск:</p>
+<p>После успешной компиляции вы можете запустить каждое приложение:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Для Простейшего Меню:</span>
+./menu_basic_example
+
+<span class="c1"># Для Меню с Несколькими Пунктами:</span>
+./menu_multiple_example
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">9.2. </span>Ожидаемый Результат<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>`menu_basic_example`</strong>:</dt><dd><ul>
+<li><p>Откроется небольшое окно с заголовком <strong>«Пример Простейшего Меню»</strong>.</p></li>
+<li><p>В верхней части окна будет видна <strong>панель меню</strong> с одним пунктом <strong>«Файл»</strong>.</p></li>
+<li><p>При клике на <strong>«Файл»</strong> откроется выпадающее подменю, содержащее только пункт <strong>«Выход»</strong>.</p></li>
+<li><p>Выбор пункта <strong>«Выход»</strong> приведёт к закрытию окна и завершению работы программы. В консоли, из которой вы запустили программу, появится сообщение «Выход из приложения».</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`menu_multiple_example`</strong>:</dt><dd><ul>
+<li><p>Откроется окно с заголовком <strong>«Меню с Несколькими Пунктами»</strong>.</p></li>
+<li><p>В верхней части окна также будет <strong>панель меню</strong> с пунктом <strong>«Файл»</strong>.</p></li>
+<li><p>При клике на <strong>«Файл»</strong> откроется подменю, содержащее пункты <strong>«Открыть»</strong>, <strong>«Сохранить»</strong>, горизонтальный <strong>разделитель</strong>, и <strong>«Выход»</strong>.</p></li>
+<li><p>Выбор <strong>«Открыть»</strong> или <strong>«Сохранить»</strong> выведет соответствующее сообщение в консоль.</p></li>
+<li><p>Выбор <strong>«Выход»</strong> закроет приложение, как и в предыдущем примере.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>—</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">9.3. </span>Дополнительные Ресурсы<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.MenuBar.html">GtkMenuBar</a></p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.MenuItem.html">GtkMenuItem</a></p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.Menu.html">GtkMenu</a></p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.MenuShell.html">GtkMenuShell</a></p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.SeparatorMenuItem.html">GtkSeparatorMenuItem</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AIDevelopersMonster/C_GUI_Handbook">C_GUI_Handbook GitHub</a></p></li>
+</ul>
+<p>—</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter20_treeview/index.html" class="btn btn-neutral float-left" title="8. Глава 20: Деревья и Таблицы (GtkTreeView)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter22_dialogs/index.html" class="btn btn-neutral float-right" title="10. Глава 22: Диалоги и окна сообщений" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

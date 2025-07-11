@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Глава 17: Гибкая Компоновка с GtkGrid &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="6. Глава 18: Поля ввода" href="../chapter18_inputs/index.html" />
+    <link rel="prev" title="4. Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox)" href="../chapter16_labels_layout/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть II: Разработка GUI с помощью GTK</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter13_gtk_intro/index.html">1. Глава 13: Введение в GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14_first_project/index.html">2. Глава 14: Первый GTK-проект — Окно с кнопкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter15_buttons/index.html">3. Глава 15: Кнопки и обработка событий</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter16_labels_layout/index.html">4. Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Глава 17: Гибкая Компоновка с GtkGrid</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">5.1. Основные Возможности GtkGrid</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter18_inputs/index.html">6. Глава 18: Поля ввода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter19_comboboxes/index.html">7. Глава 19: Выпадающие списки и списки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter20_treeview/index.html">8. Глава 20: Деревья (TreeView)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter21_menus/index.html">9. Глава 21: Меню</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter22_dialogs/index.html">10. Глава 22: Диалоги и окна сообщений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter23_builtin_dialogs/index.html">11. Глава 23: Предустановленные диалоги</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter24_widget_customization/index.html">12. Глава 24: Настройка виджетов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter25_glade/index.html">13. Глава 25: Glade – визуальный редактор интерфейсов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>Глава 17: Гибкая Компоновка с GtkGrid</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part2_gui/chapter17_grid_layout/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gtkgrid">
+<h1><span class="section-number">5. </span>Глава 17: Гибкая Компоновка с GtkGrid<a class="headerlink" href="#gtkgrid" title="Permalink to this heading"></a></h1>
+<p>В предыдущей главе мы освоили линейную компоновку с <cite>GtkBox</cite>, которая идеально подходит для размещения виджетов по горизонтали или вертикали. Однако для более сложных, табличных или многомерных макетов нам потребуется более мощный инструмент.</p>
+<p><cite>GtkGrid</cite> позволяет располагать виджеты в виде таблицы с заданным количеством строк и столбцов. Это даёт разработчику полную свободу и точный контроль над позиционированием элементов, а также возможность объединять ячейки, создавая гибкие и адаптивные интерфейсы.</p>
+<p>### Что вы узнаете в этой главе:</p>
+<ul class="simple">
+<li><p>Как создать и инициализировать контейнер <cite>GtkGrid</cite>.</p></li>
+<li><p>Как добавлять виджеты в конкретные ячейки сетки, используя координаты (строка, столбец).</p></li>
+<li><p>Как объединять ячейки по горизонтали (<cite>column-span</cite>) и вертикали (<cite>row-span</cite>).</p></li>
+<li><p>Как управлять отступами между элементами сетки и вокруг неё.</p></li>
+<li><p>Как использовать параметры расширения (<cite>expand</cite>) для адаптивного дизайна.</p></li>
+</ul>
+<p>—</p>
+<section id="id1">
+<h2><span class="section-number">5.1. </span>Основные Возможности GtkGrid<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p><cite>GtkGrid</cite> предоставляет гораздо больший контроль над расположением элементов по сравнению с <cite>GtkBox</cite>:</p>
+<ul class="simple">
+<li><p><strong>Размещение элементов в ячейках (row, column):</strong> Каждый виджет помещается в определённую ячейку сетки, заданную координатами строки и столбца, начиная с (0,0) для левого верхнего угла.</p></li>
+<li><p><strong>Объединение ячеек (row-span, column-span):</strong> Виджет может занимать не одну ячейку, а растягиваться на несколько строк или столбцов, что идеально подходит для создания сложных макетов (например, заголовок, занимающий всю ширину, или боковая панель, занимающая несколько строк).</p></li>
+<li><p><strong>Установка отступов:</strong> Можно задавать отступы как между строками и столбцами, так и вокруг всей сетки.</p></li>
+<li><p><strong>Растягивание/масштабирование элементов:</strong> С помощью свойств расширения (<cite>expand</cite>) и заполнения (<cite>fill</cite>), а также гомогенности, можно контролировать, как виджеты и сама сетка реагируют на изменение размера окна.</p></li>
+</ul>
+<p>—</p>
+<p>### Пример 17.1: Использование GtkGrid для размещения кнопок в виде таблицы</p>
+<p>Название исходного файла: <cite>grid_example.c</cite></p>
+<p>Этот пример демонстрирует базовое использование <cite>GtkGrid</cite> для создания простого калькулятороподобного макета с кнопками, включая объединение ячеек.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span><span class="c1"> // Подключаем основную библиотеку GTK.</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Callback-функция, которая будет вызвана при нажатии любой кнопки.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Эта функция извлекает метку с нажатой кнопки и выводит её в консоль.</span>
+<span class="cm"> * Это полезно для демонстрации, какая именно кнопка была активирована.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param widget Указатель на GtkWidget, который испустил сигнал (GtkButton).</span>
+<span class="cm"> * @param data   Универсальный указатель на пользовательские данные (в данном случае NULL).</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">on_button_clicked</span><span class="p">(</span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">widget</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">button_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_get_label</span><span class="p">(</span><span class="n">GTK_BUTTON</span><span class="p">(</span><span class="n">widget</span><span class="p">));</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Нажата кнопка: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">button_label</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Функция активации приложения.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Эта функция вызывается, когда приложение запускается и готово к отображению</span>
+<span class="cm"> * своих окон. Здесь создаются главное окно, GtkGrid и все виджеты.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param app       Указатель на объект GtkApplication.</span>
+<span class="cm"> * @param user_data Универсальный указатель на пользовательские данные,</span>
+<span class="cm"> * переданные при подключении сигнала &quot;activate&quot;. В данном случае NULL.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">activate</span><span class="p">(</span><span class="n">GtkApplication</span><span class="w"> </span><span class="o">*</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">user_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="p">;</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">grid</span><span class="p">;</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">button1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">button2</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">button3</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">button4</span><span class="p">;</span><span class="w"> </span><span class="c1">// Объявляем все кнопки</span>
+
+<span class="w">    </span><span class="c1">// 1. Создание главного окна приложения.</span>
+<span class="w">    </span><span class="c1">// gtk_application_window_new(app) создает окно, связанное с GtkApplication,</span>
+<span class="w">    </span><span class="c1">// что позволяет GTK лучше управлять жизненным циклом приложения.</span>
+<span class="w">    </span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_application_window_new</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;GtkGrid Пример&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_position</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">GTK_WIN_POS_CENTER</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Создание контейнера GtkGrid.</span>
+<span class="w">    </span><span class="c1">// GtkGrid - это контейнер, который позволяет располагать виджеты</span>
+<span class="w">    </span><span class="c1">// в виде таблицы (по строкам и столбцам).</span>
+<span class="w">    </span><span class="n">grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_grid_new</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 3. Настройка GtkGrid.</span>
+<span class="w">    </span><span class="c1">// Установка внешнего отступа (границы) вокруг всей сетки в 10 пикселей.</span>
+<span class="w">    </span><span class="n">gtk_container_set_border_width</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Установка отступа в 5 пикселей между строками.</span>
+<span class="w">    </span><span class="n">gtk_grid_set_row_spacing</span><span class="p">(</span><span class="n">GTK_GRID</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Установка отступа в 5 пикселей между столбцами.</span>
+<span class="w">    </span><span class="n">gtk_grid_set_column_spacing</span><span class="p">(</span><span class="n">GTK_GRID</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Можно также сделать строки/столбцы гомогенными (равными по размеру)</span>
+<span class="w">    </span><span class="c1">// gtk_grid_set_row_homogeneous(GTK_GRID(grid), TRUE);</span>
+<span class="w">    </span><span class="c1">// gtk_grid_set_column_homogeneous(GTK_GRID(grid), TRUE);</span>
+
+<span class="w">    </span><span class="c1">// 4. Создание кнопок, которые будут размещены в сетке.</span>
+<span class="w">    </span><span class="n">button1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Кнопка 1&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">button2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Кнопка 2&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">button3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Кнопка 3 (объединена)&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">button4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Кнопка 4&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 5. Подключение обработчика кликов для каждой кнопки.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 6. Добавление кнопок в сетку с использованием gtk_grid_attach().</span>
+<span class="w">    </span><span class="c1">// Эта функция - ключевая для GtkGrid. Её параметры:</span>
+<span class="w">    </span><span class="c1">//   - GTK_GRID(grid): Указатель на GtkGrid.</span>
+<span class="w">    </span><span class="c1">//   - buttonN: Виджет, который добавляется.</span>
+<span class="w">    </span><span class="c1">//   - left: Индекс столбца, с которого начинается виджет (0-индексированный).</span>
+<span class="w">    </span><span class="c1">//   - top: Индекс строки, с которой начинается виджет (0-индексированный).</span>
+<span class="w">    </span><span class="c1">//   - width: Количество столбцов, которое занимает виджет (column-span).</span>
+<span class="w">    </span><span class="c1">//   - height: Количество строк, которое занимает виджет (row-span).</span>
+
+<span class="w">    </span><span class="c1">// Кнопка 1: Столбец 0, Строка 0, занимает 1 столбец, 1 строку.</span>
+<span class="w">    </span><span class="n">gtk_grid_attach</span><span class="p">(</span><span class="n">GTK_GRID</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span><span class="w"> </span><span class="n">button1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Кнопка 2: Столбец 1, Строка 0, занимает 1 столбец, 1 строку.</span>
+<span class="w">    </span><span class="n">gtk_grid_attach</span><span class="p">(</span><span class="n">GTK_GRID</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span><span class="w"> </span><span class="n">button2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Кнопка 3: Столбец 0, Строка 1, занимает 2 столбца (растягивается), 1 строку.</span>
+<span class="w">    </span><span class="n">gtk_grid_attach</span><span class="p">(</span><span class="n">GTK_GRID</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span><span class="w"> </span><span class="n">button3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Кнопка 4: Столбец 0, Строка 2, занимает 1 столбец, 1 строку.</span>
+<span class="w">    </span><span class="n">gtk_grid_attach</span><span class="p">(</span><span class="n">GTK_GRID</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span><span class="w"> </span><span class="n">button4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 7. Добавление GtkGrid в окно.</span>
+<span class="w">    </span><span class="c1">// GtkWindow может содержать только один дочерний виджет, поэтому мы добавляем GtkGrid.</span>
+<span class="w">    </span><span class="n">gtk_container_add</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">grid</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 8. Отображение всех виджетов (окна, сетки и всех кнопок внутри).</span>
+<span class="w">    </span><span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Главная функция программы, точка входа.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Эта функция отвечает за создание объекта GtkApplication,</span>
+<span class="cm"> * подключение функции активации и запуск основного цикла приложения.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param argc Количество аргументов командной строки.</span>
+<span class="cm"> * @param argv Массив строк аргументов командной строки.</span>
+<span class="cm"> * @return Код завершения программы.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GtkApplication</span><span class="w"> </span><span class="o">*</span><span class="n">app</span><span class="p">;</span><span class="w"> </span><span class="c1">// Указатель на объект приложения GTK</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w">          </span><span class="c1">// Переменная для хранения статуса завершения приложения</span>
+
+<span class="w">    </span><span class="c1">// Создание нового объекта GtkApplication.</span>
+<span class="w">    </span><span class="c1">// &quot;org.example.GridApp&quot; - уникальный идентификатор приложения (обычно в стиле DNS).</span>
+<span class="w">    </span><span class="c1">// G_APPLICATION_FLAGS_NONE - стандартные флаги приложения.</span>
+<span class="w">    </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_application_new</span><span class="p">(</span><span class="s">&quot;org.example.GridApp&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_APPLICATION_FLAGS_NONE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Подключение сигнала &quot;activate&quot; к нашей функции &#39;activate&#39;.</span>
+<span class="w">    </span><span class="c1">// Сигнал &quot;activate&quot; испускается, когда приложение запускается и готово</span>
+<span class="w">    </span><span class="c1">// создать свое первое окно или показать себя пользователю.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;activate&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">activate</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Запуск приложения.</span>
+<span class="w">    </span><span class="c1">// g_application_run() запускает главный цикл событий GLib (и GTK).</span>
+<span class="w">    </span><span class="c1">// Управление передается GTK, и приложение будет ждать событий.</span>
+<span class="w">    </span><span class="c1">// Функция возвращает статус завершения, когда приложение закрывается.</span>
+<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_application_run</span><span class="p">(</span><span class="n">G_APPLICATION</span><span class="p">(</span><span class="n">app</span><span class="p">),</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Освобождение ресурсов, связанных с объектом GtkApplication.</span>
+<span class="w">    </span><span class="n">g_object_unref</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w"> </span><span class="c1">// Возвращаем статус завершения.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter16_labels_layout/index.html" class="btn btn-neutral float-left" title="4. Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter18_inputs/index.html" class="btn btn-neutral float-right" title="6. Глава 18: Поля ввода" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox) &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="5. Глава 17: Расширенный макет" href="../chapter17_grid_layout/index.html" />
+    <link rel="prev" title="3. Глава 15: Кнопки и обработка событий" href="../chapter15_buttons/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть II: Разработка GUI с помощью GTK</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter13_gtk_intro/index.html">1. Глава 13: Введение в GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14_first_project/index.html">2. Глава 14: Первый GTK-проект — Окно с кнопкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter15_buttons/index.html">3. Глава 15: Кнопки и обработка событий</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gtklabel">4.1. GtkLabel: Отображение Текста</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.2. GtkBox: Горизонтальная и Вертикальная Компоновка</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter17_grid_layout/index.html">5. Глава 17: Расширенный макет</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter18_inputs/index.html">6. Глава 18: Поля ввода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter19_comboboxes/index.html">7. Глава 19: Выпадающие списки и списки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter20_treeview/index.html">8. Глава 20: Деревья (TreeView)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter21_menus/index.html">9. Глава 21: Меню</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter22_dialogs/index.html">10. Глава 22: Диалоги и окна сообщений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter23_builtin_dialogs/index.html">11. Глава 23: Предустановленные диалоги</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter24_widget_customization/index.html">12. Глава 24: Настройка виджетов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter25_glade/index.html">13. Глава 25: Glade – визуальный редактор интерфейсов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part2_gui/chapter16_labels_layout/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gtkbox">
+<h1><span class="section-number">4. </span>Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox)<a class="headerlink" href="#gtkbox" title="Permalink to this heading"></a></h1>
+<p>В этой главе мы углубимся в создание более сложных графических интерфейсов, изучив два ключевых элемента: <strong>текстовые метки</strong> с помощью <cite>GtkLabel</cite> и <strong>контейнеры для компоновки виджетов</strong> (<cite>GtkBox</cite>). Вы научитесь отображать статический текст и эффективно располагать несколько элементов интерфейса по вертикали или горизонтали.</p>
+<p>—</p>
+<section id="gtklabel">
+<h2><span class="section-number">4.1. </span>GtkLabel: Отображение Текста<a class="headerlink" href="#gtklabel" title="Permalink to this heading"></a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">doc<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>GtkLabel &lt;https://docs.gtk.org/gtk3/class.Label.html&gt;</cite> — это фундаментальный виджет GTK, предназначенный для отображения одной или нескольких строк текста. Он широко используется для:</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>Подписей</strong> к другим элементам управления (например, «Имя пользователя:»).</p></li>
+<li><p><strong>Заголовков</strong> разделов или окон.</p></li>
+<li><p><strong>Пояснений</strong> и инструкций для пользователя.</p></li>
+<li><p><strong>Отображения динамически изменяющегося текста</strong> (например, счётчика, статуса).</p></li>
+</ul>
+<p>Текст в <cite>GtkLabel</cite> может быть простым или форматированным с использованием <strong>Pango Markup</strong>, что позволяет применять жирный шрифт, курсив, изменять цвет и размер текста.</p>
+<p>### Пример 16.1: Простое окно с меткой</p>
+<p>Название исходного файла: <cite>label_example.c</cite></p>
+<p>Этот пример демонстрирует базовое использование <cite>GtkLabel</cite> для отображения простого приветствия в центре окна.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// label_example.c</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Инициализация GTK</span>
+<span class="w">    </span><span class="n">gtk_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Создание главного окна приложения</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_window_new</span><span class="p">(</span><span class="n">GTK_WINDOW_TOPLEVEL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Пример с GtkLabel&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_position</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">GTK_WIN_POS_CENTER</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Подключение сигнала &quot;destroy&quot; для корректного завершения приложения</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;destroy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">gtk_main_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Создание метки с заданным текстом</span>
+<span class="w">    </span><span class="c1">// Обратите внимание на использование русской буквы &#39;П&#39;. Убедитесь, что ваш файл сохранён в UTF-8!</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_label_new</span><span class="p">(</span><span class="s">&quot;Привет, GTK!&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Добавление метки в окно</span>
+<span class="w">    </span><span class="c1">// Поскольку окно может иметь только один прямой дочерний элемент,</span>
+<span class="w">    </span><span class="c1">// метка будет размещена по центру окна по умолчанию.</span>
+<span class="w">    </span><span class="n">gtk_container_add</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Отображение всех виджетов</span>
+<span class="w">    </span><span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Запуск главного цикла событий GTK</span>
+<span class="w">    </span><span class="n">gtk_main</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Возвращаем код успешного завершения</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Комментарии к коду:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_label_new(&quot;Привет,</span> <span class="pre">GTK!&quot;);</span></code>: Эта функция создаёт новый виджет <code class="docutils literal notranslate"><span class="pre">GtkLabel</span></code> с указанным текстом. Важно, чтобы исходный файл был сохранен в кодировке UTF-8, если вы используете нелатинские символы (например, русские буквы), иначе могут возникнуть предупреждения Pango или некорректное отображение.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_container_add(GTK_CONTAINER(window),</span> <span class="pre">label);</span></code>: В данном случае, поскольку <code class="docutils literal notranslate"><span class="pre">GtkWindow</span></code> является контейнером для одного виджета, добавленная метка будет автоматически центрирована в окне.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="id1">
+<h2><span class="section-number">4.2. </span>GtkBox: Горизонтальная и Вертикальная Компоновка<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">doc<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>GtkBox &lt;https://docs.gtk.org/gtk3/class.Box.html&gt;</cite> — это один из наиболее часто используемых <strong>контейнеров компоновки</strong> в GTK. Он позволяет размещать несколько виджетов в одном ряду — либо <strong>по горизонтали</strong> (<code class="docutils literal notranslate"><span class="pre">GTK_ORIENTATION_HORIZONTAL</span></code>), либо <strong>по вертикали</strong> (<code class="docutils literal notranslate"><span class="pre">GTK_ORIENTATION_VERTICAL</span></code>).</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">GtkBox</span></code> упрощает создание линейных интерфейсов, будь то строка кнопок или столбец полей ввода.</p>
+<p>### Основные функции GtkBox:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gtk_box_new(GtkOrientation</span> <span class="pre">orientation,</span> <span class="pre">int</span> <span class="pre">spacing)</span></code>: Создаёт новый контейнер <code class="docutils literal notranslate"><span class="pre">GtkBox</span></code>.</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">orientation</span></code>: Определяет направление размещения виджетов. Может быть <code class="docutils literal notranslate"><span class="pre">GTK_ORIENTATION_HORIZONTAL</span></code> или <code class="docutils literal notranslate"><span class="pre">GTK_ORIENTATION_VERTICAL</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spacing</span></code>: Определяет фиксированный отступ (в пикселях) между соседними виджетами внутри бокса.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gtk_box_pack_start(GtkBox</span> <span class="pre">*box,</span> <span class="pre">GtkWidget</span> <span class="pre">*child,</span> <span class="pre">gboolean</span> <span class="pre">expand,</span> <span class="pre">gboolean</span> <span class="pre">fill,</span> <span class="pre">guint</span> <span class="pre">padding)</span></code>: Добавляет дочерний виджет в начало (или верх/лево) бокса.</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">box</span></code>: Указатель на контейнер <code class="docutils literal notranslate"><span class="pre">GtkBox</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">child</span></code>: Виджет, который нужно добавить.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code>: Если <cite>TRUE</cite>, виджет будет занимать максимально доступное пространство в том направлении, в котором он «растёт» (для вертикального бокса — по вертикали, для горизонтального — по горизонтали), если оно доступно. Если <cite>FALSE</cite>, он займёт только минимально необходимое пространство.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fill</span></code>: Если <cite>TRUE</cite>, виджет будет заполнять всё доступное пространство в своём сегменте бокса. Если <cite>FALSE</cite>, он будет использовать только свой естественный размер, а остальное пространство будет пустым.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">padding</span></code>: Дополнительный отступ (в пикселях), который будет добавлен вокруг этого конкретного виджета внутри бокса. Этот отступ добавляется к <cite>spacing</cite> всего бокса.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_box_pack_end(GtkBox</span> <span class="pre">*box,</span> <span class="pre">GtkWidget</span> <span class="pre">*child,</span> <span class="pre">gboolean</span> <span class="pre">expand,</span> <span class="pre">gboolean</span> <span class="pre">fill,</span> <span class="pre">guint</span> <span class="pre">padding)</span></code>: Аналогично <code class="docutils literal notranslate"><span class="pre">gtk_box_pack_start</span></code>, но добавляет виджет в конец (или низ/право) бокса.</p></li>
+</ul>
+<p>### Пример 16.2: Окно с вертикальным GtkBox</p>
+<p>Название исходного файла: <cite>layout_vbox_example.c</cite></p>
+<p>Этот пример демонстрирует создание вертикального <code class="docutils literal notranslate"><span class="pre">GtkBox</span></code>, который содержит метку и кнопку, расположенные друг под другом.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// layout_vbox_example.c</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span>
+
+<span class="c1">// Функция-обработчик для кнопки (из предыдущей главы)</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">on_button_clicked</span><span class="p">(</span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">widget</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Кнопка в GtkBox нажата!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">gtk_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_window_new</span><span class="p">(</span><span class="n">GTK_WINDOW_TOPLEVEL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;GtkBox Вертикальный Пример&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_position</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">GTK_WIN_POS_CENTER</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;destroy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">gtk_main_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 1. Создание вертикального контейнера GtkBox с отступом 10 пикселей между элементами.</span>
+<span class="w">    </span><span class="c1">// GTK_ORIENTATION_VERTICAL указывает, что виджеты будут располагаться друг под другом.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">vbox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_box_new</span><span class="p">(</span><span class="n">GTK_ORIENTATION_VERTICAL</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Создание дочерних виджетов: метки и кнопки.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_label_new</span><span class="p">(</span><span class="s">&quot;Это метка внутри VBox&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Нажми меня!&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. Подключение обработчика для кнопки.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 4. Добавление виджетов в GtkBox с использованием gtk_box_pack_start.</span>
+<span class="w">    </span><span class="c1">//   - expand: TRUE - виджет может расширяться, занимая доступное пространство.</span>
+<span class="w">    </span><span class="c1">//   - fill: TRUE - виджет будет заполнять своё выделенное пространство.</span>
+<span class="w">    </span><span class="c1">//   - padding: 5 - дополнительный отступ в 5 пикселей вокруг этого виджета.</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 5. Добавление GtkBox в окно.</span>
+<span class="w">    </span><span class="c1">// Теперь окно содержит не метку или кнопку напрямую, а контейнер GtkBox,</span>
+<span class="w">    </span><span class="c1">// который уже содержит метку и кнопку.</span>
+<span class="w">    </span><span class="n">gtk_container_add</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">vbox</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 6. Отображение всех виджетов.</span>
+<span class="w">    </span><span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 7. Запуск главного цикла GTK.</span>
+<span class="w">    </span><span class="n">gtk_main</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+<p>### Пример 16.3: Окно с горизонтальным GtkBox</p>
+<p>Название исходного файла: <cite>layout_hbox_example.c</cite></p>
+<p>Этот пример демонстрирует создание горизонтального <code class="docutils literal notranslate"><span class="pre">GtkBox</span></code>, который содержит три кнопки, расположенные рядом.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// layout_hbox_example.c</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span>
+
+<span class="c1">// Единый обработчик для всех кнопок</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">on_generic_button_clicked</span><span class="p">(</span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">widget</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Получаем текст кнопки, чтобы вывести, какая именно кнопка была нажата</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">button_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_get_label</span><span class="p">(</span><span class="n">GTK_BUTTON</span><span class="p">(</span><span class="n">widget</span><span class="p">));</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Нажата кнопка: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">button_label</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">gtk_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_window_new</span><span class="p">(</span><span class="n">GTK_WINDOW_TOPLEVEL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;GtkBox Горизонтальный Пример&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_position</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">GTK_WIN_POS_CENTER</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;destroy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">gtk_main_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 1. Создание горизонтального контейнера GtkBox с отступом 5 пикселей.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">hbox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_box_new</span><span class="p">(</span><span class="n">GTK_ORIENTATION_HORIZONTAL</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Создание трёх кнопок.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">button1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Кнопка 1&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">button2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Кнопка 2&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">button3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Кнопка 3&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. Подключение обработчика к каждой кнопке.</span>
+<span class="w">    </span><span class="c1">// Все кнопки будут использовать одну и ту же функцию обработчика.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_generic_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_generic_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_generic_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 4. Добавление кнопок в GtkBox.</span>
+<span class="w">    </span><span class="c1">// Обратите внимание на параметры expand и fill для разных кнопок.</span>
+<span class="w">    </span><span class="c1">// Кнопка 1: не расширяется, не заполняет, небольшой отступ.</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">hbox</span><span class="p">),</span><span class="w"> </span><span class="n">button1</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Кнопка 2: расширяется и заполняет доступное пространство.</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">hbox</span><span class="p">),</span><span class="w"> </span><span class="n">button2</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Кнопка 3: не расширяется, но заполняет своё пространство, если оно есть.</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">hbox</span><span class="p">),</span><span class="w"> </span><span class="n">button3</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 5. Добавление GtkBox в окно.</span>
+<span class="w">    </span><span class="n">gtk_container_add</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">hbox</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 6. Отображение всех виджетов.</span>
+<span class="w">    </span><span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 7. Запуск главного цикла GTK.</span>
+<span class="w">    </span><span class="n">gtk_main</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Комментарии к `gtk_box_pack_start` (и `gtk_box_pack_end`):</strong></p>
+<p>Эти функции являются ключевыми для управления тем, как виджеты будут себя вести внутри <cite>GtkBox</cite>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">expand</span></code> (<code class="docutils literal notranslate"><span class="pre">gboolean</span></code>):</dt><dd><ul>
+<li><p><cite>TRUE</cite>: Виджет будет пытаться <strong>занять любое дополнительное пространство</strong>, которое остаётся в контейнере <cite>GtkBox</cite> после того, как все виджеты с <cite>expand=FALSE</cite> займут своё минимальное место. Если несколько виджетов имеют <cite>expand=TRUE</cite>, они разделят это дополнительное пространство между собой.</p></li>
+<li><p><cite>FALSE</cite>: Виджет займёт <strong>только минимально необходимое пространство</strong>. Он не будет расширяться, даже если есть свободное место.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">fill</span></code> (<code class="docutils literal notranslate"><span class="pre">gboolean</span></code>):</dt><dd><ul>
+<li><p><cite>TRUE</cite>: Если виджету выделено больше пространства, чем его естественный размер (например, потому что <cite>expand</cite> был <cite>TRUE</cite> или контейнер просто большой), он <strong>заполнит всё выделенное ему пространство</strong>.</p></li>
+<li><p><cite>FALSE</cite>: Виджет будет использовать только свой <strong>естественный размер</strong>, даже если ему выделено больше места. Оставшееся пространство внутри его «ячейки» в боксе будет пустым.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">padding</span></code> (<code class="docutils literal notranslate"><span class="pre">guint</span></code>):</dt><dd><ul>
+<li><p>Дополнительный отступ (в пикселях), который будет добавлен к естественному пространству, занимаемому виджетом. Этот отступ применяется по обе стороны от виджета в направлении ориентации бокса.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Понимание <cite>expand</cite> и <cite>fill</cite> критически важно для создания гибких и адаптивных макетов, которые хорошо выглядят при разных размерах окон.</p>
+<p>—</p>
+<p>### Компиляция и Запуск</p>
+<p>Сохраните каждый пример кода в соответствующий файл (например, <cite>label_example.c</cite>, <cite>layout_vbox_example.c</cite>, <cite>layout_hbox_example.c</cite>).</p>
+<p>Для сборки используйте следующую команду, адаптируя её для каждого файла:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Для примера с GtkLabel:</span>
+gcc<span class="w"> </span>label_example.c<span class="w"> </span>-o<span class="w"> </span>label_example<span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>--libs<span class="w"> </span>gtk+-3.0<span class="sb">`</span>
+./label_example
+
+<span class="c1"># Для примера с вертикальным GtkBox:</span>
+gcc<span class="w"> </span>layout_vbox_example.c<span class="w"> </span>-o<span class="w"> </span>layout_vbox_example<span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>--libs<span class="w"> </span>gtk+-3.0<span class="sb">`</span>
+./layout_vbox_example
+
+<span class="c1"># Для примера с горизонтальным GtkBox:</span>
+gcc<span class="w"> </span>layout_hbox_example.c<span class="w"> </span>-o<span class="w"> </span>layout_hbox_example<span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>--libs<span class="w"> </span>gtk+-3.0<span class="sb">`</span>
+./layout_hbox_example
+</pre></div>
+</div>
+<p>—</p>
+<p>### Ожидаемый результат</p>
+<ul class="simple">
+<li><p><strong>`label_example.c`</strong>: Откроется небольшое окно с заголовком «Пример с GtkLabel» и по центру будет виден текст <strong>«Привет, GTK!»</strong>.</p></li>
+<li><p><strong>`layout_vbox_example.c`</strong>: Появится окно с заголовком «GtkBox Вертикальный Пример». Внутри будут расположены <strong>метка</strong> («Это метка внутри VBox») над <strong>кнопкой</strong> («Нажми меня!»). Между ними будет небольшой отступ. При нажатии кнопки, в терминал будет выведено сообщение.</p></li>
+<li><p><strong>`layout_hbox_example.c`</strong>: Откроется окно «GtkBox Горизонтальный Пример». Внутри будут расположены <strong>три кнопки</strong> («Кнопка 1», «Кнопка 2», «Кнопка 3») рядом друг с другом. Вы заметите, что «Кнопка 2» занимает больше места, растягиваясь, так как для неё <cite>expand</cite> и <cite>fill</cite> установлены в <cite>TRUE</cite>. При нажатии любой из кнопок, в терминал будет выведено сообщение, указывающее, какая кнопка была нажата.</p></li>
+</ul>
+<p>—</p>
+<p>### Дополнительные ресурсы</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.Label.html">GtkLabel</a>: Официальная документация GtkLabel.</p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.Box.html">GtkBox</a>: Официальная документация GtkBox.</p></li>
+<li><p><a class="reference external" href="https://developer.gnome.org/gtk3/stable/ch03.html">GTK3 Containers</a>: Раздел «Containers» в официальной документации GTK3, описывающий различные контейнеры компоновки.</p></li>
+<li><p><a class="reference external" href="https://github.com/AIDevelopersMonster/C_GUI_Handbook">C_GUI_Handbook GitHub</a> - Репозиторий с примерами кода из этого руководства.</p></li>
+</ul>
+<p>—</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter15_buttons/index.html" class="btn btn-neutral float-left" title="3. Глава 15: Кнопки и обработка событий" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter17_grid_layout/index.html" class="btn btn-neutral float-right" title="5. Глава 17: Расширенный макет" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

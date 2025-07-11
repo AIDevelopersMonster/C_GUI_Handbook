@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Глава 1: Введение &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="2. Глава 2: Переменные и арифметика" href="../chapter02_variables/index.html" />
+    <link rel="prev" title="Часть I: Основы языка Си" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть I: Основы языка Си</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Глава 1: Введение</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#raspberry-pi">1.1. Подготовка Raspberry Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gcc">1.2. Установка компилятора <cite>gcc</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hello-c">1.3. Первая программа: hello.c</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.4. Что дальше?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02_variables/index.html">2. Глава 2: Переменные и арифметика</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03_conditions/index.html">3. Глава 3: Условия и сравнения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04_loops/index.html">4. Глава 4: Циклы и повторение кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05_pointers/index.html">5. Глава 5: Указатели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06_functions/index.html">6. Глава 6: Функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07_arrays_strings/index.html">7. Глава 7: Массивы и строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08_string_lib/index.html">8. Глава 8: Библиотека строк (&lt;string.h&gt;)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09_input/index.html">9. Глава 9: Ввод с клавиатуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10_files/index.html">10. Глава 10: Работа с файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11_types_structs/index.html">11. Глава 11: Типы и структуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12_headers/index.html">12. Глава 12: Заголовочные файлы и препроцессор</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть I: Основы языка Си</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1. </span>Глава 1: Введение</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part1_basics/chapter01_intro/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">1. </span>Глава 1: Введение<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>В этой главе мы сделаем первые шаги в программировании на языке <strong>Си</strong> на вашей <strong>Raspberry Pi Zero 2 W</strong>. Мы подготовим операционную систему, установим все необходимые инструменты и, конечно же, напишем и запустим нашу самую первую программу. Этот процесс поможет вам понять, как выглядит цикл разработки программы на Си, от написания кода до его выполнения.</p>
+<p>—</p>
+<section id="raspberry-pi">
+<h2><span class="section-number">1.1. </span>Подготовка Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Permalink to this heading"></a></h2>
+<p>Прежде чем начать писать код, нам нужно подготовить нашу миниатюрную, но мощную Raspberry Pi Zero 2 W. Эти шаги гарантируют, что у вас будет чистая, эффективная среда для разработки.</p>
+<ol class="arabic">
+<li><p><strong>Установите Raspberry Pi OS Lite (без графики)</strong> на SD-карту через [Raspberry Pi Imager](<a class="reference external" href="https://www.raspberrypi.com/software/">https://www.raspberrypi.com/software/</a>).</p>
+<ul class="simple">
+<li><p><strong>Почему «Lite» и без графики?</strong> Версия «Lite» потребляет меньше ресурсов (оперативной памяти и процессорного времени) и занимает меньше места на SD-карте, что идеально для Raspberry Pi Zero 2 W с ее ограниченными возможностями. Разработка на Си часто не требует графического интерфейса, а подключение по SSH позволяет работать удаленно с любого компьютера.</p></li>
+<li><p><strong>Raspberry Pi Imager:</strong> Это официальный инструмент, который упрощает процесс записи образа операционной системы на SD-карту. Вы можете найти его на официальном сайте Raspberry Pi.</p></li>
+</ul>
+</li>
+<li><p><strong>Подключитесь по SSH</strong> или откройте терминал, если у вас есть экран.</p>
+<ul class="simple">
+<li><p><strong>SSH (Secure Shell):</strong> Это безопасный сетевой протокол, который позволяет вам управлять Raspberry Pi удаленно с вашего основного компьютера через командную строку. Это очень удобно, так как вам не нужен дополнительный монитор, клавиатура или мышь для Pi. Для подключения вам понадобится IP-адрес вашей Raspberry Pi и логин/пароль (по умолчанию <cite>pi</cite>/<cite>raspberry</cite>).</p></li>
+<li><p><strong>Терминал:</strong> Если вы подключили монитор и клавиатуру к вашей Pi, вы можете работать прямо в терминале операционной системы.</p></li>
+</ul>
+</li>
+<li><p><strong>Обновите систему:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`sudo`:</strong> Это команда, которая позволяет выполнять другие команды с правами суперпользователя (администратора). Обновление системы требует таких прав.</p></li>
+<li><p><strong>`apt update`:</strong> Эта команда обновляет список доступных пакетов в репозиториях (хранилищах программного обеспечения). Она не скачивает сами пакеты, а лишь их метаданные.</p></li>
+<li><p><strong>`apt upgrade`:</strong> Эта команда скачивает и устанавливает новые версии всех установленных пакетов, для которых доступны обновления.</p></li>
+<li><p><strong>`&amp;&amp;`:</strong> Этот оператор означает «и». Он гарантирует, что <cite>apt upgrade</cite> будет выполнен только в том случае, если <cite>apt update</cite> завершился успешно. Это хорошая практика для последовательных команд.</p></li>
+<li><p><strong>Зачем обновлять?</strong> Регулярное обновление системы гарантирует, что у вас установлены самые свежие версии программ и исправлены известные ошибки безопасности.</p></li>
+</ul>
+</li>
+</ol>
+<p>—</p>
+</section>
+<section id="gcc">
+<h2><span class="section-number">1.2. </span>Установка компилятора <cite>gcc</cite><a class="headerlink" href="#gcc" title="Permalink to this heading"></a></h2>
+<p>Для того чтобы ваша Raspberry Pi «поняла» код, который вы напишете на языке Си, ей нужен специальный инструмент — <strong>компилятор</strong>. Компилятор — это программа, которая переводит ваш высокоуровневый код (который вы пишете) в низкоуровневый машинный код, понятный процессору.</p>
+<p>Чтобы компилировать программы на C, установим <strong>GNU Compiler Collection (GCC)</strong>. Это стандартный и самый распространённый набор компиляторов для различных языков, включая Си.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>build-essential
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`build-essential`:</strong> Это метапакет, который включает в себя не только <cite>gcc</cite> (компилятор Си), но и другие необходимые инструменты для компиляции программ, такие как <cite>g++</cite> (компилятор C++), <cite>make</cite> и <cite>dpkg-dev</cite>. Установка этого пакета гарантирует, что у вас есть всё необходимое для сборки большинства программ из исходников.</p></li>
+</ul>
+<p>Проверим установку:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc<span class="w"> </span>--version
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Эта команда выведет версию установленного компилятора <cite>gcc</cite>. Если вы видите номер версии (например, <cite>gcc (Raspbian 10.2.1-6+rpi1) 10.2.1</cite>), значит, установка прошла успешно.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="hello-c">
+<h2><span class="section-number">1.3. </span>Первая программа: hello.c<a class="headerlink" href="#hello-c" title="Permalink to this heading"></a></h2>
+<p>Теперь, когда ваша Raspberry Pi готова, а компилятор установлен, давайте напишем нашу первую программу! Традиционно, первой программой является «Hello, World!», которая просто выводит сообщение на экран.</p>
+<p>Создайте файл <cite>hello.c</cite>:</p>
+<ul class="simple">
+<li><p>Вы можете использовать любой текстовый редактор в терминале, например <cite>nano</cite> (наберите <cite>nano hello.c</cite> и нажмите Enter). После ввода кода сохраните файл, нажав <cite>Ctrl+X</cite>, затем <cite>Y</cite> и <cite>Enter</cite>.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // Это &quot;директива препроцессора&quot;. Она включает стандартную библиотеку ввода/вывода (Standard Input/Output). Без нее мы не сможем использовать функцию printf.</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Это главная функция программы. Выполнение любой программы на Си начинается именно с функции main().</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Привет, Raspberry Pi!</span><span class="se">\\</span><span class="s">n&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Функция printf() используется для вывода текста на экран (в консоль).</span>
+<span class="w">                                        </span><span class="c1">// Символ &#39;\n&#39; — это &quot;последовательность экранирования&quot;, которая означает переход на новую строку.</span>
+<span class="w">                                        </span><span class="c1">// Без нее следующий вывод появился бы в той же строке.</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Возвращаем 0, чтобы показать операционной системе, что программа завершилась успешно, без ошибок.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Комментарии в коде:</strong> Обратите внимание на строки, начинающиеся с <cite>//</cite>. Это <strong>комментарии</strong>. Комментарии игнорируются компилятором и служат только для того, чтобы помочь людям понять код. Они очень важны для документирования вашей работы!</p></li>
+<li><p><strong>Синтаксис Си:</strong> Си — это язык с <strong>чувствительностью к регистру</strong> (например, <cite>main</cite> и <cite>Main</cite> — это разные вещи), и он использует <strong>точку с запятой</strong> (<cite>;</cite>) в конце большинства инструкций. <strong>Фигурные скобки</strong> (<cite>{ }</cite>) используются для обозначения блоков кода (например, тело функции <cite>main</cite>).</p></li>
+</ul>
+<p>Скомпилируйте и запустите:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc<span class="w"> </span>hello.c<span class="w"> </span>-o<span class="w"> </span>hello
+./hello
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>`gcc hello.c -o hello`:</strong></dt><dd><ul>
+<li><p><cite>gcc</cite>: Запускаем компилятор.</p></li>
+<li><p><cite>hello.c</cite>: Указываем имя нашего исходного файла.</p></li>
+<li><p><cite>-o hello</cite>: Это <strong>флаг</strong> (опция) компилятора. Он говорит <cite>gcc</cite> назвать сгенерированный исполняемый файл <cite>hello</cite>. Если бы мы не использовали <cite>-o</cite>, исполняемый файл по умолчанию назывался бы <cite>a.out</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`./hello`:</strong></dt><dd><ul>
+<li><p><cite>./</cite>: Указывает операционной системе, что исполняемый файл <cite>hello</cite> находится в текущем каталоге. Это необходимо для запуска программ, находящихся не в стандартных системных путях.</p></li>
+<li><p><cite>hello</cite>: Запускает скомпилированную программу.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Флаг <cite>-o hello</cite> говорит компилятору назвать исполняемый файл <cite>hello</cite>.</p>
+</div>
+<p>Вывод:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Привет, Raspberry Pi!
+</pre></div>
+</div>
+<p>Поздравляем!  Вы только что успешно скомпилировали и запустили свою первую программу на C на вашей Raspberry Pi Zero 2 W. Это фундаментальный шаг в мире встроенного программирования и работы с аппаратным обеспечением!</p>
+<p>—</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">1.4. </span>Что дальше?<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Теперь, когда вы освоили основы настройки и запуска простейшей программы, пришло время углубиться в сам язык Си.</p>
+<p>Следующий шаг — разобраться с <strong>переменными</strong> и <strong>арифметикой</strong> в языке C. Вы узнаете, как хранить данные в памяти, как выполнять математические операции и как ваш код может стать интерактивным.</p>
+<p>Дополнительные ресурсы:
+- <cite>man gcc</cite> — справочник по компилятору <cite>gcc</cite>. Введите эту команду в терминале, чтобы получить подробную информацию.
+- <cite>man printf</cite> — документация по функции <cite>printf</cite>. Это очень мощная функция, и <cite>man</cite> страница покажет вам все ее возможности форматирования.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Часть I: Основы языка Си" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter02_variables/index.html" class="btn btn-neutral float-right" title="2. Глава 2: Переменные и арифметика" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

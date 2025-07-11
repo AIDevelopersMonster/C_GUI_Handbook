@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10. Глава 10: Работа с файлами &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="11. Глава 11: Типы и структуры" href="../chapter11_types_structs/index.html" />
+    <link rel="prev" title="9. Глава 9: Ввод с клавиатуры" href="../chapter09_input/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть I: Основы языка Си</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter01_intro/index.html">1. Глава 1: Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02_variables/index.html">2. Глава 2: Переменные и арифметика</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03_conditions/index.html">3. Глава 3: Условия и сравнения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04_loops/index.html">4. Глава 4: Циклы и повторение кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05_pointers/index.html">5. Глава 5: Указатели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06_functions/index.html">6. Глава 6: Функции — Строим Модульный Код</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07_arrays_strings/index.html">7. Глава 7: Массивы и Строки — Работа с Коллекциями Данных и Текстом</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08_string_lib/index.html">8. Глава 8: Библиотека строк (&lt;string.h&gt;)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09_input/index.html">9. Глава 9: Ввод с клавиатуры</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10. Глава 10: Работа с файлами</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">10.1. Пример 1: Запись строки в файл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">10.2. Пример 2: Чтение файла построчно</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">10.3. Пример 3: Запись и чтение бинарного файла</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">10.4. Дополнительные ресурсы</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11_types_structs/index.html">11. Глава 11: Типы и структуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12_headers/index.html">12. Глава 12: Заголовочные файлы и препроцессор</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть I: Основы языка Си</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">10. </span>Глава 10: Работа с файлами</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part1_basics/chapter10_files/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">10. </span>Глава 10: Работа с файлами<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>В этой главе мы рассмотрим основы работы с файлами в языке C. Работа с файлами позволяет сохранять и считывать данные вне оперативной памяти, делая программы более полезными и долговечными.</p>
+<p>Мы изучим:</p>
+<ul class="simple">
+<li><p>Открытие файлов (<cite>fopen</cite>)</p></li>
+<li><p>Чтение и запись (<cite>fread</cite>, <cite>fwrite</cite>, <cite>fprintf</cite>, <cite>fscanf</cite>)</p></li>
+<li><p>Закрытие файлов (<cite>fclose</cite>)</p></li>
+<li><p>Проверку ошибок при работе с файлами</p></li>
+<li><p>Примеры чтения и записи текстовых и бинарных файлов</p></li>
+</ul>
+<p>—</p>
+<p>Работа с файлами в C — это фундаментальный навык, который позволяет вашим программам взаимодействовать с внешним миром. Когда вы запускаете программу, все её данные хранятся в <strong>оперативной памяти (RAM)</strong>. Как только программа завершает работу, эти данные исчезают. Файлы предоставляют способ <strong>постоянного хранения данных</strong> на диске, чтобы они сохранялись между запусками программы или могли быть доступны другим программам.</p>
+<p>По сути, файл — это просто упорядоченная последовательность байтов. Однако, когда мы говорим о файлах в контексте программирования, мы часто различаем <strong>текстовые файлы</strong> и <strong>бинарные файлы</strong>.</p>
+<ul class="simple">
+<li><p><strong>Текстовые файлы</strong> содержат символы, которые человек может прочитать, например, обычный текст. Каждый символ хранится как его соответствующее кодирование (например, ASCII или UTF-8).</p></li>
+<li><p><strong>Бинарные файлы</strong> хранят данные в том виде, в котором они представлены в памяти компьютера (например, целые числа, структуры). Эти файлы обычно не предназначены для чтения человеком напрямую и требуют специального программного обеспечения для интерпретации.</p></li>
+</ul>
+<p>Стандартная библиотека ввода/вывода C (<cite>stdio.h</cite>) предоставляет набор функций для работы с файлами. Все эти функции оперируют с указателями на тип <cite>FILE</cite>, который представляет собой абстракцию файла.</p>
+<p>—</p>
+<p>### Основные функции для работы с файлами</p>
+<p>#### Открытие файлов: <cite>fopen()</cite></p>
+<p>Прежде чем вы сможете читать из файла или записывать в него, вам нужно его <strong>открыть</strong>. Для этого используется функция <cite>fopen()</cite>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">fopen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">mode</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: Строка, содержащая имя файла, который вы хотите открыть.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code>: Строка, указывающая режим открытия файла.</p></li>
+</ul>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Режимы открытия файлов</span><a class="headerlink" href="#id6" title="Постоянная ссылка на таблицу"></a></caption>
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 85.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Режим</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;r&quot;</span></code></p></td>
+<td><p>Открыть для чтения. Файл должен существовать.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code></p></td>
+<td><p>Открыть для записи. Если файл существует, его содержимое <strong>удаляется</strong>. Если нет, файл создается.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code></p></td>
+<td><p>Открыть для добавления (дозаписи). Запись происходит в конец файла. Если файл не существует, он создается.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;rb&quot;</span></code></p></td>
+<td><p>Открыть для чтения в бинарном режиме.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;wb&quot;</span></code></p></td>
+<td><p>Открыть для записи в бинарном режиме. Если файл существует, его содержимое <strong>удаляется</strong>. Если нет, файл создается.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;ab&quot;</span></code></p></td>
+<td><p>Открыть для добавления в бинарном режиме. Запись происходит в конец файла. Если файл не существует, он создается.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;r+&quot;</span></code></p></td>
+<td><p>Открыть для чтения и записи. Файл должен существовать.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;w+&quot;</span></code></p></td>
+<td><p>Открыть для чтения и записи. Если файл существует, его содержимое <strong>удаляется</strong>. Если нет, файл создается.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;a+&quot;</span></code></p></td>
+<td><p>Открыть для чтения и добавления. Запись происходит в конец файла. Если файл не существует, он создается.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Функция <code class="docutils literal notranslate"><span class="pre">fopen()</span></code> возвращает указатель на <code class="docutils literal notranslate"><span class="pre">FILE</span></code>, который будет использоваться во всех последующих операциях с этим файлом. Если файл не может быть открыт (например, из-за отсутствия прав, или файл не существует в режиме <code class="docutils literal notranslate"><span class="pre">&quot;r&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">fopen()</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. <strong>Всегда проверяйте возвращаемое значение ``fopen()``!</strong></p>
+<p>#### Закрытие файлов: <cite>fclose()</cite></p>
+<p>Когда вы закончили работу с файлом, очень важно его <strong>закрыть</strong>. Функция <code class="docutils literal notranslate"><span class="pre">fclose()</span></code> освобождает ресурсы, связанные с файлом, и гарантирует, что все буферизованные данные будут записаны на диск.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fclose</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fp</span></code>: Указатель на <code class="docutils literal notranslate"><span class="pre">FILE</span></code>, возвращенный <code class="docutils literal notranslate"><span class="pre">fopen()</span></code>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">fclose()</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">0</span></code> в случае успешного закрытия или <code class="docutils literal notranslate"><span class="pre">EOF</span></code> (End Of File) в случае ошибки. Не закрытые файлы могут привести к потере данных или ошибкам в программе.</p>
+<p>#### Чтение и запись текстовых данных</p>
+<p>Для работы с текстовыми файлами часто используются функции, похожие на <code class="docutils literal notranslate"><span class="pre">printf()</span></code> и <code class="docutils literal notranslate"><span class="pre">scanf()</span></code>, но с добавлением указателя на файл:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fprintf(FILE</span> <span class="pre">*fp,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*format,</span> <span class="pre">...)</span></code>: Записывает форматированные данные в файл. Аналогична <code class="docutils literal notranslate"><span class="pre">printf()</span></code>, но пишет в файл.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fscanf(FILE</span> <span class="pre">*fp,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*format,</span> <span class="pre">...)</span></code>: Считывает форматированные данные из файла. Аналогична <code class="docutils literal notranslate"><span class="pre">scanf()</span></code>, но читает из файла.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fgetc(FILE</span> <span class="pre">*fp)</span></code>: Считывает один символ из файла.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fputc(int</span> <span class="pre">char_val,</span> <span class="pre">FILE</span> <span class="pre">*fp)</span></code>: Записывает один символ в файл.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fgets(char</span> <span class="pre">*buffer,</span> <span class="pre">int</span> <span class="pre">size,</span> <span class="pre">FILE</span> <span class="pre">*fp)</span></code>: Считывает строку из файла. Читает до <code class="docutils literal notranslate"><span class="pre">size-1</span></code> символов или до символа новой строки, или до конца файла. Возвращает <code class="docutils literal notranslate"><span class="pre">NULL</span></code> при ошибке или достижении конца файла.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fputs(const</span> <span class="pre">char</span> <span class="pre">*str,</span> <span class="pre">FILE</span> <span class="pre">*fp)</span></code>: Записывает строку в файл.</p></li>
+</ul>
+<p>#### Чтение и запись бинарных данных</p>
+<p>Для работы с бинарными файлами используются функции <code class="docutils literal notranslate"><span class="pre">fread()</span></code> и <code class="docutils literal notranslate"><span class="pre">fwrite()</span></code>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">fwrite(const</span> <span class="pre">void</span> <span class="pre">*ptr,</span> <span class="pre">size_t</span> <span class="pre">size,</span> <span class="pre">size_t</span> <span class="pre">nmemb,</span> <span class="pre">FILE</span> <span class="pre">*fp);</span></code></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ptr</span></code>: Указатель на массив или переменную, данные которой нужно записать.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: Размер одного элемента в байтах (часто <code class="docutils literal notranslate"><span class="pre">sizeof(тип)</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nmemb</span></code>: Количество элементов, которые нужно записать.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fp</span></code>: Указатель на <code class="docutils literal notranslate"><span class="pre">FILE</span></code>.</p></li>
+<li><p>Возвращает количество успешно записанных элементов.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">fread(void</span> <span class="pre">*ptr,</span> <span class="pre">size_t</span> <span class="pre">size,</span> <span class="pre">size_t</span> <span class="pre">nmemb,</span> <span class="pre">FILE</span> <span class="pre">*fp);</span></code></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ptr</span></code>: Указатель на буфер, куда будут считаны данные.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: Размер одного элемента в байтах.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nmemb</span></code>: Максимальное количество элементов, которое нужно считать.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fp</span></code>: Указатель на <code class="docutils literal notranslate"><span class="pre">FILE</span></code>.</p></li>
+<li><p>Возвращает количество успешно считанных элементов.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Эти функции очень мощные, так как позволяют читать и записывать целые структуры данных или массивы за один вызов, что эффективно для бинарных данных.</p>
+<p>—</p>
+<section id="id2">
+<h2><span class="section-number">10.1. </span>Пример 1: Запись строки в файл<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Название файла: <code class="docutils literal notranslate"><span class="pre">write_to_file.c</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // Подключаем стандартную библиотеку ввода/вывода для работы с файлами.</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Объявляем указатель на FILE. Это будет наш &quot;дескриптор&quot; файла.</span>
+<span class="w">    </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;output.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Открываем файл &quot;output.txt&quot; в режиме записи (&quot;w&quot;).</span>
+<span class="w">                                         </span><span class="c1">// Если файла нет, он будет создан. Если есть, его содержимое будет перезаписано.</span>
+
+<span class="w">    </span><span class="c1">// Проверяем, удалось ли открыть файл. fopen возвращает NULL в случае ошибки.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Не удалось открыть файл для записи.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Выводим сообщение об ошибке.</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Возвращаем ненулевой код, чтобы указать на ошибку.</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Записываем строку &quot;Привет, файл!\n&quot; в открытый файл.</span>
+<span class="w">    </span><span class="c1">// fprintf работает аналогично printf, но первым аргументом принимает указатель на файл.</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Привет, файл!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Закрываем файл. Это очень важный шаг, чтобы сохранить изменения и освободить ресурсы.</span>
+<span class="w">    </span><span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Строка успешно записана в output.txt</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Сообщаем пользователю об успехе.</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Возвращаем 0, чтобы указать на успешное завершение программы.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">10.2. </span>Пример 2: Чтение файла построчно<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>Название файла: <code class="docutils literal notranslate"><span class="pre">read_line_by_line.c</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // Подключаем стандартную библиотеку ввода/вывода.</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Открываем файл &quot;output.txt&quot; в режиме чтения (&quot;r&quot;).</span>
+<span class="w">    </span><span class="c1">// Этот файл был создан предыдущей программой.</span>
+<span class="w">    </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;output.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Проверяем, удалось ли открыть файл.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Не удалось открыть файл для чтения. Убедитесь, что &#39;output.txt&#39; существует.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Код ошибки.</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span><span class="w"> </span><span class="c1">// Объявляем буфер (массив символов) для хранения считанной строки.</span>
+<span class="w">                      </span><span class="c1">// Размер 256 байт означает, что мы можем прочитать строку до 255 символов + завершающий NULL.</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Чтение содержимого файла &#39;output.txt&#39;:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Используем цикл while и функцию fgets для чтения файла построчно.</span>
+<span class="w">    </span><span class="c1">// fgets(буфер, размер_буфера, указатель_на_файл)</span>
+<span class="w">    </span><span class="c1">// Она читает строку из файла до символа новой строки, или до достижения конца файла,</span>
+<span class="w">    </span><span class="c1">// или до того, как будет считано (размер_буфера - 1) символов.</span>
+<span class="w">    </span><span class="c1">// Возвращает NULL при достижении конца файла или ошибке.</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span><span class="w"> </span><span class="n">fp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Считано: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">);</span><span class="w"> </span><span class="c1">// Выводим считанную строку на консоль.</span>
+<span class="w">                                       </span><span class="c1">// fgets включает символ новой строки &#39;\n&#39; (если он есть в файле),</span>
+<span class="w">                                       </span><span class="c1">// поэтому здесь не нужно добавлять свой &#39;\n&#39;.</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Закрываем файл после завершения чтения.</span>
+<span class="w">    </span><span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Чтение файла завершено.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Успешное завершение.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">10.3. </span>Пример 3: Запись и чтение бинарного файла<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>Название файла: <code class="docutils literal notranslate"><span class="pre">binary_file_rw.c</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // Подключаем стандартную библиотеку ввода/вывода.</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// --- Часть 1: Запись в бинарный файл ---</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">numbers</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c1">// Объявляем массив целых чисел для записи.</span>
+<span class="w">    </span><span class="c1">// Открываем файл &quot;numbers.bin&quot; в режиме бинарной записи (&quot;wb&quot;).</span>
+<span class="w">    </span><span class="c1">// &#39;w&#39; - запись, &#39;b&#39; - бинарный режим.</span>
+<span class="w">    </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;numbers.bin&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;wb&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Проверяем, успешно ли открыт файл.</span>
+<span class="w">        </span><span class="c1">// Записываем массив чисел в файл.</span>
+<span class="w">        </span><span class="c1">// fwrite(указатель_на_данные, размер_одного_элемента, количество_элементов, указатель_на_файл)</span>
+<span class="w">        </span><span class="c1">// sizeof(int) определяет размер одного целого числа в байтах.</span>
+<span class="w">        </span><span class="c1">// 5 - это количество элементов в массиве numbers.</span>
+<span class="w">        </span><span class="n">fwrite</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">fp</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span><span class="w"> </span><span class="c1">// Закрываем файл.</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Массив чисел успешно записан в numbers.bin</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ошибка: Не удалось открыть файл &#39;numbers.bin&#39; для записи.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Код ошибки.</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// --- Часть 2: Чтение из бинарного файла ---</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">read_numbers</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span><span class="w"> </span><span class="c1">// Объявляем массив для хранения чисел, считанных из файла.</span>
+<span class="w">    </span><span class="c1">// Открываем тот же файл &quot;numbers.bin&quot; в режиме бинарного чтения (&quot;rb&quot;).</span>
+<span class="w">    </span><span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;numbers.bin&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rb&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Проверяем, успешно ли открыт файл.</span>
+<span class="w">        </span><span class="c1">// Считываем данные из файла в массив read_numbers.</span>
+<span class="w">        </span><span class="c1">// fread(указатель_на_буфер, размер_одного_элемента, количество_элементов, указатель_на_файл)</span>
+<span class="w">        </span><span class="c1">// Здесь мы ожидаем 5 целых чисел.</span>
+<span class="w">        </span><span class="n">fread</span><span class="p">(</span><span class="n">read_numbers</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">fp</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span><span class="w"> </span><span class="c1">// Закрываем файл.</span>
+
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Числа, считанные из &#39;numbers.bin&#39;: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Выводим считанные числа на консоль.</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">read_numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ошибка: Не удалось открыть файл &#39;numbers.bin&#39; для чтения.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Код ошибки.</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Успешное завершение программы.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">10.4. </span>Дополнительные ресурсы<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Практическое руководство: <a class="reference external" href="https://en.cppreference.com/w/c/io">https://en.cppreference.com/w/c/io</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter09_input/index.html" class="btn btn-neutral float-left" title="9. Глава 9: Ввод с клавиатуры" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter11_types_structs/index.html" class="btn btn-neutral float-right" title="11. Глава 11: Типы и структуры" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

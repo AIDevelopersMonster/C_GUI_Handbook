@@ -1,0 +1,23 @@
+Часть II: Разработка GUI с помощью GTK
+=======================================
+
+Во второй части вы научитесь создавать графические интерфейсы на языке Си с использованием библиотеки GTK. Мы начнем с простых окон, научимся обрабатывать события, размещать элементы и подключать визуальные редакторы интерфейса.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Главы:
+   :numbered:
+
+   chapter13_gtk_intro/index
+   chapter14_first_project/index
+   chapter15_buttons/index
+   chapter16_labels_layout/index
+   chapter17_grid_layout/index
+   chapter18_inputs/index
+   chapter19_comboboxes/index
+   chapter20_treeview/index
+   chapter21_menus/index
+   chapter22_dialogs/index
+   chapter23_builtin_dialogs/index
+   chapter24_widget_customization/index
+   chapter25_glade/index
