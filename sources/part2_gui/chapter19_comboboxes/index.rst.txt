@@ -23,15 +23,10 @@
 
 Прежде чем углубиться в примеры, давайте разберём ключевые компоненты, которые мы будем использовать:
 
- :doc: `GtkComboBox <https://docs.gtk.org/gtk3/class.ComboBox.html>`:
-    Это основной виджет выпадающего списка. Он может быть привязан к различным моделям данных (например, `GtkListStore` или `GtkTreeStore`) для получения своих элементов.
-    * **`GtkComboBoxText`**: Это упрощенная версия `GtkComboBox`, предназначенная специально для работы с простыми списками строк. Она автоматически создаёт и управляет внутренней моделью данных, что значительно упрощает код для базовых случаев.
-
- :doc: `GtkListStore <https://docs.gtk.org/gtk3/class.ListStore.html>`:
-    Это гибкая **модель данных** в GTK, которая представляет собой список строк, где каждая строка может содержать несколько столбцов данных разных типов. `GtkListStore` — это реализация интерфейса `GtkTreeModel` и используется для хранения данных, которые затем отображаются такими виджетами, как `GtkComboBox` или `GtkTreeView`.
-
- :doc: `GtkCellRendererText <https://docs.gtk.org/gtk3/class.CellRendererText.html>`:
-    Это "рендерер ячейки". В GTK архитектура "модель-представление" разделяет данные (модель) от их визуального представления (рендерер). `GtkCellRendererText` отвечает за **отображение текста** в ячейке виджета. Он не является виджетом сам по себе, а используется виджетами-представлениями (такими как `GtkComboBox` или `GtkTreeView`) для рисования содержимого ячеек.
+* `GtkComboBox`_: Это основной виджет выпадающего списка. Он может быть привязан к различным моделям данных (например, `GtkListStore` или `GtkTreeStore`) для получения своих элементов.
+* `GtkComboBoxText`_: Это упрощенная версия `GtkComboBox`, предназначенная специально для работы с простыми списками строк. Она автоматически создаёт и управляет внутренней моделью данных, что значительно упрощает код для базовых случаев.
+* `GtkListStore`_: Это гибкая **модель данных** в GTK, которая представляет собой список строк, где каждая строка может содержать несколько столбцов данных разных типов. `GtkListStore` — это реализация интерфейса `GtkTreeModel` и используется для хранения данных, которые затем отображаются такими виджетами, как `GtkComboBox` или `GtkTreeView`.
+* `GtkCellRendererText`_: Это "рендерер ячейки". В GTK архитектура "модель-представление" разделяет данные (модель) от их визуального представления (рендерер). `GtkCellRendererText` отвечает за **отображение текста** в ячейке виджета. Он не является виджетом сам по себе, а используется виджетами-представлениями (такими как `GtkComboBox` или `GtkTreeView`) для рисования содержимого ячеек.
 
 ---
 
@@ -379,3 +374,9 @@
 .. _GtkCellRendererText: https://docs.gtk.org/gtk3/class.CellRendererText.html
 .. _GtkTreeModel: https://docs.gtk.org/gtk3/iface.TreeModel.html
 .. _C_GUI_Handbook GitHub: https://github.com/AIDevelopersMonster/C_GUI_Handbook
+.. _GtkComboBox_docs: https://docs.gtk.org/gtk3/class.ComboBox.html
+.. _GtkComboBoxText: https://docs.gtk.org/gtk3/class.ComboBoxText.html
+.. _GtkListStore_docs: https://docs.gtk.org/gtk3/class.ListStore.html
+.. _GtkCellRendererText_docs: https://docs.gtk.org/gtk3/class.CellRendererText.html
+
+

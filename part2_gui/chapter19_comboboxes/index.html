@@ -18,7 +18,7 @@
     <script src="../../static/js/theme.js"></script>
     <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
     <link rel="search" title="Поиск" href="../../search.html" />
-    <link rel="next" title="8. Глава 20: Деревья (TreeView)" href="../chapter20_treeview/index.html" />
+    <link rel="next" title="8. Глава 20: Деревья и Таблицы (GtkTreeView)" href="../chapter20_treeview/index.html" />
     <link rel="prev" title="6. Глава 18: Элементы Пользовательского Ввода" href="../chapter18_inputs/index.html" /> 
 </head>
 
@@ -58,7 +58,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id4">7.4. Дополнительные Ресурсы</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter20_treeview/index.html">8. Глава 20: Деревья (TreeView)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter20_treeview/index.html">8. Глава 20: Деревья и Таблицы (GtkTreeView)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter21_menus/index.html">9. Глава 21: Меню</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter22_dialogs/index.html">10. Глава 22: Диалоги и окна сообщений</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter23_builtin_dialogs/index.html">11. Глава 23: Предустановленные диалоги</a></li>
@@ -113,23 +113,12 @@
 <section id="id1">
 <h2><span class="section-number">7.1. </span>Основные Компоненты для Работы со Списками<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>Прежде чем углубиться в примеры, давайте разберём ключевые компоненты, которые мы будем использовать:</p>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">doc<span class="colon">:</span></dt>
-<dd class="field-odd"><p><cite>GtkComboBox &lt;https://docs.gtk.org/gtk3/class.ComboBox.html&gt;</cite>:
-Это основной виджет выпадающего списка. Он может быть привязан к различным моделям данных (например, <cite>GtkListStore</cite> или <cite>GtkTreeStore</cite>) для получения своих элементов.
-* <strong>`GtkComboBoxText`</strong>: Это упрощенная версия <cite>GtkComboBox</cite>, предназначенная специально для работы с простыми списками строк. Она автоматически создаёт и управляет внутренней моделью данных, что значительно упрощает код для базовых случаев.</p>
-</dd>
-<dt class="field-even">doc<span class="colon">:</span></dt>
-<dd class="field-even"><p><cite>GtkListStore &lt;https://docs.gtk.org/gtk3/class.ListStore.html&gt;</cite>:
-Это гибкая <strong>модель данных</strong> в GTK, которая представляет собой список строк, где каждая строка может содержать несколько столбцов данных разных типов. <cite>GtkListStore</cite> — это реализация интерфейса <cite>GtkTreeModel</cite> и используется для хранения данных, которые затем отображаются такими виджетами, как <cite>GtkComboBox</cite> или <cite>GtkTreeView</cite>.</p>
-</dd>
-<dt class="field-odd">doc<span class="colon">:</span></dt>
-<dd class="field-odd"><p><cite>GtkCellRendererText &lt;https://docs.gtk.org/gtk3/class.CellRendererText.html&gt;</cite>:
-Это «рендерер ячейки». В GTK архитектура «модель-представление» разделяет данные (модель) от их визуального представления (рендерер). <cite>GtkCellRendererText</cite> отвечает за <strong>отображение текста</strong> в ячейке виджета. Он не является виджетом сам по себе, а используется виджетами-представлениями (такими как <cite>GtkComboBox</cite> или <cite>GtkTreeView</cite>) для рисования содержимого ячеек.</p>
-</dd>
-</dl>
-</div></blockquote>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.ComboBox.html">GtkComboBox</a>: Это основной виджет выпадающего списка. Он может быть привязан к различным моделям данных (например, <cite>GtkListStore</cite> или <cite>GtkTreeStore</cite>) для получения своих элементов.</p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.ComboBoxText.html">GtkComboBoxText</a>: Это упрощенная версия <cite>GtkComboBox</cite>, предназначенная специально для работы с простыми списками строк. Она автоматически создаёт и управляет внутренней моделью данных, что значительно упрощает код для базовых случаев.</p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.ListStore.html">GtkListStore</a>: Это гибкая <strong>модель данных</strong> в GTK, которая представляет собой список строк, где каждая строка может содержать несколько столбцов данных разных типов. <cite>GtkListStore</cite> — это реализация интерфейса <cite>GtkTreeModel</cite> и используется для хранения данных, которые затем отображаются такими виджетами, как <cite>GtkComboBox</cite> или <cite>GtkTreeView</cite>.</p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.CellRendererText.html">GtkCellRendererText</a>: Это «рендерер ячейки». В GTK архитектура «модель-представление» разделяет данные (модель) от их визуального представления (рендерер). <cite>GtkCellRendererText</cite> отвечает за <strong>отображение текста</strong> в ячейке виджета. Он не является виджетом сам по себе, а используется виджетами-представлениями (такими как <cite>GtkComboBox</cite> или <cite>GtkTreeView</cite>) для рисования содержимого ячеек.</p></li>
+</ul>
 <p>—</p>
 <p>### Пример 19.1: Простой GtkComboBox с массивом значений (GtkComboBoxText)</p>
 <p>Название исходного файла: <cite>combo_simple_example.c</cite></p>
@@ -465,7 +454,7 @@ gcc<span class="w"> </span>combo_liststore_example.c<span class="w"> </span>-o<s
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
         <a href="../chapter18_inputs/index.html" class="btn btn-neutral float-left" title="6. Глава 18: Элементы Пользовательского Ввода" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
-        <a href="../chapter20_treeview/index.html" class="btn btn-neutral float-right" title="8. Глава 20: Деревья (TreeView)" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../chapter20_treeview/index.html" class="btn btn-neutral float-right" title="8. Глава 20: Деревья и Таблицы (GtkTreeView)" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
