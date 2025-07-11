@@ -33,7 +33,7 @@
 18. [Глава 18: Поля ввода](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/18)  
 19. [Глава 19: Выпадающие списки и списки](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/19)  
 20. [Глава 20: Деревья (TreeView)](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/20)
-21. Глава 21: Меню  
+21. [Глава 21: Меню](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/21) 
 22. Глава 22: Диалоги и окна сообщений  
 23. Глава 23: Предустановленные диалоги  
 24. Глава 24: Настройка виджетов  
