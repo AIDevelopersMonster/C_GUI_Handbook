@@ -1,0 +1,32 @@
+/* style.css */
+
+/* Стиль для всех кнопок */
+button {
+    font-size: 18px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    color: white; /* Цвет текста */
+    background-color: #3f51b5; /* Темно-синий фон */
+    border-radius: 8px; /* Скругление углов */
+    padding: 10px 20px; /* Внутренние отступы */
+    border: 2px solid #283593; /* Рамка */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень */
+}
+
+/* Стиль при наведении на кнопку */
+button:hover {
+    background-color: #5c6bc0; /* Более светлый синий */
+}
+
+/* Стиль при нажатии кнопки */
+button:active {
+    background-color: #303f9f; /* Темнее синий */
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.4); /* Внутренняя тень */
+}
+
+/* Стиль для GtkLabel */
+label {
+    font-family: "Monospace"; /* Моноширинный шрифт */
+    font-size: 20px; /* Размер шрифта */
+    color: #e91e63; /* Ярко-розовый цвет текста */
+    margin-bottom: 20px; /* Отступ снизу */
+}
