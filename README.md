@@ -27,17 +27,17 @@
 ### Часть II: Разработка GUI с помощью GTK
 
 [Глава 13: Введение в GTK](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/13)  
-[Глава 14: Первый GTK-проект](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/14) 
+[Глава 14: Первый GTK-проект](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/14)  
 [Глава 15: Кнопки и события](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/15)  
 [Глава 16: Метки и базовый макет](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/16)  
 [Глава 17: Расширенный макет](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/17)  
 [Глава 18: Поля ввода](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/18)  
 [Глава 19: Выпадающие списки и списки](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/19)  
-[Глава 20: Деревья (TreeView)](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/20) 
+[Глава 20: Деревья (TreeView)](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/20)  
 [Глава 21: Меню](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/21)  
 [Глава 22: Диалоги и окна сообщений](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/22)  
 [Глава 23: Предустановленные диалоги](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/23)   
-[Глава 24: Настройка виджетов](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/24) 
+[Глава 24: Настройка виджетов](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/24)   
 [Глава 25: Glade — визуальный редактор интерфейсов](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/25)
 
 ### Часть III: Приложения и справка
