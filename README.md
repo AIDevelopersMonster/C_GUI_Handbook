@@ -12,7 +12,7 @@
 ### Часть I: Основы языка Си
 
 [Глава 1: Введение](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/1)   
-[Глава 2: Переменные и арифметика](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/2) 
+[Глава 2: Переменные и арифметика](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/2)  
 [Глава 3: Условия и сравнения](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/3)  
 [Глава 4: Циклы и повторение кода](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/4)  
 [Глава 5: Указатели](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/5)  
@@ -20,9 +20,9 @@
 [Глава 7: Массивы и строки](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/7)  
 [Глава 8: Библиотека строк (`<string.h>`)](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/8)  
 [Глава 9: Ввод с клавиатуры](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/9)  
-[Глава 10: Работа с файлами](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/10) 
-[Глава 11: Типы и структуры](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/11) 
-[Глава 12: Заголовочные файлы и препроцессор](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/12)  
+[Глава 10: Работа с файлами](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/10)  
+[Глава 11: Типы и структуры](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/11)  
+[Глава 12: Заголовочные файлы и препроцессор](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/12)   
 
 ### Часть II: Разработка GUI с помощью GTK
 
