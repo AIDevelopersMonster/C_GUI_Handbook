@@ -36,7 +36,7 @@
 [Глава 21: Меню](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/21) 
 [Глава 22: Диалоги и окна сообщений](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/22) 
 [Глава 23: Предустановленные диалоги](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/23)  
-Глава 24: Настройка виджетов  
+[Глава 24: Настройка виджетов](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/24)
 Глава 25: Glade — визуальный редактор интерфейсов  
 
 ### Часть III: Приложения и справка
