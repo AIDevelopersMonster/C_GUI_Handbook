@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14. Глава 26: Интеграция GTK-приложений в Систему &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Часть III: Приложения и справка" href="../../part3_projects/index.html" />
+    <link rel="prev" title="13. Глава 25: Glade – Визуальный Редактор Интерфейсов" href="../chapter25_glade/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть II: Разработка GUI с помощью GTK</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter13_gtk_intro/index.html">1. Глава 13: Введение в GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14_first_project/index.html">2. Глава 14: Первый GTK-проект — Окно с кнопкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter15_buttons/index.html">3. Глава 15: Кнопки и обработка событий</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter16_labels_layout/index.html">4. Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter17_grid_layout/index.html">5. Глава 17: Гибкая Компоновка с GtkGrid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter18_inputs/index.html">6. Глава 18: Элементы Пользовательского Ввода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter19_comboboxes/index.html">7. Глава 19: Выпадающие Списки (ComboBox) и Модели Данных (ListStore)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter20_treeview/index.html">8. Глава 20: Деревья и Таблицы (GtkTreeView)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter21_menus/index.html">9. Глава 21: Меню Приложений (GtkMenuBar, GtkMenu, GtkMenuItem)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter22_dialogs/index.html">10. Глава 22: Диалоговые Окна и Окна Сообщений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter23_builtin_dialogs/index.html">11. Глава 23: Предустановленные Диалоги (GtkFileChooserDialog, GtkColorChooserDialog)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter24_widget_customization/index.html">12. Глава 24: Настройка Виджетов и Стилизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter25_glade/index.html">13. Глава 25: Glade – Визуальный Редактор Интерфейсов</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">14. Глава 26: Интеграция GTK-приложений в Систему</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">14.1. Запуск GTK-приложения с ярлыка</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#desktop">14.1.1. Создание файла <cite>.desktop</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">14.2. Добавление в системное меню приложений</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">14.3. Почему ярлык на рабочем столе запрашивает подтверждение?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">14.4. Запуск с ярлыка с выводом в терминал (для отладки)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">14.5. Заключение</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">14. </span>Глава 26: Интеграция GTK-приложений в Систему</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part2_gui/chapter26_desktop/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gtk">
+<h1><span class="section-number">14. </span>Глава 26: Интеграция GTK-приложений в Систему<a class="headerlink" href="#gtk" title="Permalink to this heading"></a></h1>
+<p>После того как ваше приложение на GTK успешно собрано и протестировано, вы можете сделать его ещё более удобным для запуска, добавив <strong>ярлык</strong> (или «лаунчер») в рабочую среду вашей операционной системы. Это позволит запускать приложение, как и любое другое установленное ПО — прямо из меню, с рабочего стола или через поиск.</p>
+<p>В Linux (включая Raspberry Pi OS, Ubuntu и другие дистрибутивы) ярлыки приложений обычно реализуются с помощью специальных <strong>файлов `.desktop`</strong>. Эти файлы содержат метаданные о приложении, такие как его имя, описание, путь к исполняемому файлу, иконку, категорию и другие свойства.</p>
+<p>—</p>
+<section id="id1">
+<h2><span class="section-number">14.1. </span>Запуск GTK-приложения с ярлыка<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<section id="desktop">
+<h3><span class="section-number">14.1.1. </span>Создание файла <cite>.desktop</cite><a class="headerlink" href="#desktop" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Создайте файл `.desktop`</strong>
+В вашем домашнем каталоге или прямо на рабочем столе (<cite>~/Desktop</cite>) создайте новый файл. Название файла обычно соответствует названию вашего приложения, с расширением <cite>.desktop</cite>. Например:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>~/Desktop/glade_example.desktop
+</pre></div>
+</div>
+</li>
+<li><p><strong>Добавьте следующее содержимое:</strong></p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="k">[Desktop Entry]</span>
+<span class="w">   </span><span class="na">Version</span><span class="o">=</span><span class="s">1.0</span>
+<span class="w">   </span><span class="na">Name</span><span class="o">=</span><span class="s">Пример Glade</span>
+<span class="w">   </span><span class="na">Comment</span><span class="o">=</span><span class="s">Мое первое GTK-приложение с Glade</span>
+<span class="w">   </span><span class="na">Exec</span><span class="o">=</span><span class="s">/home/Alex/myprg/25/glade_example</span>
+<span class="w">   </span><span class="na">Icon</span><span class="o">=</span><span class="s">/home/Alex/myprg/25/icon.png</span>
+<span class="w">   </span><span class="na">Terminal</span><span class="o">=</span><span class="s">false</span>
+<span class="w">   </span><span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="w">   </span><span class="na">Categories</span><span class="o">=</span><span class="s">Development</span><span class="c1">;Utility;GUI;</span>
+
+<span class="na">**Обязательно измените</span><span class="o">:</span><span class="s">**</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>`Exec=`</strong>: Это <strong>полный путь</strong> к вашему скомпилированному исполняемому файлу.</dt><dd><ul>
+<li><p><strong>Пример:</strong> <cite>Exec=/home/Alex/myprg/25/glade_example</cite></p></li>
+<li><p><strong>Совет:</strong> Для лучшей переносимости и во избежание жестких путей, если ваше приложение будет установлено в стандартную директорию (<cite>/usr/local/bin</cite> или <cite>/usr/bin</cite>), вы можете указать только имя файла: <cite>Exec=glade_example</cite>.</p></li>
+<li><p>Если вы используете относительный путь или хотите, чтобы приложение запускалось в его текущей директории, можно добавить <cite>Path=/home/Alex/myprg/25/</cite> и <cite>Exec=glade_example</cite>. Однако, для простых приложений прямой путь обычно работает хорошо.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`Icon=`</strong>: (Необязательно, но очень рекомендуется) Это <strong>полный путь</strong> к PNG или SVG файлу иконки вашего приложения.</dt><dd><ul>
+<li><p><strong>Пример:</strong> <cite>Icon=/home/Alex/myprg/25/icon.png</cite></p></li>
+<li><p><strong>Совет:</strong> Для стандартных иконок системы или если вы установите свою иконку в системные пути (например, <cite>/usr/share/icons/hicolor/scalable/apps/</cite>), можно указать только имя иконки без расширения: <cite>Icon=glade_example</cite>.</p></li>
+<li><p><strong>Создание иконки:</strong> Вы можете нарисовать простую иконку в любом графическом редакторе (например, GIMP) и сохранить её в формате <cite>.png</cite> (рекомендуемые размеры: 48x48, 64x64, 128x128 пикселей).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>`Terminal=false`</strong>: Это очень важное свойство для GTK-приложений. Оно указывает системе, что приложение <strong>не требует запуска в терминале</strong>. Если бы оно было <cite>true</cite>, при каждом запуске приложения открывалось бы отдельное окно терминала, что нежелательно для графического интерфейса.</p></li>
+<li><p><strong>`Categories=`</strong>: Помогает системе рабочего стола правильно классифицировать ваше приложение в меню. Можете добавить или изменить категории по вкусу (например, <cite>Development;Utility;Education;</cite>). <cite>GUI;</cite> часто используется для приложений с графическим интерфейсом.</p></li>
+</ul>
+</li>
+<li><p><strong>Сделайте файл исполняемым:</strong>
+После сохранения файла <cite>.desktop</cite> необходимо сделать его исполняемым. Это сообщит системе, что это не просто текстовый файл, а файл, который можно «запустить».</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>~/Desktop/glade_example.desktop
+</pre></div>
+</div>
+</li>
+<li><p><strong>Проверьте ярлык на рабочем столе:</strong>
+* Если вы сохранили файл в <cite>~/Desktop</cite>, вы должны увидеть его иконку. При первом клике может появиться диалоговое окно с вопросом, что вы хотите сделать с файлом (например, «Execute File»).
+* <strong>При первом запуске на рабочем столе (особенно в Raspberry Pi OS/LXDE/PIXEL):</strong> Система безопасности может спросить, хотите ли вы «выполнить» файл. Это происходит потому, что файлы <cite>.desktop</cite>, созданные напрямую на рабочем столе, часто требуют явного подтверждения пользователя. Выберите опцию «Execute» или «Trust and Launch», если такая доступна. <strong>Однако, имейте в виду, что в некоторых средах рабочего стола этот запрос может повторяться при каждом запуске с рабочего стола.</strong> Об этом подробнее в следующем разделе.</p></li>
+</ol>
+<p>—</p>
+</section>
+</section>
+<section id="id2">
+<h2><span class="section-number">14.2. </span>Добавление в системное меню приложений<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Чтобы ваш ярлык появился в меню приложений (как и большинство установленных программ), его следует поместить в одну из стандартных директорий для файлов <cite>.desktop</cite>:</p>
+<ul>
+<li><dl>
+<dt><strong>Для всех пользователей системы:</strong></dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>cp<span class="w"> </span>~/Desktop/glade_example.desktop<span class="w"> </span>/usr/share/applications/
+</pre></div>
+</div>
+<p>Это сделает ярлык доступным для всех пользователей на компьютере.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>Только для текущего пользователя:</strong></dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/share/applications
+cp<span class="w"> </span>~/Desktop/glade_example.desktop<span class="w"> </span>~/.local/share/applications/
+</pre></div>
+</div>
+<p>Эта опция предпочтительнее, если вы разрабатываете приложение для себя или не хотите, чтобы оно было доступно глобально.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>После копирования файла <cite>.desktop</cite> в одну из этих директорий, ярлык появится в меню приложений (возможно, потребуется <strong>перезагрузка сессии</strong> пользователя или перезапуск рабочего стола, чтобы изменения вступили в силу и ярлык стал виден).</p>
+<p><strong>Важное примечание:</strong> При запуске приложения <strong>из меню приложений</strong> запрос «Execute File» <strong>не появится</strong>, так как файлы <cite>.desktop</cite> в этих системных директориях автоматически считаются доверенными. Это стандартный и рекомендуемый способ запуска установленных приложений в Linux.</p>
+<p>—</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">14.3. </span>Почему ярлык на рабочем столе запрашивает подтверждение?<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>В некоторых окружениях рабочего стола (таких как LXDE/PIXEL в Raspberry Pi OS) существует разница в обработке <cite>.desktop</cite> файлов в зависимости от их расположения:</p>
+<ul class="simple">
+<li><p><strong>На рабочем столе (`~/Desktop`):</strong> Файловый менеджер, управляющий рабочим столом, рассматривает файлы <cite>.desktop</cite> как потенциально исполняемые скрипты. Для повышения безопасности он может требовать явного подтверждения пользователя (диалог «Execute File») при каждом запуске, даже если файл уже помечен как исполняемый (<cite>chmod +x</cite>). Это сделано для предотвращения случайного запуска вредоносных файлов, скопированных на рабочий стол.</p></li>
+<li><p><strong>В системных директориях приложений (`~/.local/share/applications/` или `/usr/share/applications/`):</strong> Эти директории являются <strong>доверенными местами</strong> для файлов <cite>.desktop</cite>. Когда вы помещаете ярлык сюда, система автоматически считает его легитимным приложением, и никаких дополнительных запросов безопасности при запуске не возникает.</p></li>
+</ul>
+<p>Таким образом, для надежного и бесшовного запуска приложения <strong>рекомендуется использовать ярлык из меню приложений</strong>, переместив <cite>.desktop</cite> файл в <cite>~/.local/share/applications/</cite>.</p>
+<p>—</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">14.4. </span>Запуск с ярлыка с выводом в терминал (для отладки)<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>Иногда при запуске через ярлык бывает полезно видеть вывод программы в терминале для отладки, даже если <cite>Terminal=false</cite>. Это можно сделать, изменив строку <cite>Exec=</cite> в вашем <cite>.desktop</cite> файле следующим образом:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">Exec</span><span class="o">=</span><span class="s">sh -c &quot;nohup /home/Alex/myprg/25/glade_example &gt; /tmp/glade_example.log 2&gt;&amp;1 &amp;&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><cite>sh -c «…»</cite>: Запускает команду в новой оболочке.</p></li>
+<li><p><cite>nohup</cite>: Гарантирует, что процесс не будет завершен при закрытии терминала, из которого вы могли бы его запустить вручную.</p></li>
+<li><p><cite>&gt; /tmp/glade_example.log 2&gt;&amp;1</cite>: Перенаправляет весь стандартный вывод (<cite>stdout</cite>) и ошибки (<cite>stderr</cite>) в файл <cite>/tmp/glade_example.log</cite>. Вы можете выбрать любое другое имя и путь для лог-файла.</p></li>
+<li><p><cite>&amp;</cite>: Запускает команду в фоновом режиме, не блокируя терминал.</p></li>
+</ul>
+<p>Этот метод позволяет вашему приложению запускаться как обычное GUI-приложение, но при этом все сообщения <cite>g_print()</cite> и другие выводы будут сохраняться в указанном лог-файле для последующего анализа. При этом <strong>терминал сам по себе не будет открываться</strong>.</p>
+<p>—</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">14.5. </span>Заключение<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>Теперь ваше GTK-приложение можно запускать, как любое другое установленное ПО — прямо из меню, с рабочего стола или через встроенный поиск приложений вашей рабочей среды. Это значительно повышает удобство использования и интеграцию вашего приложения в систему.</p>
+<p>—</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter25_glade/index.html" class="btn btn-neutral float-left" title="13. Глава 25: Glade – Визуальный Редактор Интерфейсов" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../../part3_projects/index.html" class="btn btn-neutral float-right" title="Часть III: Приложения и справка" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

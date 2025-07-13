@@ -21,3 +21,4 @@
    chapter23_builtin_dialogs/index
    chapter24_widget_customization/index
    chapter25_glade/index
+   chapter26_desktop/index
