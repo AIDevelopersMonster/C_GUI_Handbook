@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12. Глава 24: Настройка Виджетов и Стилизация &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="13. Глава 25: Glade – визуальный редактор интерфейсов" href="../chapter25_glade/index.html" />
+    <link rel="prev" title="11. Глава 23: Предустановленные Диалоги (GtkFileChooserDialog, GtkColorChooserDialog)" href="../chapter23_builtin_dialogs/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть II: Разработка GUI с помощью GTK</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter13_gtk_intro/index.html">1. Глава 13: Введение в GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14_first_project/index.html">2. Глава 14: Первый GTK-проект — Окно с кнопкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter15_buttons/index.html">3. Глава 15: Кнопки и обработка событий</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter16_labels_layout/index.html">4. Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter17_grid_layout/index.html">5. Глава 17: Гибкая Компоновка с GtkGrid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter18_inputs/index.html">6. Глава 18: Элементы Пользовательского Ввода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter19_comboboxes/index.html">7. Глава 19: Выпадающие Списки (ComboBox) и Модели Данных (ListStore)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter20_treeview/index.html">8. Глава 20: Деревья и Таблицы (GtkTreeView)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter21_menus/index.html">9. Глава 21: Меню Приложений (GtkMenuBar, GtkMenu, GtkMenuItem)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter22_dialogs/index.html">10. Глава 22: Диалоговые Окна и Окна Сообщений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter23_builtin_dialogs/index.html">11. Глава 23: Предустановленные Диалоги (GtkFileChooserDialog, GtkColorChooserDialog)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12. Глава 24: Настройка Виджетов и Стилизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter25_glade/index.html">13. Глава 25: Glade – визуальный редактор интерфейсов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">12. </span>Глава 24: Настройка Виджетов и Стилизация</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part2_gui/chapter24_widget_customization/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">12. </span>Глава 24: Настройка Виджетов и Стилизация<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>В этой главе мы подробно рассмотрим, как <strong>визуально настраивать элементы интерфейса (виджеты)</strong> в GTK. Это включает в себя изменение их размеров, цветов, шрифтов, а также управление общим поведением через свойства.</p>
+<p>GTK предоставляет мощные механизмы для гибкого управления внешним видом и поведением виджетов: как программно, используя функции API, так и декларативно, через таблицы стилей <strong>CSS</strong>.</p>
+<p>—</p>
+<p>### Основные понятия и функции</p>
+<ul class="simple">
+<li><p><strong>`gtk_widget_set_size_request()`</strong>: Устанавливает <strong>минимальные</strong> требуемые размеры виджета (ширина, высота). Виджет не будет меньше этих размеров.</p></li>
+<li><p><strong>`gtk_widget_set_hexpand()`</strong>: Указывает, должен ли виджет <strong>расширяться по горизонтали</strong>, занимая доступное пространство. <cite>TRUE</cite> разрешает расширение.</p></li>
+<li><p><strong>`gtk_widget_set_vexpand()`</strong>: Указывает, должен ли виджет <strong>расширяться по вертикали</strong>, занимая доступное пространство. <cite>TRUE</cite> разрешает расширение.</p></li>
+<li><p><strong>`gtk_css_provider_new()`</strong>: Создает новый объект для загрузки CSS-стилей.</p></li>
+<li><p><strong>`gtk_css_provider_load_from_path()`</strong>: Загружает CSS-стили из указанного файла.</p></li>
+<li><p><strong>`gdk_screen_get_default()`</strong>: Получает объект <cite>GdkScreen</cite>, представляющий основной экран, к которому будут применены стили.</p></li>
+<li><p><strong>`gtk_style_context_add_provider_for_screen()`</strong>: Добавляет провайдер CSS-стилей для всего экрана, делая их глобально доступными.</p></li>
+<li><p><strong>`GTK_STYLE_PROVIDER_PRIORITY_USER`</strong>: Приоритет CSS-стилей, добавленных пользователем. Стиль пользователя переопределяет стиль темы.</p></li>
+<li><p><strong>`g_object_unref()`</strong>: Уменьшает счетчик ссылок на объект. Используется для освобождения ресурсов <cite>GtkCssProvider</cite> после его добавления.</p></li>
+<li><p><strong>`gtk_button_set_label()`</strong>: Устанавливает текстовую метку для <cite>GtkButton</cite>.</p></li>
+<li><p><strong>`gtk_label_set_justify()`</strong>: Устанавливает выравнивание текста внутри <cite>GtkLabel</cite>.</p></li>
+<li><p><strong>`gtk_entry_set_placeholder_text()`</strong>: Устанавливает текст-заполнитель (подсказку) для <cite>GtkEntry</cite>, который виден, когда поле пустое.</p></li>
+<li><p><strong>`gtk_entry_set_max_length()`</strong>: Устанавливает максимальное количество символов, которые можно ввести в <cite>GtkEntry</cite>.</p></li>
+<li><p><strong>`gtk_widget_set_sensitive()`</strong>: Делает виджет активным (<cite>TRUE</cite>) или неактивным (<cite>FALSE</cite>). Неактивные виджеты не реагируют на ввод пользователя.</p></li>
+<li><p><strong>`gtk_widget_set_visible()`</strong>: Делает виджет видимым (<cite>TRUE</cite>) или скрытым (<cite>FALSE</cite>).</p></li>
+<li><p><strong>`GtkCssProvider`_</strong>: Объект, который загружает и хранит CSS-стили.</p></li>
+<li><p><strong>`GtkStyleContext`_</strong>: Объект, через который виджеты получают и применяют стили.</p></li>
+<li><p><strong>`GdkScreen`_</strong>: Объект, представляющий экран дисплея.</p></li>
+</ul>
+<p>—</p>
+<p>### Исходные файлы в этой главе</p>
+<p>В этой главе мы рассмотрим три практических примера:</p>
+<ul class="simple">
+<li><dl class="field-list simple">
+<dt class="field-odd">download<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>file_chooser_open_example.c</cite> — Демонстрирует использование <cite>GtkFileChooserDialog</cite> для <strong>открытия существующего файла</strong>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="field-list simple">
+<dt class="field-odd">download<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>file_chooser_save_example.c</cite> — Показывает, как использовать <cite>GtkFileChooserDialog</cite> для <strong>сохранения нового файла</strong> или перезаписи существующего.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="field-list simple">
+<dt class="field-odd">download<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>color_chooser_example.c</cite> — Иллюстрирует применение <cite>GtkColorChooserDialog</cite> для <strong>выбора цвета</strong>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>—</p>
+<p>### Пример 24.1: Настройка Размеров Виджета и Гибкость Масштабирования</p>
+<p><strong>Файл:</strong> <code class="docutils literal notranslate"><span class="pre">size_and_expand_example.c</span></code></p>
+<p>В этом примере мы создадим окно с несколькими кнопками, чтобы наглядно показать, как <cite>gtk_widget_set_size_request()</cite> влияет на минимальный размер виджета, а <cite>gtk_widget_set_hexpand()</cite> и <cite>gtk_widget_set_vexpand()</cite> позволяют виджетам расширяться при изменении размеров окна.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Главная функция программы.</span>
+<span class="cm"> * Демонстрирует настройку размеров и свойств расширения виджетов.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param argc Количество аргументов командной строки.</span>
+<span class="cm"> * @param argv Массив строк аргументов командной строки.</span>
+<span class="cm"> * @return Код завершения программы.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="p">;</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">vbox</span><span class="p">;</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">button1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">button2</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">button3</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">gtk_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 1. Создание главного окна</span>
+<span class="w">    </span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_window_new</span><span class="p">(</span><span class="n">GTK_WINDOW_TOPLEVEL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Настройка Размеров и Расширения&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">);</span><span class="w"> </span><span class="c1">// Начальный размер окна</span>
+<span class="w">    </span><span class="n">gtk_window_set_position</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">GTK_WIN_POS_CENTER</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;destroy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">gtk_main_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Создание GtkBox для размещения кнопок по вертикали</span>
+<span class="w">    </span><span class="n">vbox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_box_new</span><span class="p">(</span><span class="n">GTK_ORIENTATION_VERTICAL</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// Отступ между элементами 10px</span>
+<span class="w">    </span><span class="n">gtk_container_set_border_width</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// Внешний отступ 10px</span>
+<span class="w">    </span><span class="n">gtk_container_add</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">vbox</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. Кнопка 1: Фиксированный размер</span>
+<span class="w">    </span><span class="n">button1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Фиксированный размер (150x50)&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Устанавливаем минимальный требуемый размер виджета.</span>
+<span class="w">    </span><span class="c1">// Виджет никогда не будет меньше этих размеров, но может быть больше.</span>
+<span class="w">    </span><span class="n">gtk_widget_set_size_request</span><span class="p">(</span><span class="n">button1</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Не позволяем кнопке расширяться, она будет занимать только свой минимальный размер.</span>
+<span class="w">    </span><span class="n">gtk_widget_set_hexpand</span><span class="p">(</span><span class="n">button1</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_widget_set_vexpand</span><span class="p">(</span><span class="n">button1</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">button1</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// FALSE, FALSE - не расширять, не заполнять</span>
+
+<span class="w">    </span><span class="c1">// 4. Кнопка 2: Расширение по горизонтали</span>
+<span class="w">    </span><span class="n">button2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Расширение по горизонтали&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_widget_set_size_request</span><span class="p">(</span><span class="n">button2</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">);</span><span class="w"> </span><span class="c1">// Минимальный размер</span>
+<span class="w">    </span><span class="n">gtk_widget_set_hexpand</span><span class="p">(</span><span class="n">button2</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">);</span><span class="w">       </span><span class="c1">// Позволяем кнопке расширяться по горизонтали</span>
+<span class="w">    </span><span class="n">gtk_widget_set_vexpand</span><span class="p">(</span><span class="n">button2</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">);</span><span class="w">      </span><span class="c1">// Не позволяем расширяться по вертикали</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">button2</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// TRUE, TRUE - расширять, заполнять</span>
+
+<span class="w">    </span><span class="c1">// 5. Кнопка 3: Расширение по вертикали</span>
+<span class="w">    </span><span class="n">button3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Расширение по вертикали&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_widget_set_size_request</span><span class="p">(</span><span class="n">button3</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">);</span><span class="w"> </span><span class="c1">// Минимальный размер</span>
+<span class="w">    </span><span class="n">gtk_widget_set_hexpand</span><span class="p">(</span><span class="n">button3</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">);</span><span class="w">      </span><span class="c1">// Не позволяем расширяться по горизонтали</span>
+<span class="w">    </span><span class="n">gtk_widget_set_vexpand</span><span class="p">(</span><span class="n">button3</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">);</span><span class="w">       </span><span class="c1">// Позволяем кнопке расширяться по вертикали</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">button3</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// TRUE, TRUE - расширять, заполнять</span>
+
+<span class="w">    </span><span class="c1">// 6. Отображение всех виджетов и запуск главного цикла GTK</span>
+<span class="w">    </span><span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_main</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+<p>### Пример 24.2: Настройка Шрифтов и Цветов через CSS</p>
+<p><strong>Файл:</strong> <code class="docutils literal notranslate"><span class="pre">css_styling_example.c</span></code></p>
+<p>Этот пример покажет, как использовать CSS-файл для стилизации виджетов GTK. Мы создадим окно с кнопкой и меткой, а затем применим к ним стили из внешнего файла <code class="docutils literal notranslate"><span class="pre">style.css</span></code>, чтобы изменить шрифт, цвет текста и фон.</p>
+<p><strong>Создайте файл ``style.css`` в той же директории:</strong></p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* style.css */</span>
+
+<span class="c">/* Стиль для всех кнопок */</span>
+<span class="nt">button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Размер шрифта */</span>
+<span class="w">    </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span><span class="w"> </span><span class="c">/* Жирный шрифт */</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span><span class="w"> </span><span class="c">/* Цвет текста */</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#3f51b5</span><span class="p">;</span><span class="w"> </span><span class="c">/* Темно-синий фон */</span>
+<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Скругление углов */</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Внутренние отступы */</span>
+<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#283593</span><span class="p">;</span><span class="w"> </span><span class="c">/* Рамка */</span>
+<span class="w">    </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span><span class="w"> </span><span class="c">/* Тень */</span>
+<span class="p">}</span>
+
+<span class="c">/* Стиль при наведении на кнопку */</span>
+<span class="nt">button</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#5c6bc0</span><span class="p">;</span><span class="w"> </span><span class="c">/* Более светлый синий */</span>
+<span class="p">}</span>
+
+<span class="c">/* Стиль при нажатии кнопки */</span>
+<span class="nt">button</span><span class="p">:</span><span class="nd">active</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#303f9f</span><span class="p">;</span><span class="w"> </span><span class="c">/* Темнее синий */</span>
+<span class="w">    </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="kc">inset</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4</span><span class="p">);</span><span class="w"> </span><span class="c">/* Внутренняя тень */</span>
+<span class="p">}</span>
+
+<span class="c">/* Стиль для GtkLabel */</span>
+<span class="nt">label</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Monospace&quot;</span><span class="p">;</span><span class="w"> </span><span class="c">/* Моноширинный шрифт */</span>
+<span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Размер шрифта */</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e91e63</span><span class="p">;</span><span class="w"> </span><span class="c">/* Ярко-розовый цвет текста */</span>
+<span class="w">    </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Отступ снизу */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Исходный код ``css_styling_example.c``:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Загружает и применяет CSS-стили из файла.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param css_file_path Путь к CSS-файлу.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">load_css</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">css_file_path</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GtkCssProvider</span><span class="w"> </span><span class="o">*</span><span class="n">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_css_provider_new</span><span class="p">();</span><span class="w"> </span><span class="c1">// Создаем</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter23_builtin_dialogs/index.html" class="btn btn-neutral float-left" title="11. Глава 23: Предустановленные Диалоги (GtkFileChooserDialog, GtkColorChooserDialog)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter25_glade/index.html" class="btn btn-neutral float-right" title="13. Глава 25: Glade – визуальный редактор интерфейсов" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Глава 18: Элементы Пользовательского Ввода &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="7. Глава 19: Выпадающие списки и списки" href="../chapter19_comboboxes/index.html" />
+    <link rel="prev" title="5. Глава 17: Гибкая Компоновка с GtkGrid" href="../chapter17_grid_layout/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть II: Разработка GUI с помощью GTK</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter13_gtk_intro/index.html">1. Глава 13: Введение в GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14_first_project/index.html">2. Глава 14: Первый GTK-проект — Окно с кнопкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter15_buttons/index.html">3. Глава 15: Кнопки и обработка событий</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter16_labels_layout/index.html">4. Глава 16: Метки и Базовые Контейнеры Компоновки (GtkBox)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter17_grid_layout/index.html">5. Глава 17: Гибкая Компоновка с GtkGrid</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Глава 18: Элементы Пользовательского Ввода</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gtkentry">6.1. GtkEntry: Однострочное Текстовое Поле</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gtkspinbutton">6.2. GtkSpinButton: Числовой Спиннер</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gtkcheckbutton">6.3. GtkCheckButton: Флажок (Чекбокс)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.4. Обработка Событий: Общие Принципы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.5. Компиляция и Запуск</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">6.6. Ожидаемый результат</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">6.7. Дополнительные материалы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">6.8. Навигация</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter19_comboboxes/index.html">7. Глава 19: Выпадающие списки и списки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter20_treeview/index.html">8. Глава 20: Деревья (TreeView)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter21_menus/index.html">9. Глава 21: Меню</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter22_dialogs/index.html">10. Глава 22: Диалоги и окна сообщений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter23_builtin_dialogs/index.html">11. Глава 23: Предустановленные диалоги</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter24_widget_customization/index.html">12. Глава 24: Настройка виджетов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter25_glade/index.html">13. Глава 25: Glade – визуальный редактор интерфейсов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Глава 18: Элементы Пользовательского Ввода</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part2_gui/chapter18_inputs/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">6. </span>Глава 18: Элементы Пользовательского Ввода<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>В этой главе мы сосредоточимся на ключевых элементах пользовательского ввода в GTK, которые позволяют вашему приложению получать информацию от пользователя. Мы рассмотрим три основных виджета:</p>
+<ul class="simple">
+<li><dl class="field-list simple">
+<dt class="field-odd">doc<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>GtkEntry &lt;https://docs.gtk.org/gtk3/class.Entry.html&gt;</cite> — <strong>однострочное текстовое поле</strong> для ввода текста.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="field-list simple">
+<dt class="field-odd">doc<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>GtkSpinButton &lt;https://docs.gtk.org/gtk3/class.SpinButton.html&gt;</cite> — <strong>числовой спиннер</strong> для ввода чисел в заданном диапазоне.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="field-list simple">
+<dt class="field-odd">doc<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>GtkCheckButton &lt;https://docs.gtk.org/gtk3/class.CheckButton.html&gt;</cite> — <strong>чекбокс (флажок)</strong> для переключения логических состояний (включено/выключено).</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Эти виджеты являются основой для создания интерактивных форм, настроек и других элементов управления, где требуется получить данные от пользователя.</p>
+<p>—</p>
+<section id="gtkentry">
+<h2><span class="section-number">6.1. </span>GtkEntry: Однострочное Текстовое Поле<a class="headerlink" href="#gtkentry" title="Permalink to this heading"></a></h2>
+<p><cite>GtkEntry</cite> — это универсальный виджет для ввода и отображения однострочного текста. Он широко используется для полей ввода имени пользователя, пароля, пути к файлу, поисковых запросов и других текстовых данных.</p>
+<p>### Основные функции и свойства GtkEntry:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_entry_new()</span></code>: Создаёт новый пустой <cite>GtkEntry</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_entry_new_with_buffer(GtkEntryBuffer</span> <span class="pre">*buffer)</span></code>: Создаёт <cite>GtkEntry</cite> с привязанным буфером, что даёт больше контроля над текстом.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_entry_set_text(GtkEntry</span> <span class="pre">*entry,</span> <span class="pre">const</span> <span class="pre">gchar</span> <span class="pre">*text)</span></code>: Устанавливает текст в поле ввода.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_entry_get_text(GtkEntry</span> <span class="pre">*entry)</span></code>: Получает текущий текст из поля ввода. Возвращаемая строка принадлежит виджету, её не нужно освобождать, но она станет недействительной после изменения текста.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_entry_set_visibility(GtkEntry</span> <span class="pre">*entry,</span> <span class="pre">gboolean</span> <span class="pre">visible)</span></code>: Управляет видимостью текста (например, для полей пароля). <cite>FALSE</cite> скрывает текст, отображая символы-заполнители.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_entry_set_placeholder_text(GtkEntry</span> <span class="pre">*entry,</span> <span class="pre">const</span> <span class="pre">gchar</span> <span class="pre">*text)</span></code>: Устанавливает текст-подсказку, который отображается, когда поле пустое и не в фокусе.</p></li>
+</ul>
+<p>### Сигналы GtkEntry:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;changed&quot;</span></code>: Испускается при любом изменении текста в поле ввода.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;activate&quot;</span></code>: Испускается, когда пользователь нажимает Enter в поле ввода (часто используется для подтверждения ввода).</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="gtkspinbutton">
+<h2><span class="section-number">6.2. </span>GtkSpinButton: Числовой Спиннер<a class="headerlink" href="#gtkspinbutton" title="Permalink to this heading"></a></h2>
+<p><cite>GtkSpinButton</cite> — это удобный виджет для ввода числовых значений в определённом диапазоне. Он состоит из текстового поля и двух кнопок (стрелок) для увеличения или уменьшения значения. Идеально подходит для ввода количества, уровня громкости, выбора номера страницы и т.д.</p>
+<p><cite>GtkSpinButton</cite> тесно связан с объектом <cite>GtkAdjustment</cite>, который определяет диапазон значений, шаг изменения и текущее значение.</p>
+<p>### Основные функции GtkSpinButton:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gtk_adjustment_new(gdouble</span> <span class="pre">value,</span> <span class="pre">gdouble</span> <span class="pre">lower,</span> <span class="pre">gdouble</span> <span class="pre">upper,</span> <span class="pre">gdouble</span> <span class="pre">step_increment,</span> <span class="pre">gdouble</span> <span class="pre">page_increment,</span> <span class="pre">gdouble</span> <span class="pre">page_size)</span></code>: Создаёт новый объект <cite>GtkAdjustment</cite>.</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: Начальное значение.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lower</span></code>: Минимально допустимое значение.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">upper</span></code>: Максимально допустимое значение.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">step_increment</span></code>: Шаг изменения при нажатии на стрелки (один щелчок).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">page_increment</span></code>: Шаг изменения при нажатии PageUp/PageDown (или Shift+стрелки).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">page_size</span></code>: Обычно 0 для <cite>GtkSpinButton</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gtk_spin_button_new(GtkAdjustment</span> <span class="pre">*adjustment,</span> <span class="pre">gdouble</span> <span class="pre">climb_rate,</span> <span class="pre">guint</span> <span class="pre">digits)</span></code>: Создаёт новый <cite>GtkSpinButton</cite>.</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">adjustment</span></code>: Объект <cite>GtkAdjustment</cite>, управляющий значениями.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">climb_rate</span></code>: Коэффициент ускорения изменения значения при удержании кнопки (обычно 1.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">digits</span></code>: Количество знаков после запятой для отображения. 0 для целых чисел.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_spin_button_get_value_as_int(GtkSpinButton</span> <span class="pre">*spin_button)</span></code>: Получает текущее значение спиннера как целое число.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_spin_button_get_value(GtkSpinButton</span> <span class="pre">*spin_button)</span></code>: Получает текущее значение спиннера как <cite>gdouble</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_spin_button_set_value(GtkSpinButton</span> <span class="pre">*spin_button,</span> <span class="pre">gdouble</span> <span class="pre">value)</span></code>: Устанавливает значение спиннера.</p></li>
+</ul>
+<p>### Сигналы GtkSpinButton:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;value-changed&quot;</span></code>: Испускается при любом изменении значения в спиннере (как от стрелок, так и от ручного ввода).</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="gtkcheckbutton">
+<h2><span class="section-number">6.3. </span>GtkCheckButton: Флажок (Чекбокс)<a class="headerlink" href="#gtkcheckbutton" title="Permalink to this heading"></a></h2>
+<p><cite>GtkCheckButton</cite> — это простой виджет-переключатель, который имеет два состояния: отмечен (включен) или не отмечен (выключен). Он используется для представления логических опций, которые пользователь может включить или выключить.</p>
+<p>### Основные функции GtkCheckButton:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_check_button_new()</span></code>: Создаёт новый пустой <cite>GtkCheckButton</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_check_button_new_with_label(const</span> <span class="pre">gchar</span> <span class="pre">*label)</span></code>: Создаёт <cite>GtkCheckButton</cite> с текстовой меткой рядом.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_check_button_new_with_mnemonic(const</span> <span class="pre">gchar</span> <span class="pre">*label)</span></code>: Создаёт <cite>GtkCheckButton</cite> с меткой, где подчёркнутый символ может быть использован для активации с клавиатуры (акселератор).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_toggle_button_get_active(GtkToggleButton</span> <span class="pre">*button)</span></code>: Получает текущее состояние чекбокса (<cite>TRUE</cite> если отмечен, <cite>FALSE</cite> если нет). <cite>GtkCheckButton</cite> является наследником <cite>GtkToggleButton</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gtk_toggle_button_set_active(GtkToggleButton</span> <span class="pre">*button,</span> <span class="pre">gboolean</span> <span class="pre">is_active)</span></code>: Устанавливает состояние чекбокса программно.</p></li>
+</ul>
+<p>### Сигналы GtkCheckButton:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;toggled&quot;</span></code>: Испускается каждый раз, когда состояние чекбокса меняется (пользователь отмечает или снимает отметку).</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">6.4. </span>Обработка Событий: Общие Принципы<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Для всех этих виджетов, как и для <cite>GtkButton</cite>, основным механизмом взаимодействия является система <strong>сигналов и слотов (callbacks)</strong>. Вы подключаете (<code class="docutils literal notranslate"><span class="pre">g_signal_connect</span></code>) свои функции-обработчики (<code class="docutils literal notranslate"><span class="pre">callbacks</span></code>) к определённым сигналам, которые испускают виджеты при определённых действиях пользователя.</p>
+<p>Пример подключения сигналов:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;changed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_entry_changed</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">g_signal_connect</span><span class="p">(</span><span class="n">spin</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value-changed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_spin_changed</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">g_signal_connect</span><span class="p">(</span><span class="n">check</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;toggled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_check_toggled</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>—</p>
+<p>### Пример 18.1: Окно с текстовым полем, спиннером и чекбоксом</p>
+<p>Название исходного файла: <cite>input_widgets_example.c</cite></p>
+<p>Эта программа демонстрирует создание окна с тремя описанными выше элементами ввода. Все они размещены вертикально с помощью <cite>GtkBox</cite>, а их изменения отслеживаются через соответствующие callback-функции, выводящие информацию в консоль.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtk/gtk.h&gt;</span><span class="c1"> // Подключаем основную библиотеку GTK.</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Обработчик сигнала &quot;changed&quot; для GtkEntry.</span>
+<span class="cm"> * Вызывается каждый раз при изменении текста в GtkEntry.</span>
+<span class="cm"> * @param entry Указатель на GtkEntry, который испустил сигнал.</span>
+<span class="cm"> * @param user_data Пользовательские данные (в данном случае NULL).</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">on_entry_changed</span><span class="p">(</span><span class="n">GtkEntry</span><span class="w"> </span><span class="o">*</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">user_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Получаем текущий текст из поля ввода.</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">gchar</span><span class="w"> </span><span class="o">*</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_entry_get_text</span><span class="p">(</span><span class="n">entry</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Entry changed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Обработчик сигнала &quot;value-changed&quot; для GtkSpinButton.</span>
+<span class="cm"> * Вызывается каждый раз при изменении числового значения в GtkSpinButton.</span>
+<span class="cm"> * @param spin Указатель на GtkSpinButton, который испустил сигнал.</span>
+<span class="cm"> * @param user_data Пользовательские данные (в данном случае NULL).</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">on_spin_changed</span><span class="p">(</span><span class="n">GtkSpinButton</span><span class="w"> </span><span class="o">*</span><span class="n">spin</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">user_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Получаем текущее значение спиннера как целое число.</span>
+<span class="w">    </span><span class="n">gint</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_spin_button_get_value_as_int</span><span class="p">(</span><span class="n">spin</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Spin value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Обработчик сигнала &quot;toggled&quot; для GtkCheckButton.</span>
+<span class="cm"> * Вызывается каждый раз при изменении состояния чекбокса (отмечен/не отмечен).</span>
+<span class="cm"> * @param check Указатель на GtkToggleButton (базовый класс для GtkCheckButton),</span>
+<span class="cm"> * который испустил сигнал.</span>
+<span class="cm"> * @param user_data Пользовательские данные (в данном случае NULL).</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">on_check_toggled</span><span class="p">(</span><span class="n">GtkToggleButton</span><span class="w"> </span><span class="o">*</span><span class="n">check</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">user_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Проверяем, активно ли (отмечено) состояние чекбокса.</span>
+<span class="w">    </span><span class="n">gboolean</span><span class="w"> </span><span class="n">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_toggle_button_get_active</span><span class="p">(</span><span class="n">check</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Check toggled: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">active</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;ON&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;OFF&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Выводим &quot;ON&quot; или &quot;OFF&quot;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Главная функция программы, точка входа.</span>
+<span class="cm"> * Инициализирует GTK, создает окно, добавляет в него элементы ввода</span>
+<span class="cm"> * и запускает главный цикл событий GTK.</span>
+<span class="cm"> * @param argc Количество аргументов командной строки.</span>
+<span class="cm"> * @param argv Массив строк аргументов командной строки.</span>
+<span class="cm"> * @return Код завершения программы.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Инициализация GTK. Всегда вызывается первой.</span>
+<span class="w">    </span><span class="n">gtk_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 1. Создание главного окна приложения.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_window_new</span><span class="p">(</span><span class="n">GTK_WINDOW_TOPLEVEL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Пример Полей Ввода&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gtk_window_set_position</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">GTK_WIN_POS_CENTER</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Подключение сигнала &quot;destroy&quot; для корректного завершения приложения.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;destroy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">gtk_main_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Создание вертикального контейнера GtkBox.</span>
+<span class="w">    </span><span class="c1">// Используем GtkBox для размещения всех виджетов вертикально,</span>
+<span class="w">    </span><span class="c1">// с отступом в 10 пикселей между ними.</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">vbox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_box_new</span><span class="p">(</span><span class="n">GTK_ORIENTATION_VERTICAL</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Добавляем GtkBox в главное окно.</span>
+<span class="w">    </span><span class="n">gtk_container_add</span><span class="p">(</span><span class="n">GTK_CONTAINER</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="n">vbox</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. Создание GtkEntry (текстового поля).</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">entry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_entry_new</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// Устанавливаем текст-заполнитель, который виден, когда поле пустое.</span>
+<span class="w">    </span><span class="n">gtk_entry_set_placeholder_text</span><span class="p">(</span><span class="n">GTK_ENTRY</span><span class="p">(</span><span class="n">entry</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Введите ваше имя...&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Добавляем GtkEntry в вертикальный GtkBox.</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Подключаем обработчик на изменение текста.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;changed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_entry_changed</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 4. Создание GtkSpinButton (числового спиннера).</span>
+<span class="w">    </span><span class="c1">// Сначала создаем объект GtkAdjustment, который определяет диапазон и шаг.</span>
+<span class="w">    </span><span class="c1">// (начальное значение, нижний предел, верхний предел, шаг при клике, шаг при PageUp/Down, размер страницы)</span>
+<span class="w">    </span><span class="n">GtkAdjustment</span><span class="w"> </span><span class="o">*</span><span class="n">adj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_adjustment_new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Создаем спиннер, привязывая его к созданному GtkAdjustment.</span>
+<span class="w">    </span><span class="c1">// 1.0 - скорость &quot;взбирания&quot; при удержании кнопки, 0 - количество знаков после запятой (целые числа).</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">spin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_spin_button_new</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Добавляем спиннер в вертикальный GtkBox.</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">spin</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Подключаем обработчик на изменение значения.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">spin</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value-changed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_spin_changed</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 5. Создание GtkCheckButton (флажка/чекбокса).</span>
+<span class="w">    </span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_check_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Я согласен с условиями&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Устанавливаем начальное состояние чекбокса (например, изначально не отмечен).</span>
+<span class="w">    </span><span class="n">gtk_toggle_button_set_active</span><span class="p">(</span><span class="n">GTK_TOGGLE_BUTTON</span><span class="p">(</span><span class="n">check</span><span class="p">),</span><span class="w"> </span><span class="n">FALSE</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Добавляем чекбокс в вертикальный GtkBox.</span>
+<span class="w">    </span><span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">check</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Подключаем обработчик на изменение состояния.</span>
+<span class="w">    </span><span class="n">g_signal_connect</span><span class="p">(</span><span class="n">check</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;toggled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_check_toggled</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 6. Отображение всех виджетов в окне.</span>
+<span class="w">    </span><span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 7. Запуск главного цикла событий GTK.</span>
+<span class="w">    </span><span class="c1">// Приложение будет ждать действий пользователя, пока не будет закрыто.</span>
+<span class="w">    </span><span class="n">gtk_main</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Возвращаем код успешного завершения.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.5. </span>Компиляция и Запуск<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>Сохраните код выше в файл с именем <cite>input_widgets_example.c</cite>.</p>
+<p>### Компиляция:</p>
+<p>Для сборки программы используйте следующую команду в терминале, находясь в директории с исходным файлом:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc<span class="w"> </span>input_widgets_example.c<span class="w"> </span>-o<span class="w"> </span>input_widgets_example<span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>--libs<span class="w"> </span>gtk+-3.0<span class="sb">`</span>
+</pre></div>
+</div>
+<p>### Запуск:</p>
+<p>После успешной компиляции вы можете запустить ваше приложение:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./input_widgets_example
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">6.6. </span>Ожидаемый результат<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>При запуске программы вы увидите окно с заголовком «Пример Полей Ввода». Внутри окна будут расположены вертикально следующие элементы:</p>
+<ul class="simple">
+<li><p><strong>Текстовое поле (`GtkEntry`)</strong>: Будет отображаться текст-подсказка «Введите ваше имя…». При вводе текста, каждое изменение символа будет выводиться в консоль.</p></li>
+<li><p><strong>Числовой спиннер (`GtkSpinButton`)</strong>: Будет показывать числовое значение (изначально 0), которое можно изменять с помощью стрелок вверх/вниз или вводя число вручную. Каждое изменение значения будет выводиться в консоль.</p></li>
+<li><p><strong>Чекбокс (`GtkCheckButton`)</strong>: Рядом с ним будет метка «Я согласен с условиями». Изначально чекбокс будет не отмечен. При клике на него, его состояние будет меняться между «ON» и «OFF», и это изменение будет выводиться в консоль.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">6.7. </span>Дополнительные материалы<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.Entry.html">GtkEntry</a>: Официальная документация GtkEntry.</p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.SpinButton.html">GtkSpinButton</a>: Официальная документация GtkSpinButton.</p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.CheckButton.html">GtkCheckButton</a>: Официальная документация GtkCheckButton.</p></li>
+<li><p><a class="reference external" href="https://docs.gtk.org/gtk3/class.Adjustment.html">GtkAdjustment</a>: Официальная документация GtkAdjustment.</p></li>
+<li><p><a class="reference external" href="https://github.com/AIDevelopersMonster/C_GUI_Handbook">C_GUI_Handbook GitHub</a> - Репозиторий с примерами кода из этого руководства.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="id6">
+<h2><span class="section-number">6.8. </span>Навигация<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="field-list simple">
+<dt class="field-odd">doc<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>Глава 17: Гибкая Компоновка с GtkGrid &lt;chapter17&gt;</cite></p>
+</dd>
+</dl>
+</li>
+<li><dl class="field-list simple">
+<dt class="field-odd">doc<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>Глава 19: Выпадающие списки и радиокнопки &lt;chapter19&gt;</cite></p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter17_grid_layout/index.html" class="btn btn-neutral float-left" title="5. Глава 17: Гибкая Компоновка с GtkGrid" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter19_comboboxes/index.html" class="btn btn-neutral float-right" title="7. Глава 19: Выпадающие списки и списки" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

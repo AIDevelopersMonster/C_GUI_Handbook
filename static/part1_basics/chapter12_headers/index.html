@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12. Глава 12: Заголовочные файлы и препроцессор &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Часть II: Разработка GUI с помощью GTK" href="../../part2_gui/index.html" />
+    <link rel="prev" title="11. Глава 11: Пользовательские Типы Данных и Структуры" href="../chapter11_types_structs/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть I: Основы языка Си</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter01_intro/index.html">1. Глава 1: Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02_variables/index.html">2. Глава 2: Переменные и арифметика</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03_conditions/index.html">3. Глава 3: Условия и сравнения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04_loops/index.html">4. Глава 4: Циклы и повторение кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05_pointers/index.html">5. Глава 5: Указатели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06_functions/index.html">6. Глава 6: Функции — Строим Модульный Код</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07_arrays_strings/index.html">7. Глава 7: Массивы и Строки — Работа с Коллекциями Данных и Текстом</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08_string_lib/index.html">8. Глава 8: Библиотека строк (&lt;string.h&gt;)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09_input/index.html">9. Глава 9: Ввод с клавиатуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10_files/index.html">10. Глава 10: Работа с файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11_types_structs/index.html">11. Глава 11: Пользовательские Типы Данных и Структуры</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12. Глава 12: Заголовочные файлы и препроцессор</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">12.1. 1. Что такое препроцессор и зачем он нужен?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#include">12.2. 2. Директива <code class="docutils literal notranslate"><span class="pre">#include</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define">12.3. 3. Директива <code class="docutils literal notranslate"><span class="pre">#define</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ifdef-ifndef-endif-if-else-elif">12.4. 4. Условная компиляция (<code class="docutils literal notranslate"><span class="pre">#ifdef</span></code>, <code class="docutils literal notranslate"><span class="pre">#ifndef</span></code>, <code class="docutils literal notranslate"><span class="pre">#endif</span></code>, <code class="docutils literal notranslate"><span class="pre">#if</span></code>, <code class="docutils literal notranslate"><span class="pre">#else</span></code>, <code class="docutils literal notranslate"><span class="pre">#elif</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-h">12.5. 5. Разделение кода на <code class="docutils literal notranslate"><span class="pre">.c</span></code> и <code class="docutils literal notranslate"><span class="pre">.h</span></code> файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">12.6. 6. Повторное использование и масштабирование проекта</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">12.7. 7. Компиляция проекта из нескольких файлов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">12.8. 8. Дополнительные ресурсы</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3_projects/index.html">Часть III: Приложения и справка</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть I: Основы языка Си</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">12. </span>Глава 12: Заголовочные файлы и препроцессор</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part1_basics/chapter12_headers/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">12. </span>Глава 12: Заголовочные файлы и препроцессор<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>В этой главе рассматриваются основы <strong>модульной архитектуры программ на C</strong> с помощью заголовочных файлов и директив препроцессора.</p>
+<nav class="contents local" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#id3" id="id7">1. Что такое препроцессор и зачем он нужен?</a></p></li>
+<li><p><a class="reference internal" href="#include" id="id8">2. Директива <code class="docutils literal notranslate"><span class="pre">#include</span></code></a></p></li>
+<li><p><a class="reference internal" href="#define" id="id9">3. Директива <code class="docutils literal notranslate"><span class="pre">#define</span></code></a></p></li>
+<li><p><a class="reference internal" href="#ifdef-ifndef-endif-if-else-elif" id="id10">4. Условная компиляция (<code class="docutils literal notranslate"><span class="pre">#ifdef</span></code>, <code class="docutils literal notranslate"><span class="pre">#ifndef</span></code>, <code class="docutils literal notranslate"><span class="pre">#endif</span></code>, <code class="docutils literal notranslate"><span class="pre">#if</span></code>, <code class="docutils literal notranslate"><span class="pre">#else</span></code>, <code class="docutils literal notranslate"><span class="pre">#elif</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#c-h" id="id11">5. Разделение кода на <code class="docutils literal notranslate"><span class="pre">.c</span></code> и <code class="docutils literal notranslate"><span class="pre">.h</span></code> файлы</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id12">6. Повторное использование и масштабирование проекта</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id13">7. Компиляция проекта из нескольких файлов</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id14">8. Дополнительные ресурсы</a></p></li>
+</ul>
+</nav>
+<p>—</p>
+<section id="id3">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">12.1. </span>1. Что такое препроцессор и зачем он нужен?</a><a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p><strong>Препроцессор</strong> — это первый этап компиляции программы на Си. Он обрабатывает <strong>директивы</strong> (специальные команды, начинающиеся с <code class="docutils literal notranslate"><span class="pre">#</span></code>) перед тем, как код будет передан компилятору. Его основные задачи:</p>
+<ul class="simple">
+<li><p>Включение других файлов в текущий исходный файл.</p></li>
+<li><p>Определение и замена макросов.</p></li>
+<li><p>Условная компиляция частей кода.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="include">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">12.2. </span>2. Директива <code class="docutils literal notranslate"><span class="pre">#include</span></code></a><a class="headerlink" href="#include" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">#include</span></code> используется для включения содержимого одного файла в другой. Это фундаментальный механизм для модульности в Си.</p>
+<ul class="simple">
+<li><p><strong>``#include &lt;filename.h&gt;``</strong>: Используется для включения <strong>стандартных библиотечных заголовочных файлов</strong>. Компилятор ищет их в предопределенных системных директориях. Например, <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;stdio.h&gt;</span></code> включает стандартную библиотеку ввода/вывода.</p></li>
+<li><p><strong>``#include «filename.h»``</strong>: Используется для включения <strong>пользовательских заголовочных файлов</strong> (ваших собственных). Компилятор сначала ищет их в текущей директории проекта, а затем, если не найдет, может искать в стандартных директориях (зависит от настроек компилятора).</p></li>
+</ul>
+<p><strong>Пример:</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">main.c</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1">       // Стандартный заголовок</span>
+<span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;my_utility.h&quot;</span><span class="c1">  // Пользовательский заголовок (файл в вашем проекте)</span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello from main!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="define">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">12.3. </span>3. Директива <code class="docutils literal notranslate"><span class="pre">#define</span></code></a><a class="headerlink" href="#define" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">#define</span></code> позволяет определять <strong>макросы</strong>. Макрос — это текстовая замена: препроцессор заменяет каждое вхождение имени макроса его определением перед компиляцией.</p>
+<ul>
+<li><dl>
+<dt><strong>Определение констант</strong>:</dt><dd><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MAX_SIZE 100</span>
+<span class="cp">#define PI 3.14159</span>
+</pre></div>
+</div>
+<p>Компилятор не видит <code class="docutils literal notranslate"><span class="pre">MAX_SIZE</span></code> или <code class="docutils literal notranslate"><span class="pre">PI</span></code>, он видит <code class="docutils literal notranslate"><span class="pre">100</span></code> и <code class="docutils literal notranslate"><span class="pre">3.14159</span></code>. Это отличается от <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">int</span> <span class="pre">MAX_SIZE</span> <span class="pre">=</span> <span class="pre">100;</span></code>, которая является переменной с константным значением, обрабатываемой компилятором.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>Определение функциональных макросов (остерегайтесь!)</strong>:</dt><dd><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define SQUARE(x) (x * x)</span>
+<span class="c1">// Использование: int result = SQUARE(5); // Препроцессор заменит на (5 * 5)</span>
+<span class="c1">// Будьте осторожны с побочными эффектами и двойными вычислениями!</span>
+<span class="c1">// SQUARE(a++) превратится в (a++ * a++), что даст неожиданный результат.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+<p>—</p>
+</section>
+<section id="ifdef-ifndef-endif-if-else-elif">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">12.4. </span>4. Условная компиляция (<code class="docutils literal notranslate"><span class="pre">#ifdef</span></code>, <code class="docutils literal notranslate"><span class="pre">#ifndef</span></code>, <code class="docutils literal notranslate"><span class="pre">#endif</span></code>, <code class="docutils literal notranslate"><span class="pre">#if</span></code>, <code class="docutils literal notranslate"><span class="pre">#else</span></code>, <code class="docutils literal notranslate"><span class="pre">#elif</span></code>)</a><a class="headerlink" href="#ifdef-ifndef-endif-if-else-elif" title="Permalink to this heading"></a></h2>
+<p>Эти директивы позволяют включать или исключать блоки кода из компиляции в зависимости от определенных условий. Это очень полезно для:</p>
+<ul>
+<li><p><strong>Предотвращения многократного включения заголовочных файлов (Include Guards)</strong>: Самое распространенное использование.</p></li>
+<li><p>Отладки (Debug/Release сборки).</p></li>
+<li><p>Портирования кода под разные операционные системы или аппаратные платформы.</p></li>
+<li><dl>
+<dt><strong>``#ifndef MACRO_NAME`` / ``#define MACRO_NAME`` / ``#endif``</strong>:</dt><dd><p>Это стандартный шаблон для защиты заголовочных файлов от многократного включения.
+Если <code class="docutils literal notranslate"><span class="pre">MACRO_NAME</span></code> <em>не определен</em> (<code class="docutils literal notranslate"><span class="pre">#ifndef</span></code>), то он определяется (<code class="docutils literal notranslate"><span class="pre">#define</span></code>), и код между <code class="docutils literal notranslate"><span class="pre">#define</span></code> и <code class="docutils literal notranslate"><span class="pre">#endif</span></code> включается. При последующих включениях этого же файла <code class="docutils literal notranslate"><span class="pre">MACRO_NAME</span></code> уже будет определен, и код будет проигнорирован.</p>
+<p><strong>Пример из вашей главы (``math_utils.h``):</strong>
+.. code-block:: c</p>
+<blockquote>
+<div><p>#ifndef MATH_UTILS_H    // Если MATH_UTILS_H не определен
+#define MATH_UTILS_H    // Определить MATH_UTILS_H</p>
+<p>int add(int a, int b);
+int multiply(int a, int b);</p>
+<p>#endif // MATH_UTILS_H // Конец условного блока</p>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><p><strong>``#ifdef MACRO_NAME``</strong>: Код компилируется, только если <code class="docutils literal notranslate"><span class="pre">MACRO_NAME</span></code> <em>определен</em>.</p></li>
+<li><p><strong>``#if expression``</strong>: Код компилируется, если <em>выражение</em> истинно. Можно использовать <code class="docutils literal notranslate"><span class="pre">defined(MACRO_NAME)</span></code>.</p></li>
+<li><p><strong>``#else``</strong>: Блок кода, который компилируется, если условие в предыдущем <code class="docutils literal notranslate"><span class="pre">#if</span></code>/<code class="docutils literal notranslate"><span class="pre">#ifdef</span></code>/<code class="docutils literal notranslate"><span class="pre">#ifndef</span></code> ложно.</p></li>
+<li><p><strong>``#elif expression``</strong>: Как <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code> для препроцессора.</p></li>
+</ul>
+<p><strong>Пример из вашей главы (``main.c``):</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;math_utils.h&quot;</span>
+
+<span class="cp">#define DEBUG</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#ifdef DEBUG</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Debug mode is ON</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sum: %d, Product: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">product</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="c-h">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">12.5. </span>5. Разделение кода на <code class="docutils literal notranslate"><span class="pre">.c</span></code> и <code class="docutils literal notranslate"><span class="pre">.h</span></code> файлы</a><a class="headerlink" href="#c-h" title="Permalink to this heading"></a></h2>
+<p>Это основа <strong>модульного программирования</strong> в Си:</p>
+<ul class="simple">
+<li><p><strong>``.h`` (заголовочный файл)</strong>: Содержит <strong>объявления</strong> (декларации) функций, структур, перечислений и макросов, которые должны быть доступны другим частям программы. Это своего рода «интерфейс» модуля.</p></li>
+<li><p><strong>``.c`` (файл реализации)</strong>: Содержит <strong>определения</strong> (реализации) функций, объявленных в соответствующем <code class="docutils literal notranslate"><span class="pre">.h</span></code> файле, а также любые внутренние функции или данные, которые не предназначены для внешнего использования. Это «внутренняя работа» модуля.</p></li>
+</ul>
+<p><strong>Пример из вашей главы:</strong></p>
+<ul>
+<li><dl>
+<dt><strong>``math_utils.h``</strong>: Объявляет функции <code class="docutils literal notranslate"><span class="pre">add</span></code> и <code class="docutils literal notranslate"><span class="pre">multiply</span></code>.</dt><dd><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef MATH_UTILS_H</span>
+<span class="cp">#define MATH_UTILS_H</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+
+<span class="cp">#endif </span><span class="c1">// MATH_UTILS_H</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>``math_utils.c``</strong>: Реализует функции <code class="docutils literal notranslate"><span class="pre">add</span></code> и <code class="docutils literal notranslate"><span class="pre">multiply</span></code>.</dt><dd><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;math_utils.h&quot;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>``main.c``</strong>: Использует функции <code class="docutils literal notranslate"><span class="pre">add</span></code> и <code class="docutils literal notranslate"><span class="pre">multiply</span></code> из <code class="docutils literal notranslate"><span class="pre">math_utils.h</span></code>, включая их через <code class="docutils literal notranslate"><span class="pre">#include</span></code>.</dt><dd><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;math_utils.h&quot;</span>
+
+<span class="cp">#define DEBUG</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#ifdef DEBUG</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Debug mode is ON</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sum: %d, Product: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">product</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Это позволяет:</p>
+<ul class="simple">
+<li><p><strong>Инкапсуляцию</strong>: Скрывать детали реализации.</p></li>
+<li><p><strong>Быструю компиляцию</strong>: При изменении только <code class="docutils literal notranslate"><span class="pre">.c</span></code> файла, нет необходимости перекомпилировать все остальные файлы, которые используют его заголовок, только тот <code class="docutils literal notranslate"><span class="pre">.c</span></code> файл и затем компоновать заново.</p></li>
+<li><p><strong>Повторное использование кода</strong>: Легко использовать один и тот же модуль в разных проектах.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">12.6. </span>6. Повторное использование и масштабирование проекта</a><a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>Правильное использование заголовочных файлов и препроцессора критически важно для:</p>
+<ul class="simple">
+<li><p><strong>Организации больших проектов</strong>: Разбиение на модули делает код более управляемым.</p></li>
+<li><p><strong>Командной работы</strong>: Разные разработчики могут работать над разными <code class="docutils literal notranslate"><span class="pre">.c</span></code> файлами, используя общие <code class="docutils literal notranslate"><span class="pre">.h</span></code> интерфейсы.</p></li>
+<li><p><strong>Поддержки и отладки</strong>: Логически разделенный код легче читать, понимать и исправлять ошибки.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">12.7. </span>7. Компиляция проекта из нескольких файлов</a><a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>Как показано в вашем примере:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gcc<span class="w"> </span>main.c<span class="w"> </span>math_utils.c<span class="w"> </span>-o<span class="w"> </span>program
+$<span class="w"> </span>./program
+Debug<span class="w"> </span>mode<span class="w"> </span>is<span class="w"> </span>ON
+Sum:<span class="w"> </span><span class="m">8</span>,<span class="w"> </span>Product:<span class="w"> </span><span class="m">8</span>
+</pre></div>
+</div>
+<p>Здесь <code class="docutils literal notranslate"><span class="pre">gcc</span></code> принимает несколько исходных файлов (<code class="docutils literal notranslate"><span class="pre">main.c</span></code> и <code class="docutils literal notranslate"><span class="pre">math_utils.c</span></code>) и компилирует их, а затем компонует в один исполняемый файл <code class="docutils literal notranslate"><span class="pre">program</span></code>.</p>
+<p>—</p>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">12.8. </span>8. Дополнительные ресурсы</a><a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>Для более глубокого изучения этих тем рекомендуем обратиться к следующим источникам:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/c-preprocessors/">C Preprocessor Directives – GeeksForGeeks</a></p></li>
+<li><p><a class="reference external" href="https://www.cprogramming.com/tutorial/cfileio.html">Header Files in C – cprogramming.com</a></p></li>
+<li><p><strong>Книга «Язык программирования Си» (K&amp;R)</strong>: Главы, посвященные препроцессору и модульному программированию.</p></li>
+</ul>
+<p>—</p>
+<p>Эта глава закладывает основу для создания сложных, хорошо структурированных приложений на Си.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter11_types_structs/index.html" class="btn btn-neutral float-left" title="11. Глава 11: Пользовательские Типы Данных и Структуры" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../../part2_gui/index.html" class="btn btn-neutral float-right" title="Часть II: Разработка GUI с помощью GTK" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

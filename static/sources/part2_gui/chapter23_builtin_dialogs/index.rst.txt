@@ -1,0 +1,401 @@
+Глава 23: Предустановленные Диалоги (GtkFileChooserDialog, GtkColorChooserDialog)
+=================================================================================
+
+В этой главе мы сосредоточимся на использовании **предустановленных диалоговых окон** в GTK. Эти диалоги "из коробки" предоставляют стандартный и знакомый пользователям функционал, такой как выбор файлов или настройка цветов, избавляя разработчика от необходимости создавать сложный интерфейс с нуля.
+
+Мы рассмотрим:
+
+* `GtkFileChooserDialog`_: Диалог для выбора одного или нескольких файлов, а также для выбора папки или сохранения файла.
+* `GtkColorChooserDialog`_: Диалог для выбора цвета из палитры или по RGB/HEX значениям.
+
+Это важный функционал, позволяющий пользователю безопасно и интуитивно взаимодействовать с файловой системой и настраивать визуальные параметры приложения. GTK предоставляет мощный API для вызова этих диалогов без необходимости вручную создавать их интерфейс.
+
+---
+
+### Основные понятия и функции
+
+**gtk_file_chooser_dialog_new()**: Создаёт новый GtkFileChooserDialog.
+
+G**TK_FILE_CHOOSER_ACTION_OPEN**: Режим GtkFileChooserDialog для открытия существующих файлов.
+
+**GTK_FILE_CHOOSER_ACTION_SAVE**: Режим GtkFileChooserDialog для сохранения файлов.
+
+**GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER**: Режим GtkFileChooserDialog для выбора папки.
+
+**gtk_file_chooser_get_filename()**: Получает путь к выбранному файлу/папке после закрытия диалога.
+
+**gtk_file_chooser_get_uri()**: Получает URI к выбранному файлу/папке (может быть удобнее для кросс-платформенности).
+
+**gtk_color_chooser_dialog_new()**: Создаёт новый GtkColorChooserDialog.
+
+**gtk_color_chooser_set_rgba()**: Устанавливает текущий цвет в GtkColorChooserDialog.
+
+**gtk_color_chooser_get_rgba()**: Получает выбранный цвет из GtkColorChooserDialog.
+
+**gtk_dialog_run()**: Отображает диалог и ожидает действия пользователя, возвращая GtkResponseType.
+
+**gtk_widget_destroy()**: Уничтожает виджет, освобождая ресурсы. Важно для диалогов после их использования.
+
+**GTK_RESPONSE_ACCEPT**: Стандартный ответ диалога, означающий "OK", "Открыть", "Сохранить".
+
+**GTK_RESPONSE_CANCEL**: Стандартный ответ диалога, означающий "Отмена".
+
+---
+
+### Пример 23.1: Диалог Открытия Файла (GtkFileChooserDialog)
+
+**Файл:** `file_chooser_open_example.c`
+
+Этот пример демонстрирует, как использовать `GtkFileChooserDialog` для выбора файла. Основное окно будет содержать кнопку, нажатие которой вызовет стандартное системное диалоговое окно для открытия файла. После выбора файла его путь будет напечатан в консоль.
+
+.. code-block:: c
+
+    #include <gtk/gtk.h>
+
+    /**
+     * @brief Callback-функция, вызываемая при нажатии кнопки "Открыть файл".
+     * Открывает GtkFileChooserDialog для выбора файла.
+     *
+     * @param widget Указатель на кнопку.
+     * @param window Указатель на родительское окно.
+     */
+    static void on_open_button_clicked(GtkWidget *widget, gpointer window) {
+        GtkWidget *dialog; // Указатель на файловый диалог.
+        gint res;          // Результат закрытия диалога.
+
+        // Создаем новый GtkFileChooserDialog для открытия файла.
+        // Параметры:
+        // 1. "Открыть файл": Заголовок диалогового окна.
+        // 2. GTK_WINDOW(window): Родительское окно для диалога.
+        // 3. GTK_FILE_CHOOSER_ACTION_OPEN: Режим работы диалога - открытие существующего файла.
+        // 4. "_Отмена": Текст кнопки отмены и ее GTK_RESPONSE_CANCEL.
+        // 5. "_Открыть": Текст кнопки подтверждения и ее GTK_RESPONSE_ACCEPT.
+        // 6. NULL: Завершает список кнопок.
+        dialog = gtk_file_chooser_dialog_new("Открыть файл",
+                                             GTK_WINDOW(window),
+                                             GTK_FILE_CHOOSER_ACTION_OPEN,
+                                             "_Отмена", GTK_RESPONSE_CANCEL,
+                                             "_Открыть", GTK_RESPONSE_ACCEPT,
+                                             NULL);
+
+        // Запускаем диалог и получаем его результат.
+        // gtk_dialog_run() блокирует выполнение до выбора пользователя.
+        res = gtk_dialog_run(GTK_DIALOG(dialog));
+
+        // Проверяем, нажал ли пользователь "Открыть".
+        if (res == GTK_RESPONSE_ACCEPT) {
+            char *filename; // Переменная для хранения пути к файлу.
+            GtkFileChooser *chooser = GTK_FILE_CHOOSER(dialog); // Приводим к типу GtkFileChooser.
+
+            // Получаем выбранный путь к файлу.
+            filename = gtk_file_chooser_get_filename(chooser);
+            g_print("Выбран файл: %s\n", filename); // Выводим путь в консоль.
+            g_free(filename); // Освобождаем память, выделенную для строки filename.
+        }
+
+        // Уничтожаем диалог после его использования, независимо от результата.
+        gtk_widget_destroy(dialog);
+    }
+
+    /**
+     * @brief Главная функция программы.
+     * Создает основное окно с кнопкой для вызова диалога открытия файла.
+     *
+     * @param argc Аргументы командной строки.
+     * @param argv Аргументы командной строки.
+     * @return Код завершения программы.
+     */
+    int main(int argc, char *argv[]) {
+        GtkWidget *window;
+        GtkWidget *button;
+        GtkWidget *vbox; // Добавим vbox для лучшего расположения
+
+        gtk_init(&argc, &argv);
+
+        window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_title(GTK_WINDOW(window), "Выбор файла");
+        gtk_window_set_default_size(GTK_WINDOW(window), 300, 200);
+        gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+        g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+        vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10); // Отступ 10 пикселей
+        gtk_container_set_border_width(GTK_CONTAINER(vbox), 10); // Отступ от краев
+        gtk_container_add(GTK_CONTAINER(window), vbox);
+
+        button = gtk_button_new_with_label("Открыть файл...");
+        // Передаем window как пользовательские данные, чтобы использовать его как родителя.
+        g_signal_connect(button, "clicked", G_CALLBACK(on_open_button_clicked), window);
+        gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+
+        gtk_widget_show_all(window);
+        gtk_main();
+
+        return 0;
+    }
+
+---
+
+### Пример 23.2: Диалог Сохранения Файла (GtkFileChooserDialog)
+
+**Файл:** `file_chooser_save_example.c`
+
+Этот пример показывает, как использовать `GtkFileChooserDialog` для сохранения файла. Диалог будет предназначаться для выбора места и имени нового файла для сохранения.
+
+.. code-block:: c
+
+    #include <gtk/gtk.h>
+
+    /**
+     * @brief Callback-функция, вызываемая при нажатии кнопки "Сохранить файл".
+     * Открывает GtkFileChooserDialog для сохранения файла.
+     *
+     * @param widget Указатель на кнопку.
+     * @param window Указатель на родительское окно.
+     */
+    static void on_save_button_clicked(GtkWidget *widget, gpointer window) {
+        GtkWidget *dialog;
+        gint res;
+        char *filename;
+
+        // Создаем GtkFileChooserDialog в режиме сохранения файла.
+        // GTK_FILE_CHOOSER_ACTION_SAVE указывает на режим сохранения.
+        dialog = gtk_file_chooser_dialog_new("Сохранить файл",
+                                             GTK_WINDOW(window),
+                                             GTK_FILE_CHOOSER_ACTION_SAVE,
+                                             "_Отмена", GTK_RESPONSE_CANCEL,
+                                             "_Сохранить", GTK_RESPONSE_ACCEPT,
+                                             NULL);
+
+        // Устанавливаем рекомендованное имя файла по умолчанию.
+        // Пользователь может изменить его.
+        gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER(dialog), "НовыйДокумент.txt");
+
+        // Устанавливаем режим подтверждения перезаписи.
+        // GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM: если файл существует, спросить пользователя.
+        // GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT: всегда принимать.
+        // GTK_FILE_CHOOSER_CONFIRMATION_SELECT_IF_EXISTS: выбрать, если существует.
+        gtk_file_chooser_set_do_overwrite_confirmation(GTK_FILE_CHOOSER(dialog), TRUE);
+
+        res = gtk_dialog_run(GTK_DIALOG(dialog));
+
+        if (res == GTK_RESPONSE_ACCEPT) {
+            GtkFileChooser *chooser = GTK_FILE_CHOOSER(dialog);
+            filename = gtk_file_chooser_get_filename(chooser);
+            g_print("Файл будет сохранен как: %s\n", filename);
+            // Здесь должна быть логика сохранения файла по полученному пути
+            g_free(filename);
+        }
+
+        gtk_widget_destroy(dialog);
+    }
+
+    /**
+     * @brief Главная функция программы.
+     * Создает основное окно с кнопкой для вызова диалога сохранения файла.
+     *
+     * @param argc Аргументы командной строки.
+     * @param argv Аргументы командной строки.
+     * @return Код завершения программы.
+     */
+    int main(int argc, char *argv[]) {
+        GtkWidget *window;
+        GtkWidget *button;
+        GtkWidget *vbox;
+
+        gtk_init(&argc, &argv);
+
+        window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_title(GTK_WINDOW(window), "Сохранение файла");
+        gtk_window_set_default_size(GTK_WINDOW(window), 300, 200);
+        gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+        g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+        vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10);
+        gtk_container_set_border_width(GTK_CONTAINER(vbox), 10);
+        gtk_container_add(GTK_CONTAINER(window), vbox);
+
+        button = gtk_button_new_with_label("Сохранить файл...");
+        g_signal_connect(button, "clicked", G_CALLBACK(on_save_button_clicked), window);
+        gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+
+        gtk_widget_show_all(window);
+        gtk_main();
+
+        return 0;
+    }
+
+---
+
+### Пример 23.3: Диалог Выбора Цвета (GtkColorChooserDialog)
+
+**Файл:** `color_chooser_example.c`
+
+Этот пример демонстрирует использование `GtkColorChooserDialog` для выбора цвета. Приложение имеет кнопку, по нажатию на которую открывается диалог выбора цвета. Выбранный цвет будет выведен в консоль в формате RGB.
+
+.. code-block:: c
+
+    #include <gtk/gtk.h>
+
+    /**
+     * @brief Callback-функция, вызываемая при нажатии кнопки "Выбрать цвет".
+     * Открывает GtkColorChooserDialog для выбора цвета.
+     *
+     * @param widget Указатель на кнопку.
+     * @param window Указатель на родительское окно.
+     */
+    static void on_color_button_clicked(GtkWidget *widget, gpointer window) {
+        GtkWidget *dialog;
+        gint res;
+        GdkRGBA color; // Структура для хранения цвета (Red, Green, Blue, Alpha).
+
+        // Создаем новый GtkColorChooserDialog.
+        // Параметры:
+        // 1. "Выбор цвета": Заголовок диалога.
+        // 2. GTK_WINDOW(window): Родительское окно.
+        // 3. GTK_DIALOG_MODAL: Делает диалог модальным.
+        // 4. "_Отмена": Кнопка отмены.
+        // 5. GTK_RESPONSE_CANCEL: Ответ при нажатии кнопки отмены.
+        // 6. "_OK": Кнопка подтверждения.
+        // 7. GTK_RESPONSE_OK: Ответ при нажатии кнопки OK.
+        // 8. NULL: Конец списка кнопок.
+        dialog = gtk_color_chooser_dialog_new("Выбор цвета",
+                                              GTK_WINDOW(window));
+
+        // Можно установить начальный цвет диалога.
+        // gdk_rgba_parse(&color, "rgb(100, 150, 200)"); // Пример: парсим строку
+        // gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(dialog), &color);
+
+        // Запускаем диалог и получаем его результат.
+        res = gtk_dialog_run(GTK_DIALOG(dialog));
+
+        // Проверяем, нажал ли пользователь "OK".
+        if (res == GTK_RESPONSE_OK) {
+            // Получаем выбранный цвет.
+            gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(dialog), &color);
+
+            // Выводим компоненты цвета в консоль.
+            // Значения GdkRGBA находятся в диапазоне от 0.0 до 1.0.
+            g_print("Выбран цвет: R=%.2f, G=%.2f, B=%.2f, A=%.2f\n",
+                    color.red, color.green, color.blue, color.alpha);
+            // Если нужно в 0-255: (guint8)(color.red * 255), (guint8)(color.green * 255), etc.
+            g_print("В формате 0-255: R=%d, G=%d, B=%d\n",
+                    (guint8)(color.red * 255), (guint8)(color.green * 255), (guint8)(color.blue * 255));
+        }
+
+        // Уничтожаем диалог.
+        gtk_widget_destroy(dialog);
+    }
+
+    /**
+     * @brief Главная функция программы.
+     * Создает основное окно с кнопкой для вызова диалога выбора цвета.
+     *
+     * @param argc Аргументы командной строки.
+     * @param argv Аргументы командной строки.
+     * @return Код завершения программы.
+     */
+    int main(int argc, char *argv[]) {
+        GtkWidget *window;
+        GtkWidget *button;
+        GtkWidget *vbox;
+
+        gtk_init(&argc, &argv);
+
+        window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_title(GTK_WINDOW(window), "Выбор цвета");
+        gtk_window_set_default_size(GTK_WINDOW(window), 300, 200);
+        gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+        g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+        vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10);
+        gtk_container_set_border_width(GTK_CONTAINER(vbox), 10);
+        gtk_container_add(GTK_CONTAINER(window), vbox);
+
+        button = gtk_button_new_with_label("Выбрать цвет...");
+        g_signal_connect(button, "clicked", G_CALLBACK(on_color_button_clicked), window);
+        gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+
+        gtk_widget_show_all(window);
+        gtk_main();
+
+        return 0;
+    }
+
+---
+
+Компиляция и Запуск Примеров
+-----------------------------
+
+Сохраните каждый пример кода в соответствующий файл: `file_chooser_open_example.c`, `file_chooser_save_example.c`, `color_chooser_example.c`.
+
+### Компиляция:
+
+Для сборки программ используйте следующие команды в терминале, находясь в директории с исходными файлами. Убедитесь, что у вас установлен GTK 3.
+
+.. code-block:: bash
+
+    # Для диалога открытия файла:
+    gcc file_chooser_open_example.c -o file_chooser_open_example `pkg-config --cflags --libs gtk+-3.0`
+
+    # Для диалога сохранения файла:
+    gcc file_chooser_save_example.c -o file_chooser_save_example `pkg-config --cflags --libs gtk+-3.0`
+
+    # Для диалога выбора цвета:
+    gcc color_chooser_example.c -o color_chooser_example `pkg-config --cflags --libs gtk+-3.0`
+
+### Запуск:
+
+После успешной компиляции вы можете запустить каждое приложение:
+
+.. code-block:: bash
+
+    # Для диалога открытия файла:
+    ./file_chooser_open_example
+
+    # Для диалога сохранения файла:
+    ./file_chooser_save_example
+
+    # Для диалога выбора цвета:
+    ./color_chooser_example
+
+---
+
+Ожидаемый Результат
+-------------------
+
+* **`file_chooser_open_example`**:
+    * Откроется окно с кнопкой "Открыть файл...".
+    * При нажатии на кнопку появится стандартное системное диалоговое окно для выбора файла (обычно с заголовком "Открыть файл").
+    * После выбора файла и нажатия "Открыть" (или аналогичной кнопки) диалог закроется, и путь к выбранному файлу будет напечатан в консоли.
+
+* **`file_chooser_save_example`**:
+    * Откроется окно с кнопкой "Сохранить файл...".
+    * При нажатии на кнопку появится стандартное системное диалоговое окно для сохранения файла (обычно с заголовком "Сохранить файл"). В поле имени файла будет предложено "НовыйДокумент.txt".
+    * После выбора места, возможно, изменения имени файла и нажатия "Сохранить" (или аналогичной кнопки) диалог закроется, и предполагаемый путь сохранения файла будет напечатан в консоли.
+
+* **`color_chooser_example`**:
+    * Откроется окно с кнопкой "Выбрать цвет...".
+    * При нажатии на кнопку появится стандартное системное диалоговое окно выбора цвета (обычно с заголовком "Выбор цвета").
+    * После выбора цвета с помощью палитры или ввода значений и нажатия "OK" диалог закроется, и значения RGB (и Alpha) выбранного цвета будут напечатаны в консоли.
+
+---
+
+Дополнительные Ресурсы
+-----------------------
+
+* `GtkFileChooserDialog`_
+* `GtkColorChooserDialog`_
+* `GtkDialog`_ (общий базовый класс для всех диалогов)
+* `GtkResponseType`_ (значения, возвращаемые диалогами)
+* `GdkRGBA`_ (структура для работы с цветами)
+* `C_GUI_Handbook GitHub`_
+
+.. _GtkFileChooserDialog: https://docs.gtk.org/gtk3/class.FileChooserDialog.html
+.. _GtkColorChooserDialog: https://docs.gtk.org/gtk3/class.ColorChooserDialog.html
+.. _GtkDialog: https://docs.gtk.org/gtk3/class.Dialog.html
+.. _GtkResponseType: https://docs.gtk.org/gtk3/enum.ResponseType.html
+.. _GdkRGBA: https://docs.gtk.org/gdk3/struct.RGBA.html
+.. _C_GUI_Handbook GitHub: https://github.com/AIDevelopersMonster/C_GUI_Handbook
+
+---
+

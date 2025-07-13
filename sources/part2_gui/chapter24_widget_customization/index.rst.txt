@@ -1,0 +1,168 @@
+Глава 24: Настройка Виджетов и Стилизация
+=========================================
+
+В этой главе мы подробно рассмотрим, как **визуально настраивать элементы интерфейса (виджеты)** в GTK. Это включает в себя изменение их размеров, цветов, шрифтов, а также управление общим поведением через свойства.
+
+GTK предоставляет мощные механизмы для гибкого управления внешним видом и поведением виджетов: как программно, используя функции API, так и декларативно, через таблицы стилей **CSS**.
+
+---
+
+### Основные понятия и функции
+
+* **`gtk_widget_set_size_request()`**: Устанавливает **минимальные** требуемые размеры виджета (ширина, высота). Виджет не будет меньше этих размеров.
+* **`gtk_widget_set_hexpand()`**: Указывает, должен ли виджет **расширяться по горизонтали**, занимая доступное пространство. `TRUE` разрешает расширение.
+* **`gtk_widget_set_vexpand()`**: Указывает, должен ли виджет **расширяться по вертикали**, занимая доступное пространство. `TRUE` разрешает расширение.
+* **`gtk_css_provider_new()`**: Создает новый объект для загрузки CSS-стилей.
+* **`gtk_css_provider_load_from_path()`**: Загружает CSS-стили из указанного файла.
+* **`gdk_screen_get_default()`**: Получает объект `GdkScreen`, представляющий основной экран, к которому будут применены стили.
+* **`gtk_style_context_add_provider_for_screen()`**: Добавляет провайдер CSS-стилей для всего экрана, делая их глобально доступными.
+* **`GTK_STYLE_PROVIDER_PRIORITY_USER`**: Приоритет CSS-стилей, добавленных пользователем. Стиль пользователя переопределяет стиль темы.
+* **`g_object_unref()`**: Уменьшает счетчик ссылок на объект. Используется для освобождения ресурсов `GtkCssProvider` после его добавления.
+* **`gtk_button_set_label()`**: Устанавливает текстовую метку для `GtkButton`.
+* **`gtk_label_set_justify()`**: Устанавливает выравнивание текста внутри `GtkLabel`.
+* **`gtk_entry_set_placeholder_text()`**: Устанавливает текст-заполнитель (подсказку) для `GtkEntry`, который виден, когда поле пустое.
+* **`gtk_entry_set_max_length()`**: Устанавливает максимальное количество символов, которые можно ввести в `GtkEntry`.
+* **`gtk_widget_set_sensitive()`**: Делает виджет активным (`TRUE`) или неактивным (`FALSE`). Неактивные виджеты не реагируют на ввод пользователя.
+* **`gtk_widget_set_visible()`**: Делает виджет видимым (`TRUE`) или скрытым (`FALSE`).
+* **`GtkCssProvider`_**: Объект, который загружает и хранит CSS-стили.
+* **`GtkStyleContext`_**: Объект, через который виджеты получают и применяют стили.
+* **`GdkScreen`_**: Объект, представляющий экран дисплея.
+
+---
+
+### Исходные файлы в этой главе
+
+В этой главе мы рассмотрим три практических примера:
+
+* :download: `file_chooser_open_example.c` — Демонстрирует использование `GtkFileChooserDialog` для **открытия существующего файла**.
+* :download: `file_chooser_save_example.c` — Показывает, как использовать `GtkFileChooserDialog` для **сохранения нового файла** или перезаписи существующего.
+* :download: `color_chooser_example.c` — Иллюстрирует применение `GtkColorChooserDialog` для **выбора цвета**.
+
+---
+
+### Пример 24.1: Настройка Размеров Виджета и Гибкость Масштабирования
+
+**Файл:** ``size_and_expand_example.c``
+
+В этом примере мы создадим окно с несколькими кнопками, чтобы наглядно показать, как `gtk_widget_set_size_request()` влияет на минимальный размер виджета, а `gtk_widget_set_hexpand()` и `gtk_widget_set_vexpand()` позволяют виджетам расширяться при изменении размеров окна.
+
+.. code-block:: c
+
+    #include <gtk/gtk.h>
+
+    /**
+     * @brief Главная функция программы.
+     * Демонстрирует настройку размеров и свойств расширения виджетов.
+     *
+     * @param argc Количество аргументов командной строки.
+     * @param argv Массив строк аргументов командной строки.
+     * @return Код завершения программы.
+     */
+    int main(int argc, char *argv[]) {
+        GtkWidget *window;
+        GtkWidget *vbox;
+        GtkWidget *button1, *button2, *button3;
+
+        gtk_init(&argc, &argv);
+
+        // 1. Создание главного окна
+        window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_title(GTK_WINDOW(window), "Настройка Размеров и Расширения");
+        gtk_window_set_default_size(GTK_WINDOW(window), 400, 300); // Начальный размер окна
+        gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+        g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+        // 2. Создание GtkBox для размещения кнопок по вертикали
+        vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10); // Отступ между элементами 10px
+        gtk_container_set_border_width(GTK_CONTAINER(vbox), 10); // Внешний отступ 10px
+        gtk_container_add(GTK_CONTAINER(window), vbox);
+
+        // 3. Кнопка 1: Фиксированный размер
+        button1 = gtk_button_new_with_label("Фиксированный размер (150x50)");
+        // Устанавливаем минимальный требуемый размер виджета.
+        // Виджет никогда не будет меньше этих размеров, но может быть больше.
+        gtk_widget_set_size_request(button1, 150, 50);
+        // Не позволяем кнопке расширяться, она будет занимать только свой минимальный размер.
+        gtk_widget_set_hexpand(button1, FALSE);
+        gtk_widget_set_vexpand(button1, FALSE);
+        gtk_box_pack_start(GTK_BOX(vbox), button1, FALSE, FALSE, 0); // FALSE, FALSE - не расширять, не заполнять
+
+        // 4. Кнопка 2: Расширение по горизонтали
+        button2 = gtk_button_new_with_label("Расширение по горизонтали");
+        gtk_widget_set_size_request(button2, 100, 40); // Минимальный размер
+        gtk_widget_set_hexpand(button2, TRUE);       // Позволяем кнопке расширяться по горизонтали
+        gtk_widget_set_vexpand(button2, FALSE);      // Не позволяем расширяться по вертикали
+        gtk_box_pack_start(GTK_BOX(vbox), button2, TRUE, TRUE, 0); // TRUE, TRUE - расширять, заполнять
+
+        // 5. Кнопка 3: Расширение по вертикали
+        button3 = gtk_button_new_with_label("Расширение по вертикали");
+        gtk_widget_set_size_request(button3, 80, 60); // Минимальный размер
+        gtk_widget_set_hexpand(button3, FALSE);      // Не позволяем расширяться по горизонтали
+        gtk_widget_set_vexpand(button3, TRUE);       // Позволяем кнопке расширяться по вертикали
+        gtk_box_pack_start(GTK_BOX(vbox), button3, TRUE, TRUE, 0); // TRUE, TRUE - расширять, заполнять
+
+        // 6. Отображение всех виджетов и запуск главного цикла GTK
+        gtk_widget_show_all(window);
+        gtk_main();
+
+        return 0;
+    }
+
+---
+
+### Пример 24.2: Настройка Шрифтов и Цветов через CSS
+
+**Файл:** ``css_styling_example.c``
+
+Этот пример покажет, как использовать CSS-файл для стилизации виджетов GTK. Мы создадим окно с кнопкой и меткой, а затем применим к ним стили из внешнего файла ``style.css``, чтобы изменить шрифт, цвет текста и фон.
+
+**Создайте файл ``style.css`` в той же директории:**
+
+.. code-block:: css
+
+    /* style.css */
+
+    /* Стиль для всех кнопок */
+    button {
+        font-size: 18px; /* Размер шрифта */
+        font-weight: bold; /* Жирный шрифт */
+        color: white; /* Цвет текста */
+        background-color: #3f51b5; /* Темно-синий фон */
+        border-radius: 8px; /* Скругление углов */
+        padding: 10px 20px; /* Внутренние отступы */
+        border: 2px solid #283593; /* Рамка */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень */
+    }
+
+    /* Стиль при наведении на кнопку */
+    button:hover {
+        background-color: #5c6bc0; /* Более светлый синий */
+    }
+
+    /* Стиль при нажатии кнопки */
+    button:active {
+        background-color: #303f9f; /* Темнее синий */
+        box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.4); /* Внутренняя тень */
+    }
+
+    /* Стиль для GtkLabel */
+    label {
+        font-family: "Monospace"; /* Моноширинный шрифт */
+        font-size: 20px; /* Размер шрифта */
+        color: #e91e63; /* Ярко-розовый цвет текста */
+        margin-bottom: 20px; /* Отступ снизу */
+    }
+
+**Исходный код ``css_styling_example.c``:**
+
+.. code-block:: c
+
+    #include <gtk/gtk.h>
+
+    /**
+     * @brief Загружает и применяет CSS-стили из файла.
+     *
+     * @param css_file_path Путь к CSS-файлу.
+     */
+    static void load_css(const char *css_file_path) {
+        GtkCssProvider *provider = gtk_css_provider_new(); // Создаем
