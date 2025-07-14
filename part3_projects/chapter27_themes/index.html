@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Глава 27: Темы в GTK – Кастомизация Внешнего Вида &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="2. Глава 28: Быстрая справка (Cheat Sheets)" href="../chapter28_cheatsheet/index.html" />
+    <link rel="prev" title="Часть III: Приложения и справка" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть III: Приложения и справка</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Глава 27: Темы в GTK – Кастомизация Внешнего Вида</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1.1. Что такое Темы GTK?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.2. Какие бывают Темы GTK?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.3. Новые и Популярные Темы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.4. Где Скачать Темы GTK?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.5. Как Установить Темы GTK?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.6. Как Использовать (Применить) Темы GTK?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">1.7. Управление установленными темами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">1.8. Запуск отдельного GTK-приложения с определённой темой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">1.9. Как Создать Свою Тему GTK?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">1.10. Заключение</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter28_cheatsheet/index.html">2. Глава 28: Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter29_projects/index.html">3. Глава 27: Мини-проекты</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть III: Приложения и справка</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1. </span>Глава 27: Темы в GTK – Кастомизация Внешнего Вида</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part3_projects/chapter27_themes/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gtk">
+<h1><span class="section-number">1. </span>Глава 27: Темы в GTK – Кастомизация Внешнего Вида<a class="headerlink" href="#gtk" title="Permalink to this heading"></a></h1>
+<p>Темы в GTK (GIMP Toolkit) — это набор правил стилизации, которые определяют внешний вид виджетов (кнопок, окон, полей ввода, меню и т.д.) вашего графического приложения. Они позволяют пользователям полностью изменять «ощущение» и «взгляд» операционной системы и приложений, делая их более приятными для глаз или соответствующими индивидуальным предпочтениям.</p>
+<p>Темы GTK основаны на <strong>CSS (Cascading Style Sheets)</strong>, том же языке, который используется для стилизации веб-страниц. Это делает их мощными и гибкими, позволяя разработчикам и пользователям тонко настраивать каждый аспект интерфейса.</p>
+<p>—</p>
+<section id="id1">
+<h2><span class="section-number">1.1. </span>Что такое Темы GTK?<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>По своей сути, тема GTK — это набор файлов (в основном <cite>.css</cite>, а также могут быть изображения, шрифты и другие ресурсы), которые GTK-приложения используют для отрисовки своих элементов. Когда приложение запускается, GTK загружает активную тему и применяет её правила к виджетам.</p>
+<p>Это позволяет:</p>
+<ul class="simple">
+<li><p><strong>Персонализации:</strong> Пользователи могут выбирать темы, которые соответствуют их вкусу, делая рабочий стол уникальным.</p></li>
+<li><p><strong>Брендингу:</strong> Разработчики дистрибутивов Linux могут создавать свои уникальные темы для узнаваемости.</p></li>
+<li><p><strong>Доступности:</strong> Темы могут улучшать контрастность, изменять размеры шрифтов и элементов для людей с ограниченными возможностями.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">1.2. </span>Какие бывают Темы GTK?<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Темы GTK развивались вместе с самой библиотекой. Основные «поколения» тем соответствуют версиям GTK:</p>
+<ol class="arabic simple">
+<li><p><strong>GTK2 Темы:</strong>
+* Использовали систему рендеринга <cite>Theming Engine</cite>.
+* Сейчас практически не актуальны, так как большинство современных приложений используют GTK3 или GTK4.
+* Пример: Clearlooks, Raleigh.</p></li>
+<li><p><strong>GTK3 Темы:</strong>
+* Перешли на <strong>CSS-подобную систему стилизации</strong>. Это значительно упростило создание и модификацию тем.
+* Подавляющее большинство текущих GTK-приложений используют GTK3.
+* Пример: Adwaita (стандартная), Arc, Materia, Yaru.</p></li>
+<li><p><strong>GTK4 Темы:</strong>
+* Продолжают использовать CSS, но с некоторыми изменениями и улучшениями по сравнению с GTK3.
+* Имеют более современные виджеты и анимации.
+* Пока относительно мало приложений полностью переведены на GTK4, но их число растет.
+* Пример: Adwaita (для GTK4), Libadwaita.</p></li>
+</ol>
+<p><strong>Важно:</strong> Тема для GTK3 обычно <strong>не будет работать корректно с GTK4-приложениями</strong> (и наоборот), так как структура виджетов и CSS-свойства могут отличаться. При скачивании темы всегда обращайте внимание, для какой версии GTK она предназначена.</p>
+<p>—</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.3. </span>Новые и Популярные Темы<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>Некоторые из наиболее популярных и активно развивающихся тем для GTK включают:</p>
+<ul class="simple">
+<li><p><strong>Adwaita:</strong> Стандартная тема GNOME. Она является референсной и поддерживается разработчиками GTK. Существуют версии для GTK3 и GTK4. Часто является основой для других тем.</p></li>
+<li><p><strong>Arc:</strong> Одна из самых популярных тем, известная своим современным плоским дизайном с полупрозрачными элементами. Доступна в различных вариантах (Arc, Arc-Dark, Arc-Darker).</p></li>
+<li><p><strong>Materia:</strong> Материальный дизайн в духе Google, с чистыми линиями и приятными тенями. Очень элегантная и современная.</p></li>
+<li><p><strong>Yaru:</strong> Официальная тема Ubuntu, отличающаяся уникальной цветовой палитрой и стилем.</p></li>
+<li><p><strong>Numix:</strong> Широкий набор тем и пакетов иконок, которые очень популярны и хорошо поддерживаются.</p></li>
+<li><p><strong>WhiteSur:</strong> Тема, имитирующая стиль macOS, с закругленными углами и эффектами размытия.</p></li>
+</ul>
+<p>Эти темы обычно предлагают несколько вариантов (светлый, темный, смешанный) и хорошо интегрируются с различными окружениями рабочего стола.</p>
+<p>—</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.4. </span>Где Скачать Темы GTK?<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>Основные источники для скачивания тем:</p>
+<ol class="arabic simple">
+<li><p><strong>Gnome-Look.org / XFCE-Look.org / KDE-Look.org (OpenDesktop.org):</strong>
+* Это часть более крупного портала OpenDesktop.org.
+* Огромная коллекция тем, иконок, курсоров и других элементов кастомизации.
+* Поиск по версиям GTK.</p></li>
+<li><p><strong>Pling.com:</strong>
+* Ещё один популярный портал для Linux-кастомизации, часто пересекается с OpenDesktop.org.</p></li>
+<li><p><strong>GitHub / GitLab:</strong>
+* Многие разработчики тем размещают свои проекты на этих платформах.
+* Преимущество: вы можете отслеживать разработку, сообщать об ошибках и иногда даже собирать тему из исходников.
+* Часто это самые актуальные версии.</p></li>
+<li><p><strong>Репозитории дистрибутивов:</strong>
+* Некоторые дистрибутивы Linux включают популярные темы прямо в свои стандартные репозитории.
+* Установка через менеджер пакетов (например, <cite>sudo apt install arc-theme</cite>).</p></li>
+</ol>
+<p>—</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.5. </span>Как Установить Темы GTK?<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>Установка тем GTK обычно включает два шага: размещение файлов темы и применение темы.</p>
+<p>### Ручная установка</p>
+<ol class="arabic">
+<li><p><strong>Скачайте тему:</strong> Обычно темы распространяются в виде <cite>.tar.xz</cite> или <cite>.zip</cite> архивов.</p></li>
+<li><p><strong>Распакуйте архив:</strong> Создайте директорию для темы.
+* Например, для темы «MyTheme», вы получите папку <cite>MyTheme</cite>.</p></li>
+<li><p><strong>Разместите папку темы:</strong>
+* <strong>Для текущего пользователя:</strong> Создайте (если её нет) директорию <cite>~/.themes/</cite> в вашем домашнем каталоге и поместите распакованную папку <cite>MyTheme</cite> туда.</p>
+<blockquote>
+<div><ul>
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.themes/
+mv<span class="w"> </span>/path/to/downloaded/MyTheme<span class="w"> </span>~/.themes/
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><dl>
+<dt><strong>Для всех пользователей системы:</strong> Поместите папку <cite>MyTheme</cite> в <cite>/usr/share/themes/</cite>. Для этого потребуются права суперпользователя.</dt><dd><ul>
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mv<span class="w"> </span>/path/to/downloaded/MyTheme<span class="w"> </span>/usr/share/themes/
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Убедитесь, что внутри папки <cite>MyTheme</cite> есть подпапки <cite>gtk-3.0</cite>, <cite>gtk-4.0</cite> и/или <cite>gtk-2.0</cite> с файлами стилей.</p></li>
+</ul>
+</li>
+</ol>
+<p>### Установка через менеджер пакетов</p>
+<ul>
+<li><dl>
+<dt>Некоторые дистрибутивы (например, Ubuntu, Debian) позволяют устанавливать популярные темы напрямую из репозиториев.</dt><dd><ul>
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>arc-theme<span class="w"> </span><span class="c1"># Пример для установки темы Arc</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>### Установка через GUI-инструменты</p>
+<p>Многие окружения рабочего стола предоставляют свои собственные инструменты для управления темами:</p>
+<ul>
+<li><dl>
+<dt><strong>GNOME Tweak Tool (GNOME Tweaks):</strong> Самый популярный инструмент для GNOME. Позволяет легко менять GTK-темы, иконки, шрифты и многое другое.</dt><dd><ul>
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gnome-tweaks
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>LXAppearance (для LXDE, XFCE, MATE):</strong> Легкий и удобный инструмент для более легковесных окружений.</dt><dd><ul>
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>lxappearance
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>KDE System Settings:</strong> В KDE Plasma темы GTK3/GTK4 настраиваются через системные параметры (Appearance -&gt; Application Style -&gt; Configure GTK Application Style).</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="id6">
+<h2><span class="section-number">1.6. </span>Как Использовать (Применить) Темы GTK?<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>После установки темы вы можете её активировать.</p>
+<p>### Через GUI-инструменты</p>
+<p>Это самый простой и рекомендуемый способ:</p>
+<ol class="arabic simple">
+<li><p><strong>GNOME Tweak Tool:</strong> Откройте GNOME Tweaks, перейдите в раздел «Appearance» (Внешний вид), и там вы сможете выбрать вашу тему GTK (обычно под «Applications» или «Legacy Applications» для GTK3, и «Shell» для GNOME Shell).</p></li>
+<li><p><strong>LXAppearance:</strong> Откройте LXAppearance, перейдите на вкладку «Widget» (Виджеты) и выберите нужную тему из списка.</p></li>
+<li><p><strong>KDE System Settings:</strong> В системных настройках KDE (System Settings) найдите «Appearance» -&gt; «Application Style». Здесь вы можете выбрать темы для приложений GTK2 и GTK3 (и GTK4, если есть поддержка).</p></li>
+</ol>
+<p>### Через команду <cite>gsettings</cite> (для GNOME/GTK3 и Wayland-композиторов)</p>
+<p>Для окружений, использующих <cite>gsettings</cite> (как GNOME, а также многие Wayland-композиторы, включая LabWC, если установлен <cite>dconf-cli</cite> и схемы GNOME), вы можете установить тему через терминал:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gsettings<span class="w"> </span><span class="nb">set</span><span class="w"> </span>org.gnome.desktop.interface<span class="w"> </span>gtk-theme<span class="w"> </span><span class="s2">&quot;MyThemeName&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Замените <cite>«MyThemeName»</cite> на точное название папки вашей темы (например, «Arc-Dark», «Materia»).</p></li>
+<li><p>Для иконок: <cite>gsettings set org.gnome.desktop.interface icon-theme «MyIconThemeName»</cite></p></li>
+<li><p><strong>Важно:</strong> После изменения темы с помощью <cite>gsettings</cite> может потребоваться <strong>перезапуск вашего GTK-приложения</strong> (или даже выход и повторный вход в систему, если вы хотите, чтобы вся среда рабочего стола обновилась).</p></li>
+</ul>
+<p>### Через конфигурационные файлы GTK (для LabWC / Wayland)</p>
+<p>Если <cite>gsettings</cite> не используется или не работает (что менее вероятно для LabWC с установленным <cite>dconf-cli</cite>), приложения GTK будут искать настройки темы в этих файлах. Это основной метод для минималистичных Wayland-композиторов:</p>
+<ul>
+<li><dl>
+<dt><strong>Для GTK3:</strong> Откройте или создайте файл <cite>~/.config/gtk-3.0/settings.ini</cite>:</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>~/.config/gtk-3.0/settings.ini
+</pre></div>
+</div>
+<p>Добавьте или измените секцию <cite>[Settings]</cite> так, чтобы она выглядела примерно так:
+.. code-block:: ini</p>
+<blockquote>
+<div><p>[Settings]
+gtk-theme-name=MyThemeName
+gtk-icon-theme-name=MyIconThemeName # Опционально, если есть тема иконок
+gtk-font-name=Sans 10           # Опционально, чтобы установить шрифт</p>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Для GTK4:</strong> (Если LabWC поддерживает приложения GTK4, что менее вероятно для очень минималистичных композиторов)</dt><dd><p>Откройте или создайте файл <cite>~/.config/gtk-4.0/settings.ini</cite>. Структура аналогична.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>Сохраните файл.</strong></p></li>
+<li><p><strong>Перезапустите ваше GTK-приложение</strong> (или выйдите и войдите в сессию LabWC), чтобы изменения применились.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="id7">
+<h2><span class="section-number">1.7. </span>Управление установленными темами<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<p>### Как узнать, какие темы GTK у вас установлены</p>
+<p>Чтобы увидеть список всех доступных тем на вашей системе, вы можете проверить стандартные директории, где они хранятся:</p>
+<ol class="arabic">
+<li><p><strong>Темы для текущего пользователя:</strong>
+.. code-block:: bash</p>
+<blockquote>
+<div><p>ls ~/.themes/</p>
+</div></blockquote>
+</li>
+<li><p><strong>Темы для всех пользователей системы:</strong>
+.. code-block:: bash</p>
+<blockquote>
+<div><p>ls /usr/share/themes/</p>
+</div></blockquote>
+</li>
+</ol>
+<p>Вывод этих команд покажет вам названия папок, которые соответствуют именам установленных тем (например, <cite>Adwaita</cite>, <cite>Arc-Dark</cite>, <cite>PiXflat</cite>). <strong>Именно эти имена вы должны использовать</strong> при активации темы.</p>
+<p>### Как вернуться к предыдущей или стандартной теме</p>
+<p>Вы можете вернуться к любой из установленных тем, используя тот же метод, которым вы её меняли:</p>
+<ol class="arabic">
+<li><p><strong>Если вы меняли через `gsettings`:</strong>
+* Чтобы вернуться к стандартной теме GTK (обычно <strong>Adwaita</strong>):</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gsettings<span class="w"> </span><span class="nb">set</span><span class="w"> </span>org.gnome.desktop.interface<span class="w"> </span>gtk-theme<span class="w"> </span><span class="s2">&quot;Adwaita&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul>
+<li><dl>
+<dt>Чтобы вернуться к другой конкретной теме (например, к вашей предыдущей <cite>PiXflat</cite>):</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gsettings<span class="w"> </span><span class="nb">set</span><span class="w"> </span>org.gnome.desktop.interface<span class="w"> </span>gtk-theme<span class="w"> </span><span class="s2">&quot;PiXflat&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p><strong>Если вы меняли через `~/.config/gtk-3.0/settings.ini`:</strong>
+* Откройте файл для редактирования:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>~/.config/gtk-3.0/settings.ini
+</pre></div>
+</div>
+</div></blockquote>
+<ul>
+<li><dl>
+<dt>Найдите строку <cite>gtk-theme-name=…</cite> и измените её на желаемую тему:</dt><dd><div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Settings]</span>
+<span class="na">gtk-theme-name</span><span class="o">=</span><span class="s">PiXflat</span><span class="w">  </span><span class="c1"># Или любое другое имя темы из вашего списка</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p><strong>Сохраните файл.</strong></p></li>
+<li><p><strong>Перезапустите ваше GTK-приложение</strong> (или выйдите и войдите в сессию LabWC), чтобы изменения применились.</p></li>
+</ul>
+</li>
+</ol>
+<p>—</p>
+</section>
+<section id="id8">
+<h2><span class="section-number">1.8. </span>Запуск отдельного GTK-приложения с определённой темой<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<p>Очень полезный приём — запустить отдельное GTK-приложение с конкретной темой, <strong>не меняя системную тему</strong> всей операционной системы или других приложений. Это идеально подходит для тестирования, отладки или просто для того, чтобы одно приложение выглядело иначе.</p>
+<p>Для этого используется <strong>переменная окружения `GTK_THEME`</strong>.</p>
+<p>### Запуск из терминала</p>
+<p>Чтобы запустить приложение из терминала с определённой темой, просто добавьте <cite>env GTK_THEME=MyThemeName</cite> перед командой запуска вашего приложения:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>env<span class="w"> </span><span class="nv">GTK_THEME</span><span class="o">=</span>Arc-Dark<span class="w"> </span>/home/Alex/myprg/25/glade_example
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`env`</strong>: Это утилита, которая позволяет запускать команду с изменёнными (или добавленными) переменными окружения. Это хорошая практика.</p></li>
+<li><p><strong>`GTK_THEME=Arc-Dark`</strong>: Устанавливает переменную окружения <cite>GTK_THEME</cite> для этой конкретной команды. Замените <cite>Arc-Dark</cite> на точное имя желаемой темы.</p></li>
+<li><p><strong>`/home/Alex/myprg/25/glade_example`</strong>: Полный путь к вашему исполняемому файлу.</p></li>
+</ul>
+<p><strong>Если приложение не находит Glade-файл (или другие ресурсы):</strong></p>
+<p>Как обсуждалось в Главе 26, ваше приложение может ожидать, что файл Glade находится в текущей рабочей директории. Если возникает ошибка «файл interface.glade не найден», вам нужно сначала перейти в директорию приложения:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;cd /home/Alex/myprg/25/ &amp;&amp; env GTK_THEME=Arc-Dark ./glade_example&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`sh -c «…»`</strong>: Запускает новую оболочку, позволяя выполнить последовательность команд.</p></li>
+<li><p><strong>`cd /home/Alex/myprg/25/`</strong>: Первая команда, которая меняет текущую рабочую директорию.</p></li>
+<li><p><strong>`&amp;&amp;`</strong>: Оператор, который гарантирует, что следующая команда выполнится только если <cite>cd</cite> была успешной.</p></li>
+<li><p><strong>`env GTK_THEME=Arc-Dark ./glade_example`</strong>: После смены директории, запускает приложение с относительным путём <cite>./glade_example</cite> и указанной темой.</p></li>
+</ul>
+<p>### Запуск из ярлыка <cite>.desktop</cite></p>
+<p>Вы можете встроить эту логику прямо в ярлык вашего приложения. Откройте ваш файл <cite>.desktop</cite> (например, <cite>~/.local/share/applications/ПримерGlade.desktop</cite>) и измените строку <cite>Exec=</cite> следующим образом:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
+<span class="na">Version</span><span class="o">=</span><span class="s">1.0</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">Пример Glade (Arc Dark)</span><span class="w"> </span><span class="c1">; Изменено для ясности</span>
+<span class="na">Comment</span><span class="o">=</span><span class="s">Мое первое GTK-приложение с Glade в тёмной теме Arc</span><span class="w"> </span><span class="c1">; Изменено</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">sh -c &quot;cd /home/Alex/myprg/25/ &amp;&amp; env GTK_THEME=Arc-Dark ./glade_example&quot;</span><span class="w"> </span><span class="c1">; КОМБИНИРОВАННОЕ РЕШЕНИЕ</span>
+<span class="na">Icon</span><span class="o">=</span><span class="s">/home/Alex/myprg/25/GE1_64x64.png</span>
+<span class="na">Terminal</span><span class="o">=</span><span class="s">false</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="na">Categories</span><span class="o">=</span><span class="s">Development</span><span class="c1">;Utility;GUI;</span>
+<span class="na">Path</span><span class="o">=</span><span class="s">/home/Alex/myprg/25/</span><span class="w"> </span><span class="c1">; Можно оставить, если нужно для ресурсов приложения</span>
+<span class="na">StartupNotify</span><span class="o">=</span><span class="s">false</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`Exec=sh -c «cd … &amp;&amp; env GTK_THEME=Arc-Dark ./glade_example»`</strong>: Это комбинированное решение, которое сначала переходит в нужную директорию (чтобы приложение нашло свои ресурсы), а затем запускает его с определённой темой.</p></li>
+<li><p><strong>`Name=` и `Comment=`</strong>: Рекомендуется изменить их, чтобы ярлык в меню приложений или на рабочем столе ясно указывал на то, что это версия приложения с конкретной темой.</p></li>
+</ul>
+<p>После сохранения файла <cite>.desktop</cite> не забудьте <strong>обновить кэш рабочего стола</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>update-desktop-database<span class="w"> </span>~/.local/share/applications/
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="id9">
+<h2><span class="section-number">1.9. </span>Как Создать Свою Тему GTK?<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
+<p>Создание полноценной темы GTK — это сложный процесс, требующий глубокого понимания CSS и структуры GTK-виджетов. Однако, вы можете начать с изменения существующей темы или изучения основ:</p>
+<ol class="arabic simple">
+<li><p><strong>Изучите CSS:</strong> GTK3/GTK4 темы используют CSS. Знание синтаксиса CSS и специфичных для GTK свойств (например, <cite>margin</cite>, <cite>padding</cite>, <cite>background-color</cite>, <cite>border</cite>, <cite>font-size</cite> и т.д.) является основой.</p></li>
+<li><p><strong>Используйте GtkInspector:</strong> Это ваш лучший друг!
+* Запустите любое GTK-приложение с <cite>GTK_DEBUG=interactive your_app</cite>.
+* Нажмите <cite>Ctrl + Shift + I</cite>.
+* В GtkInspector вы можете выбрать любой виджет и посмотреть, какие CSS-правила к нему применяются, а также экспериментировать с изменением этих правил на лету.
+* Это бесценно для понимания, как конкретные виджеты стилизуются.</p></li>
+<li><p><strong>Используйте существующие темы как шаблон:</strong>
+* Возьмите любую тему из <cite>~/.themes/</cite> или <cite>/usr/share/themes/</cite>.
+* Откройте файлы <cite>.css</cite> (например, <cite>gtk-3.0/gtk.css</cite> или <cite>gtk-4.0/gtk.css</cite>).
+* Изучите их структуру и классы виджетов. Начните с небольших изменений (например, изменение цвета кнопки или шрифта).</p></li>
+<li><p><strong>Основные файлы темы:</strong>
+* В папке темы для GTK3 вы найдете <cite>gtk-3.0/gtk.css</cite> и <cite>gtk-3.0/gtk-dark.css</cite> (для темного варианта).
+* Для GTK4 это будут <cite>gtk-4.0/gtk.css</cite>.
+* Эти файлы содержат основные правила стилизации.</p></li>
+</ol>
+<p><strong>Важно:</strong> GTK-виджеты имеют сложные иерархии и классы. Правильное определение селекторов CSS для конкретных состояний виджетов (например, <cite>button:hover</cite>, <cite>entry:focus</cite>) требует практики.</p>
+<p>—</p>
+</section>
+<section id="id10">
+<h2><span class="section-number">1.10. </span>Заключение<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h2>
+<p>Темы GTK предоставляют мощный механизм для кастомизации внешнего вида ваших приложений и всей рабочей среды. От простой установки существующих тем до глубокого погружения в создание своих собственных стилей, мир кастомизации GTK открывает широкие возможности для персонализации пользовательского опыта. Экспериментируйте с GtkInspector и различными темами, чтобы найти свой идеальный стиль!</p>
+<p>—</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Часть III: Приложения и справка" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter28_cheatsheet/index.html" class="btn btn-neutral float-right" title="2. Глава 28: Быстрая справка (Cheat Sheets)" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

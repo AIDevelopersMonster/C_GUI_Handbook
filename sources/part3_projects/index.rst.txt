@@ -8,5 +8,6 @@
    :caption: Главы:
    :numbered:
 
-   chapter27_projects/index
+   chapter27_themes/index
    chapter28_cheatsheet/index
+   chapter29_projects/index
