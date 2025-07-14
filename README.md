@@ -41,7 +41,7 @@
 
 ### Часть III: Приложения и справка
 
-Глава 27: Темы в GTK – Кастомизация Внешнего Вида
+[Глава 27: Темы в GTK – Кастомизация Внешнего Вида](https://aidevelopersmonster.github.io/C_GUI_Handbook/part3_projects/chapter27_themes/index.html)
 
 Глава 28: Быстрая справка (Cheat Sheets)
 
