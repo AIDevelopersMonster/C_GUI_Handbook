@@ -1,0 +1,39 @@
+window {
+  background-color: #f5f5f5;
+}
+
+#main_window {
+  background-color: #eaf5ea;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#entry_input {
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  padding: 6px;
+  border-radius: 6px;
+  color: #333;
+}
+
+#entry_input:focus {
+  border-color: #87c087;
+}
+
+#my_button {
+  background: #87c087;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+#my_button:hover {
+  background: #76b176;
+}
+
+#label_output {
+  color: #444;
+  font-size: 13px;
+  padding-top: 6px;
+}
