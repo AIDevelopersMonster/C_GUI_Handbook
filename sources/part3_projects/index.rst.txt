@@ -9,5 +9,6 @@
    :numbered:
 
    chapter27_themes/index
-   chapter28_cheatsheet/index
-   chapter29_projects/index
+   chapter28_css/index
+   chapter29_cheatsheet/index
+   chapter30_projects/index
