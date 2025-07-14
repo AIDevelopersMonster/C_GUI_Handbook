@@ -40,13 +40,16 @@
 [Глава 25: Glade — визуальный редактор интерфейсов](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/25)
 
 [Глава 26: Интеграция GTK-приложений в Систему(doc)](https://aidevelopersmonster.github.io/C_GUI_Handbook/part2_gui/chapter26_desktop/index.html)
+
 ### Часть III: Приложения и справка
 
 [Глава 27: Темы в GTK – Кастомизация Внешнего Вида(doc)](https://aidevelopersmonster.github.io/C_GUI_Handbook/part3_projects/chapter27_themes/index.html)
 
-Глава 28: Быстрая справка (Cheat Sheets)
+[Глава 28: Применение CSS-стилей в GTK-приложениях с Glade](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/28)
 
-Глава 29: Мини-проекты
+Глава 29: Быстрая справка (Cheat Sheets)
+
+Глава 30: Мини-проекты
 
 ---
 
