@@ -38,10 +38,10 @@
 [Глава 23: Предустановленные диалоги](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/23)  
 [Глава 24: Настройка виджетов](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/24)  
 [Глава 25: Glade — визуальный редактор интерфейсов](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/25)
-
+[Глава 26: Интеграция GTK-приложений в Систему(doc)](https://aidevelopersmonster.github.io/C_GUI_Handbook/part2_gui/chapter26_desktop/index.html)
 ### Часть III: Приложения и справка
 
-[Глава 27: Темы в GTK – Кастомизация Внешнего Вида](https://aidevelopersmonster.github.io/C_GUI_Handbook/part3_projects/chapter27_themes/index.html)
+[Глава 27: Темы в GTK – Кастомизация Внешнего Вида(doc)](https://aidevelopersmonster.github.io/C_GUI_Handbook/part3_projects/chapter27_themes/index.html)
 
 Глава 28: Быстрая справка (Cheat Sheets)
 
