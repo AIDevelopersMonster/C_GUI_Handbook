@@ -1,4 +1,3 @@
-
 # 📘 C_GUI_Handbook
 
 **C_GUI_Handbook** — это интерактивный справочник и учебник по программированию на языке **C с графическим интерфейсом на GTK**.
@@ -11,18 +10,18 @@
 
 ### Часть I: Основы языка Си
 
-[Глава 1: Введение](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/1)   
+[Глава 1: Введение](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/1)  
 [Глава 2: Переменные и арифметика](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/2)  
 [Глава 3: Условия и сравнения](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/3)  
 [Глава 4: Циклы и повторение кода](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/4)  
 [Глава 5: Указатели](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/5)  
-[Глава 6: Функции](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/6)   
+[Глава 6: Функции](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/6)  
 [Глава 7: Массивы и строки](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/7)  
 [Глава 8: Библиотека строк (`<string.h>`)](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/8)  
 [Глава 9: Ввод с клавиатуры](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/9)  
 [Глава 10: Работа с файлами](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/10)  
 [Глава 11: Типы и структуры](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/11)  
-[Глава 12: Заголовочные файлы и препроцессор](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/12)   
+[Глава 12: Заголовочные файлы и препроцессор](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/12)
 
 ### Часть II: Разработка GUI с помощью GTK
 
@@ -36,14 +35,15 @@
 [Глава 20: Деревья (TreeView)](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/20)  
 [Глава 21: Меню](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/21)  
 [Глава 22: Диалоги и окна сообщений](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/22)  
-[Глава 23: Предустановленные диалоги](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/23)   
-[Глава 24: Настройка виджетов](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/24)   
+[Глава 23: Предустановленные диалоги](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/23)  
+[Глава 24: Настройка виджетов](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/24)  
 [Глава 25: Glade — визуальный редактор интерфейсов](https://github.com/AIDevelopersMonster/C_GUI_Handbook/tree/main/examples/25)
 
 ### Часть III: Приложения и справка
 
-Глава 26: Мини-проекты  
-Глава 27: Быстрая справка (Cheat Sheets)
+Глава 27: Темы в GTK – Кастомизация Внешнего Вида
+Глава 28: Быстрая справка (Cheat Sheets)
+Глава 29: Мини-проекты
 
 ---
 
@@ -61,3 +61,4 @@ git clone https://github.com/AIDevelopersMonster/C_GUI_Handbook.git
 cd C_GUI_Handbook
 make html
 xdg-open build/html/index.html  # open на macOS
+```
