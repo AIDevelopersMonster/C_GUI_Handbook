@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Глава 30: Расширенная быстрая справка по языку C &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="5. Глава 31: GTK Быстрая справка (Cheat Sheets)" href="../chapter31_gtk/index.html" />
+    <link rel="prev" title="3. Глава 29: Быстрая справка (Cheat Sheets)" href="../chapter29_cheatsheet/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть III: Приложения и справка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter27_themes/index.html">1. Глава 27: Темы в GTK – Кастомизация Внешнего Вида</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter28_css/index.html">2. Глава 28: Применение CSS-стилей в GTK-приложениях с Glade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter29_cheatsheet/index.html">3. Глава 29: Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. Глава 30: Расширенная быстрая справка по языку C</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cheat-sheet-c">4.1. Расширенный Cheat Sheet: Язык C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.2. Полезные онлайн-инструменты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter31_gtk/index.html">5. Глава 31: GTK Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter32_css/index.html">6. Глава 32. CSS Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter33_xml/index.html">7. Глава 33. XML Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter34_projects/index.html">8. Глава 34 Мини-проекты</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть III: Приложения и справка</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>Глава 30: Расширенная быстрая справка по языку C</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part3_projects/chapter30_с/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="c">
+<h1><span class="section-number">4. </span>Глава 30: Расширенная быстрая справка по языку C<a class="headerlink" href="#c" title="Permalink to this heading"></a></h1>
+<p>В этой главе представлен расширенный справочный материал по языку C, охватывающий более глубокие концепции, включая работу с памятью, продвинутые операции с указателями, обработку ошибок, макросы и другие важные аспекты, необходимые для разработки на C.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Для работы с приведёнными функциями и конструкциями требуются следующие заголовочные файлы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;stdio.h&gt;</span></code> — ввод/вывод, работа с файлами.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;stdlib.h&gt;</span></code> — память, преобразования, <cite>malloc()</cite>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;string.h&gt;</span></code> — работа со строками.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;errno.h&gt;</span></code> — обработка ошибок.</p></li>
+</ul>
+</div>
+<section id="cheat-sheet-c">
+<h2><span class="section-number">4.1. </span>Расширенный Cheat Sheet: Язык C<a class="headerlink" href="#cheat-sheet-c" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 25.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Концепция</p></th>
+<th class="head"><p>Ключевые слова / Пример</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Объявление переменных</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">10;</span></code>, <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">float</span> <span class="pre">PI</span> <span class="pre">=</span> <span class="pre">3.14;</span></code></p></td>
+<td><p>Объявление переменной определённого типа и инициализация. <code class="docutils literal notranslate"><span class="pre">const</span></code> делает переменную неизменяемой.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Типы данных</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">double</span></code>, <code class="docutils literal notranslate"><span class="pre">char</span></code>, <code class="docutils literal notranslate"><span class="pre">void</span></code>, <code class="docutils literal notranslate"><span class="pre">short</span></code>, <code class="docutils literal notranslate"><span class="pre">long</span></code>, <code class="docutils literal notranslate"><span class="pre">unsigned</span></code></p></td>
+<td><p>Основные встроенные типы данных. <code class="docutils literal notranslate"><span class="pre">short</span></code> и <code class="docutils literal notranslate"><span class="pre">long</span></code> задают размер, <code class="docutils literal notranslate"><span class="pre">unsigned</span></code> — без знака.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Определение типа</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">typedef</span> <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">BYTE;</span></code></p></td>
+<td><p>Создаёт псевдоним для существующего типа, повышая читаемость кода.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Перечисления</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">Color</span> <span class="pre">{</span> <span class="pre">RED,</span> <span class="pre">GREEN,</span> <span class="pre">BLUE</span> <span class="pre">};</span></code></p></td>
+<td><p>Задаёт набор именованных целочисленных констант.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Указатели</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*ptr;</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;x</span></code>, <code class="docutils literal notranslate"><span class="pre">*ptr</span></code>, <code class="docutils literal notranslate"><span class="pre">ptr++</span></code>, <code class="docutils literal notranslate"><span class="pre">ptr</span> <span class="pre">+</span> <span class="pre">1</span></code></p></td>
+<td><p>Хранение адресов, разыменование, арифметика указателей (перемещение на размер типа).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>`const` с указателями</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">int</span> <span class="pre">*ptr;</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*const</span> <span class="pre">ptr;</span></code>, <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">int</span> <span class="pre">*const</span> <span class="pre">ptr;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">int</span> <span class="pre">*ptr;</span></code>: данные неизменяемы. <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*const</span> <span class="pre">ptr;</span></code>: указатель неизменяем. <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">int</span> <span class="pre">*const</span> <span class="pre">ptr;</span></code>: и данные, и указатель неизменяемы.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Указатели на функции</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">(*func_ptr)(int,</span> <span class="pre">int);</span></code></p></td>
+<td><p>Хранит адрес функции. Полезно для колбэков и динамических вызовов.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Универсальные указатели</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*gen_ptr;</span></code>, <code class="docutils literal notranslate"><span class="pre">malloc(size)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void*</span></code> может указывать на любые данные; требует приведения при использовании (<code class="docutils literal notranslate"><span class="pre">(int*)gen_ptr</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Массивы</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">arr[10];</span></code>, <code class="docutils literal notranslate"><span class="pre">arr[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">matrix[2][3];</span></code></p></td>
+<td><p>Коллекции элементов. Имя массива указывает на первый элемент. Размер фиксирован на этапе компиляции.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Разница между массивами и указателями</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">arr[5];</span> <span class="pre">int</span> <span class="pre">*ptr</span> <span class="pre">=</span> <span class="pre">arr;</span></code></p></td>
+<td><p>Массив — блок памяти; указатель — переменная с адресом. <code class="docutils literal notranslate"><span class="pre">sizeof(arr)</span></code> — размер всего массива, <code class="docutils literal notranslate"><span class="pre">sizeof(ptr)</span></code> — размер указателя.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Динамическая память</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">malloc(size)</span></code>, <code class="docutils literal notranslate"><span class="pre">calloc(count,</span> <span class="pre">size)</span></code>, <code class="docutils literal notranslate"><span class="pre">realloc(ptr,</span> <span class="pre">new_size)</span></code>, <code class="docutils literal notranslate"><span class="pre">free(ptr)</span></code></p></td>
+<td><p>Выделение/освобождение памяти во время выполнения. <code class="docutils literal notranslate"><span class="pre">calloc</span></code> инициализирует нулями.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Размер объекта</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sizeof(int)</span></code>, <code class="docutils literal notranslate"><span class="pre">sizeof(my_struct)</span></code>, <code class="docutils literal notranslate"><span class="pre">sizeof(array_name)</span></code></p></td>
+<td><p>Размер в байтах. <code class="docutils literal notranslate"><span class="pre">sizeof</span></code> массива корректен только в той области, где он определён (не в параметрах функций).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Строки</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">str[]</span> <span class="pre">=</span> <span class="pre">&quot;Hello&quot;;</span></code>, <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*s</span> <span class="pre">=</span> <span class="pre">&quot;World&quot;;</span></code>, <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*msg</span> <span class="pre">=</span> <span class="pre">&quot;Const&quot;;</span></code></p></td>
+<td><p>Массивы символов с <code class="docutils literal notranslate"><span class="pre">\0</span></code>. Строковые литералы лучше объявлять через <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char*</span></code> (часто read-only).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Структуры и объединения</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Point</span> <span class="pre">{</span> <span class="pre">int</span> <span class="pre">x,</span> <span class="pre">y;</span> <span class="pre">};</span></code>, <code class="docutils literal notranslate"><span class="pre">union</span> <span class="pre">Data</span> <span class="pre">{</span> <span class="pre">int</span> <span class="pre">i;</span> <span class="pre">float</span> <span class="pre">f;</span> <span class="pre">};</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">struct</span></code> — набор разных переменных. <code class="docutils literal notranslate"><span class="pre">union</span></code> — все члены занимают одну область памяти.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Доступ к членам</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">my_point.x</span></code>, <code class="docutils literal notranslate"><span class="pre">ptr-&gt;y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.</span></code> — доступ напрямую, <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> — через указатель.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Классы хранения</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">static</span></code>, <code class="docutils literal notranslate"><span class="pre">extern</span></code>, <code class="docutils literal notranslate"><span class="pre">register</span></code></p></td>
+<td><p>Определяют область видимости, продолжительность жизни и место хранения переменной.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Квалификаторы типов</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">const</span></code>, <code class="docutils literal notranslate"><span class="pre">volatile</span></code>, <code class="docutils literal notranslate"><span class="pre">restrict</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">const</span></code> — неизменяемость, <code class="docutils literal notranslate"><span class="pre">volatile</span></code> — отключение оптимизаций, <code class="docutils literal notranslate"><span class="pre">restrict</span></code> — обещание об отсутствии пересечений.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Приведение типов</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(int)float_val;</span></code>, <code class="docutils literal notranslate"><span class="pre">(MyStruct*)void_ptr;</span></code></p></td>
+<td><p>Явное преобразование типов (casting).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Условия</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code>, <code class="docutils literal notranslate"><span class="pre">switch</span></code></p></td>
+<td><p>Управление потоком исполнения в зависимости от условий.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Тернарный оператор</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">?</span> <span class="pre">expr_true</span> <span class="pre">:</span> <span class="pre">expr_false;</span></code></p></td>
+<td><p>Альтернатива <code class="docutils literal notranslate"><span class="pre">if-else</span></code> для выражений.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Циклы</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">do-while</span></code></p></td>
+<td><p>Организация повторения кода.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Операторы перехода</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">break</span></code>, <code class="docutils literal notranslate"><span class="pre">continue</span></code>, <code class="docutils literal notranslate"><span class="pre">goto</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">break</span></code> — выход из цикла. <code class="docutils literal notranslate"><span class="pre">continue</span></code> — пропуск итерации. <code class="docutils literal notranslate"><span class="pre">goto</span></code> — переход к метке (использовать с осторожностью).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Функции</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">sum(int</span> <span class="pre">a,</span> <span class="pre">int</span> <span class="pre">b)</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b;</span> <span class="pre">}</span></code>, <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">hello(void);</span></code></p></td>
+<td><p>Блоки с параметрами и возвращаемыми значениями. <code class="docutils literal notranslate"><span class="pre">void</span></code> указывает на отсутствие аргументов.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Рекурсия</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">factorial(int</span> <span class="pre">n)</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">n==0</span> <span class="pre">?</span> <span class="pre">1</span> <span class="pre">:</span> <span class="pre">n*factorial(n-1);</span> <span class="pre">}</span></code></p></td>
+<td><p>Функция вызывает саму себя. Требует базового случая.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Работа с файлами</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILE</span> <span class="pre">*fp;</span></code>, <code class="docutils literal notranslate"><span class="pre">fopen()</span></code>, <code class="docutils literal notranslate"><span class="pre">fclose()</span></code>, <code class="docutils literal notranslate"><span class="pre">fread()</span></code>, <code class="docutils literal notranslate"><span class="pre">fwrite()</span></code>, <code class="docutils literal notranslate"><span class="pre">fseek()</span></code>, <code class="docutils literal notranslate"><span class="pre">rewind()</span></code>, <code class="docutils literal notranslate"><span class="pre">ftell()</span></code>, <code class="docutils literal notranslate"><span class="pre">feof()</span></code>, <code class="docutils literal notranslate"><span class="pre">ferror()</span></code></p></td>
+<td><p>Работа с потоками. <code class="docutils literal notranslate"><span class="pre">ftell</span></code> возвращает позицию, <code class="docutils literal notranslate"><span class="pre">feof</span></code> и <code class="docutils literal notranslate"><span class="pre">ferror</span></code> — проверка состояния.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Обработка ошибок</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">errno</span></code>, <code class="docutils literal notranslate"><span class="pre">perror()</span></code>, <code class="docutils literal notranslate"><span class="pre">strerror()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">errno</span></code> — глобальная ошибка. <code class="docutils literal notranslate"><span class="pre">perror</span></code> — печать сообщения. <code class="docutils literal notranslate"><span class="pre">strerror</span></code> — описание по коду.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Битовые операции</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code></p></td>
+<td><p>Побитовые операции: маски, флаги, оптимизация.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Аргументы командной строки</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(int</span> <span class="pre">argc,</span> <span class="pre">char</span> <span class="pre">*argv[])</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">argc</span></code> — число аргументов. <code class="docutils literal notranslate"><span class="pre">argv</span></code> — массив строк.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Комментарии</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">//</span> <span class="pre">однострочный</span></code>, <code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">многострочный</span> <span class="pre">*/</span></code></p></td>
+<td><p>Игнорируются компилятором. Повышают читаемость и документацию.</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Дополнительные практики:
+- Используйте <code class="docutils literal notranslate"><span class="pre">const</span></code> везде, где возможно.
+- Освобождайте всю динамически выделенную память.
+- Избегайте <code class="docutils literal notranslate"><span class="pre">goto</span></code>, если возможно.
+- Следите за <code class="docutils literal notranslate"><span class="pre">buffer</span> <span class="pre">overflows</span></code> при работе со строками.</p>
+</div>
+</section>
+<section id="id1">
+<h2><span class="section-number">4.2. </span>Полезные онлайн-инструменты<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>C Online Compiler (GCC)</strong> – <a class="reference external" href="https://godbolt.org/">https://godbolt.org/</a>
+Compiler Explorer: сравнение ассемблерного вывода разных компиляторов.</p></li>
+<li><p><strong>C Reference</strong> – <a class="reference external" href="https://en.cppreference.com/w/c">https://en.cppreference.com/w/c</a>
+Подробная справка по языку C: синтаксис, стандартные функции, типы, макросы.</p></li>
+<li><p><strong>Online C Compiler</strong> – <a class="reference external" href="https://www.programiz.com/c-programming/online-compiler">https://www.programiz.com/c-programming/online-compiler</a>
+Удобный онлайн-компилятор с редактором кода и запуском программ.</p></li>
+<li><p><strong>C Tutor (визуализатор исполнения кода)</strong> – <a class="reference external" href="https://pythontutor.com/c.html#mode=edit">https://pythontutor.com/c.html#mode=edit</a>
+Пошаговая визуализация работы программы: стек вызовов, значения переменных.</p></li>
+<li><p><strong>Replit (C Workspace)</strong> – <a class="reference external" href="https://replit.com/languages/c">https://replit.com/languages/c</a>
+Среда разработки на C прямо в браузере с сохранением и шарингом проектов.</p></li>
+<li><p><strong>OnlineGDB C Debugger</strong> – <a class="reference external" href="https://www.onlinegdb.com/online_c_compiler">https://www.onlinegdb.com/online_c_compiler</a>
+Онлайн-компилятор с поддержкой пошаговой отладки и точек останова.</p></li>
+<li><p><strong>ISO C Standard Draft (PDF)</strong> – <a class="reference external" href="https://www.open-std.org/jtc1/sc22/wg14/">https://www.open-std.org/jtc1/sc22/wg14/</a>
+Проекты стандартов языка C от комитета WG14 (официальные черновики).</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter29_cheatsheet/index.html" class="btn btn-neutral float-left" title="3. Глава 29: Быстрая справка (Cheat Sheets)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter31_gtk/index.html" class="btn btn-neutral float-right" title="5. Глава 31: GTK Быстрая справка (Cheat Sheets)" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

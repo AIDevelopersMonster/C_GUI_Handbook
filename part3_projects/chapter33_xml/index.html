@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. Глава 33. XML Быстрая справка (Cheat Sheets) &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="8. Глава 34 Мини-проекты" href="../chapter34_projects/index.html" />
+    <link rel="prev" title="6. Глава 32. CSS Быстрая справка (Cheat Sheets)" href="../chapter32_css/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть III: Приложения и справка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter27_themes/index.html">1. Глава 27: Темы в GTK – Кастомизация Внешнего Вида</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter28_css/index.html">2. Глава 28: Применение CSS-стилей в GTK-приложениях с Glade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter29_cheatsheet/index.html">3. Глава 29: Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter30_%D1%81/index.html">4. Глава 30: Расширенная быстрая справка по языку C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter31_gtk/index.html">5. Глава 31: GTK Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter32_css/index.html">6. Глава 32. CSS Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7. Глава 33. XML Быстрая справка (Cheat Sheets)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.1. Введение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gtkbuilder-xml">7.2. Основы GtkBuilder XML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.3. Пример простого окна с кнопкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xml">7.4. Загрузка интерфейса из XML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.5. Основные элементы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.6. Работа с сигналами в XML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">7.7. Поддерживаемые свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">7.8. Советы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">7.9. Ресурсы и ссылки</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter34_projects/index.html">8. Глава 34 Мини-проекты</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть III: Приложения и справка</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7. </span>Глава 33. XML Быстрая справка (Cheat Sheets)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part3_projects/chapter33_xml/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="xml-cheat-sheets">
+<h1><span class="section-number">7. </span>Глава 33. XML Быстрая справка (Cheat Sheets)<a class="headerlink" href="#xml-cheat-sheets" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">7.1. </span>Введение<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>GTK использует XML-файлы в формате GtkBuilder для описания интерфейсов. Это позволяет отделить дизайн UI от кода.</p>
+</section>
+<section id="gtkbuilder-xml">
+<h2><span class="section-number">7.2. </span>Основы GtkBuilder XML<a class="headerlink" href="#gtkbuilder-xml" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Корневой элемент: <cite>&lt;interface&gt;</cite></p></li>
+<li><p>Основные виджеты описываются как дочерние элементы <cite>&lt;object&gt;</cite></p></li>
+<li><p>Атрибут <cite>class</cite> определяет тип виджета (например, GtkWindow, GtkButton)</p></li>
+<li><p>Атрибут <cite>id</cite> задаёт уникальный идентификатор для ссылки из кода</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2><span class="section-number">7.3. </span>Пример простого окна с кнопкой<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;interface&gt;</span>
+<span class="w">  </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;GtkWindow&quot;</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;main_window&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>Пример<span class="w"> </span>окна<span class="nt">&lt;/property&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child&gt;</span>
+<span class="w">      </span><span class="nt">&lt;object</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;GtkButton&quot;</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;my_button&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;label&quot;</span><span class="nt">&gt;</span>Нажми<span class="w"> </span>меня<span class="nt">&lt;/property&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/object&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/child&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/object&gt;</span>
+<span class="nt">&lt;/interface&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="xml">
+<h2><span class="section-number">7.4. </span>Загрузка интерфейса из XML<a class="headerlink" href="#xml" title="Permalink to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GtkBuilder</span><span class="w"> </span><span class="o">*</span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_builder_new_from_file</span><span class="p">(</span><span class="s">&quot;interface.ui&quot;</span><span class="p">);</span>
+<span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GTK_WIDGET</span><span class="p">(</span><span class="n">gtk_builder_get_object</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;main_window&quot;</span><span class="p">));</span>
+<span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GTK_WIDGET</span><span class="p">(</span><span class="n">gtk_builder_get_object</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_button&quot;</span><span class="p">));</span>
+
+<span class="n">g_signal_connect</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;destroy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">gtk_main_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.5. </span>Основные элементы<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><cite>&lt;interface&gt;</cite> — корневой элемент</p></li>
+<li><p><cite>&lt;object&gt;</cite> — виджет или контейнер</p></li>
+<li><p><cite>&lt;property&gt;</cite> — свойство виджета (например, title, label, visible)</p></li>
+<li><p><cite>&lt;child&gt;</cite> — дочерний элемент контейнера</p></li>
+<li><p><cite>&lt;signal&gt;</cite> — связывает сигнал с обработчиком</p></li>
+<li><p><cite>&lt;style&gt;</cite> — применяет CSS стили (ограниченно)</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><span class="section-number">7.6. </span>Работа с сигналами в XML<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>Можно сразу связать сигнал с обработчиком:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;signal</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;clicked&quot;</span><span class="w"> </span><span class="na">handler=</span><span class="s">&quot;on_button_clicked&quot;</span><span class="w"> </span><span class="na">swapped=</span><span class="s">&quot;no&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">7.7. </span>Поддерживаемые свойства<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><cite>title</cite> — заголовок окна</p></li>
+<li><p><cite>label</cite> — текст кнопки или метки</p></li>
+<li><p><cite>visible</cite> — видимость (TRUE/FALSE)</p></li>
+<li><p><cite>hexpand</cite> / <cite>vexpand</cite> — расширение по горизонтали/вертикали</p></li>
+<li><p><cite>margin</cite> — отступы</p></li>
+<li><p><cite>spacing</cite> — расстояние между элементами (для контейнеров)</p></li>
+<li><p>И многие другие, соответствующие API GTK</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2><span class="section-number">7.8. </span>Советы<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Используйте Glade или другой визуальный редактор для создания XML.</p></li>
+<li><p>Имя <cite>id</cite> должно быть уникальным и осмысленным.</p></li>
+<li><p>Обработчики сигналов должны быть определены в коде.</p></li>
+<li><p>Для динамического доступа используйте <cite>gtk_builder_get_object()</cite>.</p></li>
+<li><p>Можно загружать несколько файлов UI и объединять интерфейс.</p></li>
+</ul>
+</section>
+<section id="id7">
+<h2><span class="section-number">7.9. </span>Ресурсы и ссылки<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Официальная документация GtkBuilder: <a class="reference external" href="https://docs.gtk.org/gtk3/class.Builder.html">https://docs.gtk.org/gtk3/class.Builder.html</a></p></li>
+<li><p>Пример XML UI и туториалы: <a class="reference external" href="https://developer.gnome.org/gtk3/stable/gtk-building-ui.html">https://developer.gnome.org/gtk3/stable/gtk-building-ui.html</a></p></li>
+<li><p>Glade UI Designer: <a class="reference external" href="https://glade.gnome.org/">https://glade.gnome.org/</a></p></li>
+<li><p>GtkBuilder API Reference: <a class="reference external" href="https://developer.gnome.org/gtk3/stable/GtkBuilder.html">https://developer.gnome.org/gtk3/stable/GtkBuilder.html</a></p></li>
+</ul>
+<p>—</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter32_css/index.html" class="btn btn-neutral float-left" title="6. Глава 32. CSS Быстрая справка (Cheat Sheets)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter34_projects/index.html" class="btn btn-neutral float-right" title="8. Глава 34 Мини-проекты" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+Глава 32. CSS Быстрая справка (Cheat Sheets)
+=============================================
+
+Введение
+--------
+
+GTK3 использует CSS для стилизации виджетов. Это позволяет гибко менять внешний вид интерфейса, не затрагивая код.
+
+Основы CSS в GTK
+----------------
+
+- CSS-файлы подключаются через GtkCssProvider.
+- Селекторы работают аналогично веб-CSS: по имени виджета, классам и id.
+- Классы добавляются через gtk_style_context_add_class().
+- Идентификаторы через gtk_style_context_set_name().
+
+Подключение CSS
+---------------
+
+.. code-block:: c
+
+    GtkCssProvider *provider = gtk_css_provider_new();
+    gtk_css_provider_load_from_path(provider, "style.css", NULL);
+    gtk_style_context_add_provider_for_screen(
+        gdk_screen_get_default(),
+        GTK_STYLE_PROVIDER(provider),
+        GTK_STYLE_PROVIDER_PRIORITY_USER);
+    g_object_unref(provider);
+
+Селекторы и примеры
+-------------------
+
+- По типу виджета:
+
+.. code-block:: css
+
+    button {
+        background-color: #3498db;
+        color: white;
+        border-radius: 5px;
+    }
+
+- По классу:
+
+.. code-block:: c
+
+    gtk_style_context_add_class(gtk_widget_get_style_context(widget), "my-special-button");
+
+- В CSS:
+
+.. code-block:: css
+
+    .my-special-button {
+        background-color: #e74c3c;
+        font-weight: bold;
+    }
+
+- По ID (имя виджета):
+
+.. code-block:: c
+
+    gtk_widget_set_name(widget, "main_button");
+
+- В CSS:
+
+.. code-block:: css
+
+    #main_button {
+        padding: 10px;
+        border: 2px solid black;
+    }
+
+Основные свойства
+-----------------
+
+- background-color — фон
+- color — цвет текста
+- border — рамка
+- border-radius — скругление углов
+- padding — внутренние отступы
+- margin — внешние отступы
+- font-size — размер шрифта
+- font-weight — жирность шрифта
+
+Пример полного CSS
+------------------
+
+.. code-block:: css
+
+    window {
+        background-color: #2c3e50;
+    }
+
+    button {
+        background-color: #2980b9;
+        color: white;
+        border-radius: 6px;
+        padding: 8px 16px;
+    }
+
+    button:hover {
+        background-color: #3498db;
+    }
+
+    .danger {
+        background-color: #c0392b;
+    }
+
+    #submit_button {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+Подсказки
+---------
+
+- Используйте инспектор GTK (`GTK_DEBUG=interactive`), чтобы видеть, какие классы и свойства применяются.
+- Можно создавать несколько CSS-файлов для разных тем.
+- Помните, что CSS применяется только после вызова gtk_widget_show() или gtk_widget_show_all().
+- Для динамического изменения стиля — используйте gtk_style_context_add_class()/remove_class().
+
+Ресурсы и ссылки
+----------------
+
+- Официальная документация CSS в GTK: https://docs.gtk.org/gtk3/css-overview.html
+- Руководство по CSS для GTK: https://developer.gnome.org/gtk3/stable/chap-css-overview.html
+- Примеры тем и стилей: https://github.com/GNOME/gtk-css-examples
+- GTK Inspector (для дебага CSS): https://docs.gtk.org/gtk3/inspectable.html
+
+---
+

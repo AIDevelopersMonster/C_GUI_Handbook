@@ -1,0 +1,136 @@
+Глава 31: GTK Быстрая справка (Cheat Sheets)
+============================================
+Введение
+--------
+
+GTK (GIMP Toolkit) — кроссплатформенный набор инструментов для создания графических интерфейсов на C. В версии 3 используется GObject и CSS для стилизации.
+
+Подключение библиотеки
+----------------------
+
+Для компиляции используйте:
+
+.. code-block:: bash
+
+    gcc `pkg-config --cflags gtk+-3.0` -o app main.c `pkg-config --libs gtk+-3.0`
+
+Основные типы и объекты
+-----------------------
+
+- GtkWidget — базовый тип для всех виджетов
+- GtkWindow — окно приложения
+- GtkButton — кнопка
+- GtkBox — контейнер для компоновки виджетов (горизонтальный или вертикальный)
+- GtkLabel — текстовая метка
+- GtkEntry — поле ввода текста
+- GtkGrid — сеточный контейнер
+
+Создание окна
+-------------
+
+.. code-block:: c
+
+    GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(window), "Заголовок");
+    gtk_window_set_default_size(GTK_WINDOW(window), 400, 300);
+    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    gtk_widget_show_all(window);
+
+Сигналы и обработчики
+---------------------
+
+GTK использует систему сигналов для событий.
+
+Пример подключения сигнала кнопки:
+
+.. code-block:: c
+
+    void on_button_clicked(GtkButton *button, gpointer user_data) {
+        g_print("Кнопка нажата\n");
+    }
+
+    GtkWidget *button = gtk_button_new_with_label("Нажми меня");
+    g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), NULL);
+
+Компоновка (Layout)
+-------------------
+
+Пример использования GtkBox для вертикального размещения:
+
+.. code-block:: c
+
+    GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+    gtk_box_pack_start(GTK_BOX(vbox), widget1, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), widget2, TRUE, TRUE, 0);
+
+Стандартный цикл GTK
+--------------------
+
+.. code-block:: c
+
+    gtk_init(NULL, NULL);
+    gtk_main();
+
+Работа с виджетами
+------------------
+
+- gtk_widget_show(widget) — показать виджет
+- gtk_widget_hide(widget) — скрыть виджет
+- gtk_widget_set_sensitive(widget, gboolean) — сделать виджет активным/неактивным
+
+Диалоги
+-------
+
+Пример простого диалога:
+
+.. code-block:: c
+
+    GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(parent_window),
+        GTK_DIALOG_DESTROY_WITH_PARENT,
+        GTK_MESSAGE_INFO,
+        GTK_BUTTONS_OK,
+        "Сообщение пользователю");
+    gtk_dialog_run(GTK_DIALOG(dialog));
+    gtk_widget_destroy(dialog);
+
+CSS-стилизация
+--------------
+
+Для кастомизации интерфейса можно использовать CSS-файлы и применять их через GtkCssProvider.
+
+Пример подключения:
+
+.. code-block:: c
+
+    GtkCssProvider *provider = gtk_css_provider_new();
+    gtk_css_provider_load_from_path(provider, "style.css", NULL);
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+        GTK_STYLE_PROVIDER(provider),
+        GTK_STYLE_PROVIDER_PRIORITY_USER);
+    g_object_unref(provider);
+
+Глава 31. Советы и рекомендации
+--------------------------------
+
+- Используйте GObject для расширения виджетов и построения собственных классов.
+- Обязательно освобождайте ресурсы — GTK активно использует указатели и объекты с подсчетом ссылок.
+- Для отладки удобно использовать `g_print()` и `GTK_DEBUG` переменные среды.
+- Следите за тем, чтобы GTK вызывался из основного потока (main thread).
+- Для сложных интерфейсов применяйте GtkBuilder и файлы .ui (XML).
+- Используйте сигналы и обратные вызовы для разделения логики и UI.
+- Помните про принцип «не блокировать основной цикл» — для длительных операций используйте GThread или GAsync.
+
+Онлайн инструменты и документация
+---------------------------------
+
+- Официальная документация GTK3: https://docs.gtk.org/gtk3/
+- GTK API Reference: https://developer.gnome.org/gtk3/stable/
+- GObject Reference: https://developer.gnome.org/gobject/stable/
+- GTK Tutorials (на английском): https://developer.gnome.org/gtk3/stable/chap-tutorials.html
+- Онлайн-компилятор C с поддержкой GTK (ограниченно): https://replit.com/languages/c
+- Компилятор Godbolt с поддержкой pkg-config: https://godbolt.org/
+- C Reference (общее по языку C): https://en.cppreference.com/w/c
+- C Tutor (визуализатор кода): https://pythontutor.com/c.html#mode=edit
+- OnlineGDB C Compiler & Debugger: https://www.onlinegdb.com/online_c_compiler
+
+---

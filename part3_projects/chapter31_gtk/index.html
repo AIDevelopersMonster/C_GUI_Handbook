@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Глава 31: GTK Быстрая справка (Cheat Sheets) &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="6. Глава 32. CSS Быстрая справка (Cheat Sheets)" href="../chapter32_css/index.html" />
+    <link rel="prev" title="4. Глава 30: Расширенная быстрая справка по языку C" href="../chapter30_%D1%81/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть III: Приложения и справка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter27_themes/index.html">1. Глава 27: Темы в GTK – Кастомизация Внешнего Вида</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter28_css/index.html">2. Глава 28: Применение CSS-стилей в GTK-приложениях с Glade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter29_cheatsheet/index.html">3. Глава 29: Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter30_%D1%81/index.html">4. Глава 30: Расширенная быстрая справка по языку C</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Глава 31: GTK Быстрая справка (Cheat Sheets)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">5.1. Введение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.2. Подключение библиотеки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.3. Основные типы и объекты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">5.4. Создание окна</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">5.5. Сигналы и обработчики</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#layout">5.6. Компоновка (Layout)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gtk">5.7. Стандартный цикл GTK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">5.8. Работа с виджетами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">5.9. Диалоги</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#css">5.10. CSS-стилизация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">5.11. Глава 31. Советы и рекомендации</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">5.12. Онлайн инструменты и документация</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter32_css/index.html">6. Глава 32. CSS Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter33_xml/index.html">7. Глава 33. XML Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter34_projects/index.html">8. Глава 34 Мини-проекты</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть III: Приложения и справка</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>Глава 31: GTK Быстрая справка (Cheat Sheets)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part3_projects/chapter31_gtk/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gtk-cheat-sheets">
+<h1><span class="section-number">5. </span>Глава 31: GTK Быстрая справка (Cheat Sheets)<a class="headerlink" href="#gtk-cheat-sheets" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">5.1. </span>Введение<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>GTK (GIMP Toolkit) — кроссплатформенный набор инструментов для создания графических интерфейсов на C. В версии 3 используется GObject и CSS для стилизации.</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">5.2. </span>Подключение библиотеки<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Для компиляции используйте:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc<span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>gtk+-3.0<span class="sb">`</span><span class="w"> </span>-o<span class="w"> </span>app<span class="w"> </span>main.c<span class="w"> </span><span class="sb">`</span>pkg-config<span class="w"> </span>--libs<span class="w"> </span>gtk+-3.0<span class="sb">`</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">5.3. </span>Основные типы и объекты<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>GtkWidget — базовый тип для всех виджетов</p></li>
+<li><p>GtkWindow — окно приложения</p></li>
+<li><p>GtkButton — кнопка</p></li>
+<li><p>GtkBox — контейнер для компоновки виджетов (горизонтальный или вертикальный)</p></li>
+<li><p>GtkLabel — текстовая метка</p></li>
+<li><p>GtkEntry — поле ввода текста</p></li>
+<li><p>GtkGrid — сеточный контейнер</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><span class="section-number">5.4. </span>Создание окна<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_window_new</span><span class="p">(</span><span class="n">GTK_WINDOW_TOPLEVEL</span><span class="p">);</span>
+<span class="n">gtk_window_set_title</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Заголовок&quot;</span><span class="p">);</span>
+<span class="n">gtk_window_set_default_size</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">window</span><span class="p">),</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">);</span>
+<span class="n">g_signal_connect</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;destroy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">gtk_main_quit</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">gtk_widget_show_all</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">5.5. </span>Сигналы и обработчики<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>GTK использует систему сигналов для событий.</p>
+<p>Пример подключения сигнала кнопки:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">on_button_clicked</span><span class="p">(</span><span class="n">GtkButton</span><span class="w"> </span><span class="o">*</span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="n">gpointer</span><span class="w"> </span><span class="n">user_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">g_print</span><span class="p">(</span><span class="s">&quot;Кнопка нажата</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_button_new_with_label</span><span class="p">(</span><span class="s">&quot;Нажми меня&quot;</span><span class="p">);</span>
+<span class="n">g_signal_connect</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;clicked&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">G_CALLBACK</span><span class="p">(</span><span class="n">on_button_clicked</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="layout">
+<h2><span class="section-number">5.6. </span>Компоновка (Layout)<a class="headerlink" href="#layout" title="Permalink to this heading"></a></h2>
+<p>Пример использования GtkBox для вертикального размещения:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">vbox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_box_new</span><span class="p">(</span><span class="n">GTK_ORIENTATION_VERTICAL</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">widget1</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="n">gtk_box_pack_start</span><span class="p">(</span><span class="n">GTK_BOX</span><span class="p">(</span><span class="n">vbox</span><span class="p">),</span><span class="w"> </span><span class="n">widget2</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="gtk">
+<h2><span class="section-number">5.7. </span>Стандартный цикл GTK<a class="headerlink" href="#gtk" title="Permalink to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">gtk_init</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">gtk_main</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2><span class="section-number">5.8. </span>Работа с виджетами<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>gtk_widget_show(widget) — показать виджет</p></li>
+<li><p>gtk_widget_hide(widget) — скрыть виджет</p></li>
+<li><p>gtk_widget_set_sensitive(widget, gboolean) — сделать виджет активным/неактивным</p></li>
+</ul>
+</section>
+<section id="id7">
+<h2><span class="section-number">5.9. </span>Диалоги<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<p>Пример простого диалога:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GtkWidget</span><span class="w"> </span><span class="o">*</span><span class="n">dialog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_message_dialog_new</span><span class="p">(</span><span class="n">GTK_WINDOW</span><span class="p">(</span><span class="n">parent_window</span><span class="p">),</span>
+<span class="w">    </span><span class="n">GTK_DIALOG_DESTROY_WITH_PARENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">GTK_MESSAGE_INFO</span><span class="p">,</span>
+<span class="w">    </span><span class="n">GTK_BUTTONS_OK</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Сообщение пользователю&quot;</span><span class="p">);</span>
+<span class="n">gtk_dialog_run</span><span class="p">(</span><span class="n">GTK_DIALOG</span><span class="p">(</span><span class="n">dialog</span><span class="p">));</span>
+<span class="n">gtk_widget_destroy</span><span class="p">(</span><span class="n">dialog</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="css">
+<h2><span class="section-number">5.10. </span>CSS-стилизация<a class="headerlink" href="#css" title="Permalink to this heading"></a></h2>
+<p>Для кастомизации интерфейса можно использовать CSS-файлы и применять их через GtkCssProvider.</p>
+<p>Пример подключения:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GtkCssProvider</span><span class="w"> </span><span class="o">*</span><span class="n">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_css_provider_new</span><span class="p">();</span>
+<span class="n">gtk_css_provider_load_from_path</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;style.css&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">gtk_style_context_add_provider_for_screen</span><span class="p">(</span><span class="n">gdk_screen_get_default</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">GTK_STYLE_PROVIDER</span><span class="p">(</span><span class="n">provider</span><span class="p">),</span>
+<span class="w">    </span><span class="n">GTK_STYLE_PROVIDER_PRIORITY_USER</span><span class="p">);</span>
+<span class="n">g_object_unref</span><span class="p">(</span><span class="n">provider</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2><span class="section-number">5.11. </span>Глава 31. Советы и рекомендации<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Используйте GObject для расширения виджетов и построения собственных классов.</p></li>
+<li><p>Обязательно освобождайте ресурсы — GTK активно использует указатели и объекты с подсчетом ссылок.</p></li>
+<li><p>Для отладки удобно использовать <cite>g_print()</cite> и <cite>GTK_DEBUG</cite> переменные среды.</p></li>
+<li><p>Следите за тем, чтобы GTK вызывался из основного потока (main thread).</p></li>
+<li><p>Для сложных интерфейсов применяйте GtkBuilder и файлы .ui (XML).</p></li>
+<li><p>Используйте сигналы и обратные вызовы для разделения логики и UI.</p></li>
+<li><p>Помните про принцип «не блокировать основной цикл» — для длительных операций используйте GThread или GAsync.</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2><span class="section-number">5.12. </span>Онлайн инструменты и документация<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Официальная документация GTK3: <a class="reference external" href="https://docs.gtk.org/gtk3/">https://docs.gtk.org/gtk3/</a></p></li>
+<li><p>GTK API Reference: <a class="reference external" href="https://developer.gnome.org/gtk3/stable/">https://developer.gnome.org/gtk3/stable/</a></p></li>
+<li><p>GObject Reference: <a class="reference external" href="https://developer.gnome.org/gobject/stable/">https://developer.gnome.org/gobject/stable/</a></p></li>
+<li><p>GTK Tutorials (на английском): <a class="reference external" href="https://developer.gnome.org/gtk3/stable/chap-tutorials.html">https://developer.gnome.org/gtk3/stable/chap-tutorials.html</a></p></li>
+<li><p>Онлайн-компилятор C с поддержкой GTK (ограниченно): <a class="reference external" href="https://replit.com/languages/c">https://replit.com/languages/c</a></p></li>
+<li><p>Компилятор Godbolt с поддержкой pkg-config: <a class="reference external" href="https://godbolt.org/">https://godbolt.org/</a></p></li>
+<li><p>C Reference (общее по языку C): <a class="reference external" href="https://en.cppreference.com/w/c">https://en.cppreference.com/w/c</a></p></li>
+<li><p>C Tutor (визуализатор кода): <a class="reference external" href="https://pythontutor.com/c.html#mode=edit">https://pythontutor.com/c.html#mode=edit</a></p></li>
+<li><p>OnlineGDB C Compiler &amp; Debugger: <a class="reference external" href="https://www.onlinegdb.com/online_c_compiler">https://www.onlinegdb.com/online_c_compiler</a></p></li>
+</ul>
+<p>—</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter30_%D1%81/index.html" class="btn btn-neutral float-left" title="4. Глава 30: Расширенная быстрая справка по языку C" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter32_css/index.html" class="btn btn-neutral float-right" title="6. Глава 32. CSS Быстрая справка (Cheat Sheets)" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

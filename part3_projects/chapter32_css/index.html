@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Глава 32. CSS Быстрая справка (Cheat Sheets) &mdash; документация C &amp; GUI на RPi Zero 2 W 1.0</title>
+      <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/sphinx_highlight.js"></script>
+        <script src="../../static/translations.js"></script>
+    <script src="../../static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="7. Глава 33. XML Быстрая справка (Cheat Sheets)" href="../chapter33_xml/index.html" />
+    <link rel="prev" title="5. Глава 31: GTK Быстрая справка (Cheat Sheets)" href="../chapter31_gtk/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            C & GUI на RPi Zero 2 W
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../part1_basics/index.html">Часть I: Основы языка Си</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2_gui/index.html">Часть II: Разработка GUI с помощью GTK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Часть III: Приложения и справка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chapter27_themes/index.html">1. Глава 27: Темы в GTK – Кастомизация Внешнего Вида</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter28_css/index.html">2. Глава 28: Применение CSS-стилей в GTK-приложениях с Glade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter29_cheatsheet/index.html">3. Глава 29: Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter30_%D1%81/index.html">4. Глава 30: Расширенная быстрая справка по языку C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter31_gtk/index.html">5. Глава 31: GTK Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Глава 32. CSS Быстрая справка (Cheat Sheets)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">6.1. Введение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#css-gtk">6.2. Основы CSS в GTK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#css">6.3. Подключение CSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.4. Селекторы и примеры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.5. Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">6.6. Пример полного CSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">6.7. Подсказки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">6.8. Ресурсы и ссылки</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter33_xml/index.html">7. Глава 33. XML Быстрая справка (Cheat Sheets)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter34_projects/index.html">8. Глава 34 Мини-проекты</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C & GUI на RPi Zero 2 W</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Часть III: Приложения и справка</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Глава 32. CSS Быстрая справка (Cheat Sheets)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../sources/part3_projects/chapter32_css/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="css-cheat-sheets">
+<h1><span class="section-number">6. </span>Глава 32. CSS Быстрая справка (Cheat Sheets)<a class="headerlink" href="#css-cheat-sheets" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">6.1. </span>Введение<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>GTK3 использует CSS для стилизации виджетов. Это позволяет гибко менять внешний вид интерфейса, не затрагивая код.</p>
+</section>
+<section id="css-gtk">
+<h2><span class="section-number">6.2. </span>Основы CSS в GTK<a class="headerlink" href="#css-gtk" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>CSS-файлы подключаются через GtkCssProvider.</p></li>
+<li><p>Селекторы работают аналогично веб-CSS: по имени виджета, классам и id.</p></li>
+<li><p>Классы добавляются через gtk_style_context_add_class().</p></li>
+<li><p>Идентификаторы через gtk_style_context_set_name().</p></li>
+</ul>
+</section>
+<section id="css">
+<h2><span class="section-number">6.3. </span>Подключение CSS<a class="headerlink" href="#css" title="Permalink to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GtkCssProvider</span><span class="w"> </span><span class="o">*</span><span class="n">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtk_css_provider_new</span><span class="p">();</span>
+<span class="n">gtk_css_provider_load_from_path</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;style.css&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">gtk_style_context_add_provider_for_screen</span><span class="p">(</span>
+<span class="w">    </span><span class="n">gdk_screen_get_default</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">GTK_STYLE_PROVIDER</span><span class="p">(</span><span class="n">provider</span><span class="p">),</span>
+<span class="w">    </span><span class="n">GTK_STYLE_PROVIDER_PRIORITY_USER</span><span class="p">);</span>
+<span class="n">g_object_unref</span><span class="p">(</span><span class="n">provider</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">6.4. </span>Селекторы и примеры<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>По типу виджета:</p></li>
+</ul>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#3498db</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>По классу:</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">gtk_style_context_add_class</span><span class="p">(</span><span class="n">gtk_widget_get_style_context</span><span class="p">(</span><span class="n">widget</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;my-special-button&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>В CSS:</p></li>
+</ul>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">my-special-button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e74c3c</span><span class="p">;</span>
+<span class="w">    </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>По ID (имя виджета):</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">gtk_widget_set_name</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;main_button&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>В CSS:</p></li>
+</ul>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">main_button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.5. </span>Основные свойства<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>background-color — фон</p></li>
+<li><p>color — цвет текста</p></li>
+<li><p>border — рамка</p></li>
+<li><p>border-radius — скругление углов</p></li>
+<li><p>padding — внутренние отступы</p></li>
+<li><p>margin — внешние отступы</p></li>
+<li><p>font-size — размер шрифта</p></li>
+<li><p>font-weight — жирность шрифта</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><span class="section-number">6.6. </span>Пример полного CSS<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">window</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#2c3e50</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#2980b9</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">button</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#3498db</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">danger</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#c0392b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">submit_button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">6.7. </span>Подсказки<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Используйте инспектор GTK (<cite>GTK_DEBUG=interactive</cite>), чтобы видеть, какие классы и свойства применяются.</p></li>
+<li><p>Можно создавать несколько CSS-файлов для разных тем.</p></li>
+<li><p>Помните, что CSS применяется только после вызова gtk_widget_show() или gtk_widget_show_all().</p></li>
+<li><p>Для динамического изменения стиля — используйте gtk_style_context_add_class()/remove_class().</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2><span class="section-number">6.8. </span>Ресурсы и ссылки<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Официальная документация CSS в GTK: <a class="reference external" href="https://docs.gtk.org/gtk3/css-overview.html">https://docs.gtk.org/gtk3/css-overview.html</a></p></li>
+<li><p>Руководство по CSS для GTK: <a class="reference external" href="https://developer.gnome.org/gtk3/stable/chap-css-overview.html">https://developer.gnome.org/gtk3/stable/chap-css-overview.html</a></p></li>
+<li><p>Примеры тем и стилей: <a class="reference external" href="https://github.com/GNOME/gtk-css-examples">https://github.com/GNOME/gtk-css-examples</a></p></li>
+<li><p>GTK Inspector (для дебага CSS): <a class="reference external" href="https://docs.gtk.org/gtk3/inspectable.html">https://docs.gtk.org/gtk3/inspectable.html</a></p></li>
+</ul>
+<p>—</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="../chapter31_gtk/index.html" class="btn btn-neutral float-left" title="5. Глава 31: GTK Быстрая справка (Cheat Sheets)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../chapter33_xml/index.html" class="btn btn-neutral float-right" title="7. Глава 33. XML Быстрая справка (Cheat Sheets)" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KONTAKTS &amp; Garvis.</p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -11,4 +11,8 @@
    chapter27_themes/index
    chapter28_css/index
    chapter29_cheatsheet/index
-   chapter30_projects/index
+   chapter30_с/index
+   chapter31_gtk/index
+   chapter32_css/index
+   chapter33_xml/index
+   chapter34_projects/index

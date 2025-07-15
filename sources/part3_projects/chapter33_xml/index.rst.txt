@@ -1,0 +1,96 @@
+Глава 33. XML Быстрая справка (Cheat Sheets)
+============================================
+
+Введение
+--------
+
+GTK использует XML-файлы в формате GtkBuilder для описания интерфейсов. Это позволяет отделить дизайн UI от кода.
+
+Основы GtkBuilder XML
+---------------------
+
+- Корневой элемент: `<interface>`
+- Основные виджеты описываются как дочерние элементы `<object>`
+- Атрибут `class` определяет тип виджета (например, GtkWindow, GtkButton)
+- Атрибут `id` задаёт уникальный идентификатор для ссылки из кода
+
+Пример простого окна с кнопкой
+------------------------------
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <interface>
+      <object class="GtkWindow" id="main_window">
+        <property name="title">Пример окна</property>
+        <child>
+          <object class="GtkButton" id="my_button">
+            <property name="label">Нажми меня</property>
+          </object>
+        </child>
+      </object>
+    </interface>
+
+Загрузка интерфейса из XML
+--------------------------
+
+.. code-block:: c
+
+    GtkBuilder *builder = gtk_builder_new_from_file("interface.ui");
+    GtkWidget *window = GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
+    GtkWidget *button = GTK_WIDGET(gtk_builder_get_object(builder, "my_button"));
+
+    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), NULL);
+
+    gtk_widget_show_all(window);
+
+Основные элементы
+-----------------
+
+- `<interface>` — корневой элемент
+- `<object>` — виджет или контейнер
+- `<property>` — свойство виджета (например, title, label, visible)
+- `<child>` — дочерний элемент контейнера
+- `<signal>` — связывает сигнал с обработчиком
+- `<style>` — применяет CSS стили (ограниченно)
+
+Работа с сигналами в XML
+------------------------
+
+Можно сразу связать сигнал с обработчиком:
+
+.. code-block:: xml
+
+    <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+
+Поддерживаемые свойства
+------------------------
+
+- `title` — заголовок окна
+- `label` — текст кнопки или метки
+- `visible` — видимость (TRUE/FALSE)
+- `hexpand` / `vexpand` — расширение по горизонтали/вертикали
+- `margin` — отступы
+- `spacing` — расстояние между элементами (для контейнеров)
+- И многие другие, соответствующие API GTK
+
+Советы
+------
+
+- Используйте Glade или другой визуальный редактор для создания XML.
+- Имя `id` должно быть уникальным и осмысленным.
+- Обработчики сигналов должны быть определены в коде.
+- Для динамического доступа используйте `gtk_builder_get_object()`.
+- Можно загружать несколько файлов UI и объединять интерфейс.
+
+Ресурсы и ссылки
+----------------
+
+- Официальная документация GtkBuilder: https://docs.gtk.org/gtk3/class.Builder.html
+- Пример XML UI и туториалы: https://developer.gnome.org/gtk3/stable/gtk-building-ui.html
+- Glade UI Designer: https://glade.gnome.org/
+- GtkBuilder API Reference: https://developer.gnome.org/gtk3/stable/GtkBuilder.html
+
+---
+
